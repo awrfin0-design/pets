@@ -1,0 +1,63 @@
+<section class="benefit-section">
+  <div class="col-center">
+    <p>{{ section.settings.intro | default: 'Unlock the advantages:' }}<br>{{ section.settings.intro_2 | default: 'explore why people choose MOOVE' }}</p>
+    <div class="clip-title-wrap">
+      {%- for block in section.blocks -%}
+        <div class="clip-title" {{ block.shopify_attributes }}>
+          <div class="clip-inner" style="background:{{ block.settings.bg_color }}" data-border="{{ section.settings.border_color | default: '#1a1d1f' }}">
+            <div style="color:{{ block.settings.text_color }}">{{ block.settings.label }}</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class="and-more"><p>{{ section.settings.footer_text | default: 'And much more...' }}</p></div>
+  </div>
+  <div class="vd-pin-section">
+    <div class="video-box" id="videoBox">
+      {%- if section.settings.video != blank -%}
+        {{ section.settings.video | video_tag: playsinline: true, muted: true, loop: true, autoplay: true, controls: false }}
+      {%- else -%}
+        <video src="{{ 'moove-pin-video.mp4' | asset_url }}" playsinline muted loop autoplay></video>
+      {%- endif -%}
+      <div class="vd-center">
+        <img class="spin-circle" src="{{ 'moove-circle-text.svg' | asset_url }}" alt="">
+        <button class="play-btn" aria-label="{{ 'sections.benefits.play' | t }}"><img src="{{ 'moove-play.svg' | asset_url }}" alt=""></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits",
+  "settings": [
+    { "type": "text", "id": "intro", "label": "Intro line 1", "default": "Unlock the advantages:" },
+    { "type": "text", "id": "intro_2", "label": "Intro line 2", "default": "explore why people choose MOOVE" },
+    { "type": "text", "id": "footer_text", "label": "Closing text", "default": "And much more..." },
+    { "type": "color", "id": "border_color", "label": "Tile border color", "default": "#1a1d1f" },
+    { "type": "video", "id": "video", "label": "Pinned video" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Shelf stable" },
+        { "type": "color", "id": "bg_color", "label": "Background color", "default": "#c88e64" },
+        { "type": "color", "id": "text_color", "label": "Text color", "default": "#f3ecdf" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits",
+      "blocks": [
+        { "type": "benefit", "settings": { "label": "Shelf stable", "bg_color": "#c88e64", "text_color": "#f3ecdf" } },
+        { "type": "benefit", "settings": { "label": "Protein + caffeine", "bg_color": "#f3ecdf", "text_color": "#1a1d1f" } },
+        { "type": "benefit", "settings": { "label": "Infinitely recyclable", "bg_color": "#c8462c", "text_color": "#f3ecdf" } },
+        { "type": "benefit", "settings": { "label": "Lactose free", "bg_color": "#ffcf6b", "text_color": "#2e2d2f" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

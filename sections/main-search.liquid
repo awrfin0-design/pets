@@ -1,0 +1,18 @@
+<div style="max-width:56rem;margin:0 auto;padding:8rem 1.5rem 4rem;color:var(--ink);">
+  <form action="{{ routes.search_url }}" method="get" role="search">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" style="width:100%;font-size:1.3rem;padding:.75rem 0;border:none;border-bottom:2px solid var(--ink);background:transparent;">
+    <input type="hidden" name="type" value="product,article,page">
+  </form>
+  {%- if search.performed -%}
+    <p style="margin-top:2rem;">{{ 'general.search.results_count' | t: count: search.results_count }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:2rem;margin-top:1.5rem;">
+      {%- for item in search.results -%}
+        <a href="{{ item.url }}" style="color:var(--ink);text-decoration:none;">
+          {%- if item.featured_image -%}<img src="{{ item.featured_image | image_url: width: 400 }}" alt="{{ item.title }}" style="border-radius:1rem;">{%- endif -%}
+          <p style="margin-top:.5rem;font-weight:600;">{{ item.title }}</p>
+        </a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+{% schema %}{ "name": "Search" }{% endschema %}

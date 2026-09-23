@@ -1,0 +1,7 @@
+<article style="max-width:48rem;margin:0 auto;padding:8rem 1.5rem 4rem;color:var(--ink);">
+  <h1 style="font-size:clamp(2.5rem,7vw,4rem);margin-bottom:.5rem;">{{ article.title }}</h1>
+  <p style="opacity:.7;margin-bottom:2rem;">{{ article.published_at | date: '%B %d, %Y' }} &middot; {{ article.author }}</p>
+  {%- if article.image -%}<img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title }}" style="border-radius:1rem;margin-bottom:2rem;">{%- endif -%}
+  <div style="line-height:1.8;font-size:1.05rem;">{{ article.content }}</div>
+</article>
+{% schema %}{ "name": "Article" }{% endschema %}

@@ -1,0 +1,68 @@
+<footer class="footer-section">
+  <img class="dip" src="{{ 'moove-footer-dip.png' | asset_url }}" alt="">
+  <div class="footer-inner">
+    <div class="footer-title"><h1>{{ section.settings.title | default: '#SIPRESPONSIBLY' }}</h1></div>
+    <div class="footer-media">
+      {%- if section.settings.video != blank -%}
+        {{ section.settings.video | video_tag: autoplay: true, playsinline: true, muted: true, controls: false }}
+      {%- else -%}
+        <video src="{{ 'moove-splash.mp4' | asset_url }}" autoplay playsinline muted></video>
+      {%- endif -%}
+    </div>
+    <div class="social-row">
+      {%- if section.settings.youtube_url != blank -%}
+      <a class="social-btn" href="{{ section.settings.youtube_url }}" aria-label="YouTube"><img src="{{ 'moove-yt.svg' | asset_url }}" alt=""></a>
+      {%- endif -%}
+      {%- if section.settings.instagram_url != blank -%}
+      <a class="social-btn" href="{{ section.settings.instagram_url }}" aria-label="Instagram"><img src="{{ 'moove-insta.svg' | asset_url }}" alt=""></a>
+      {%- endif -%}
+      {%- if section.settings.tiktok_url != blank -%}
+      <a class="social-btn" href="{{ section.settings.tiktok_url }}" aria-label="TikTok"><img src="{{ 'moove-tiktok.svg' | asset_url }}" alt=""></a>
+      {%- endif -%}
+    </div>
+    <div class="footer-columns">
+      <div class="links-group">
+        {%- if linklists.footer.links.size > 0 -%}
+          <div class="links">
+            {%- for link in linklists.footer.links -%}
+              <p><a href="{{ link.url }}">{{ link.title }}</a></p>
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          <div class="links"><p>Moove Crew</p><p>Campus Marketing</p><p>Dairy Partners</p></div>
+          <div class="links"><p>Company</p><p>Contact</p><p>The Sip Blog</p></div>
+        {%- endif -%}
+      </div>
+      <div class="newsletter">
+        <p>{{ section.settings.newsletter_text | default: 'Get exclusive early access and stay in the loop on new flavors, drops, and events.' }}</p>
+        {%- form 'customer', id: 'footer-newsletter' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.email_placeholder' | t }}" aria-label="{{ 'general.newsletter.email_placeholder' | t }}" required>
+          <button type="submit" aria-label="{{ 'general.newsletter.subscribe' | t }}"><img src="{{ 'moove-arrow.svg' | asset_url }}" alt=""></button>
+          {%- if form.posted_successfully? -%}<p>{{ 'general.newsletter.success' | t }}</p>{%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+    <div class="copyright-box">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }} &mdash; {{ 'general.footer.rights' | t }}</p>
+      <div class="legal">
+        <a href="{{ pages.privacy-policy.url | default: '#' }}">{{ 'general.footer.privacy' | t }}</a>
+        <a href="{{ pages.terms-of-service.url | default: '#' }}">{{ 'general.footer.terms' | t }}</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "#SIPRESPONSIBLY" },
+    { "type": "video", "id": "video", "label": "Footer video" },
+    { "type": "textarea", "id": "newsletter_text", "label": "Newsletter text" },
+    { "type": "url", "id": "youtube_url", "label": "YouTube URL" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram URL" },
+    { "type": "url", "id": "tiktok_url", "label": "TikTok URL" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+<section class="nutrition-section">
+  <img class="dip" src="{{ 'moove-slider-dip.png' | asset_url }}" alt="">
+  {%- if section.settings.big_image != blank -%}
+    <img class="big-img" src="{{ section.settings.big_image | image_url: width: 1600 }}" alt="">
+  {%- else -%}
+    <img class="big-img" src="{{ 'moove-big-img.png' | asset_url }}" alt="">
+  {%- endif -%}
+  <div class="nutrition-flex">
+    <div class="nutrition-title-wrap">
+      <div class="nutrition-title-group">
+        <h1 id="nutA">{{ section.settings.title_a | default: 'Still does' }}</h1>
+        <div class="nutrition-text-scroll" id="nutScroll"><h2>{{ section.settings.highlight | default: 'a body good' }}</h2></div>
+      </div>
+    </div>
+    <div class="nutrition-copy">
+      <p>{{ section.settings.body | default: 'Milk carries a full spread of nutrients — vitamins, minerals and protein — and every MOOVE bottle is lactose free.' }}</p>
+    </div>
+    <div class="nutrition-box">
+      <div class="list-wrapper">
+        {%- for block in section.blocks -%}
+          <div class="nutrient" {{ block.shopify_attributes }}>
+            <div>
+              <p class="label">{{ block.settings.label }}</p>
+              <p class="up-to">{{ 'sections.nutrition.up_to' | t }}</p>
+              <p class="amount">{{ block.settings.amount }}</p>
+            </div>
+            {%- unless forloop.last -%}<div class="spacer-border"></div>{%- endunless -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nutrition",
+  "settings": [
+    { "type": "text", "id": "title_a", "label": "Title", "default": "Still does" },
+    { "type": "text", "id": "highlight", "label": "Highlighted text", "default": "a body good" },
+    { "type": "textarea", "id": "body", "label": "Body copy" },
+    { "type": "image_picker", "id": "big_image", "label": "Background image" }
+  ],
+  "blocks": [
+    {
+      "type": "nutrient",
+      "name": "Nutrient",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Potassium" },
+        { "type": "text", "id": "amount", "label": "Amount", "default": "245mg" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nutrition",
+      "blocks": [
+        { "type": "nutrient", "settings": { "label": "Potassium", "amount": "245mg" } },
+        { "type": "nutrient", "settings": { "label": "Calcium", "amount": "500mg" } },
+        { "type": "nutrient", "settings": { "label": "Vitamin A", "amount": "176mcg" } },
+        { "type": "nutrient", "settings": { "label": "Vitamin D", "amount": "5mcg" } },
+        { "type": "nutrient", "settings": { "label": "Iron", "amount": "1mg" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

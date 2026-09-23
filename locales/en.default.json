@@ -1,0 +1,67 @@
+{
+  "general": {
+    "cart": {
+      "title": "Cart",
+      "empty": "Your cart is empty.",
+      "continue": "Continue shopping",
+      "product": "Product",
+      "quantity": "Quantity",
+      "total": "Total",
+      "checkout": "Checkout"
+    },
+    "language": { "go": "Go" },
+    "newsletter": {
+      "email_placeholder": "Enter your email",
+      "subscribe": "Subscribe",
+      "success": "Thanks for subscribing!"
+    },
+    "footer": {
+      "rights": "All Rights Reserved",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "404": {
+      "text": "The page you're looking for doesn't exist.",
+      "link": "Back to home"
+    },
+    "search": {
+      "placeholder": "Search",
+      "results_count": "{{ count }} results found"
+    },
+    "collections": { "title": "Collections" },
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "customer": {
+      "login": "Log in",
+      "email": "Email",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "sign_in": "Sign in",
+      "create_account": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "account": "My account",
+      "log_out": "Log out",
+      "order_history": "Order history",
+      "no_orders": "You haven't placed any orders yet.",
+      "order": "Order",
+      "reset_password": "Reset password",
+      "activate_account": "Activate account"
+    },
+    "gift_card": {
+      "title": "Gift card",
+      "code": "Code"
+    }
+  },
+  "sections": {
+    "hero": { "scroll": "Scroll for More" },
+    "nutrition": { "up_to": "up to" },
+    "benefits": { "play": "Play video" }
+  }
+}

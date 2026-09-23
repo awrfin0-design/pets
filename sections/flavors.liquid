@@ -1,0 +1,85 @@
+<section class="flavor-section">
+  <div class="flavor-titlebox">
+    <div class="flavor-title">
+      <div class="split-line"><h1 id="flavA">{{ section.settings.title_a | default: "We've got 6" }}</h1></div>
+      <div class="flavor-text-scroll" id="flavScroll"><h2>{{ section.settings.highlight | default: 'epic' }}</h2></div>
+      <div class="split-line"><h1 id="flavB">{{ section.settings.title_b | default: 'flavor drops' }}</h1></div>
+    </div>
+  </div>
+  <div class="slider-wrapper">
+    <div class="flavors" id="flavors">
+      {%- for block in section.blocks -%}
+        {%- assign fallback_bg = 'moove-' | append: block.settings.color | append: '-bg.svg' -%}
+        {%- assign fallback_drink = 'moove-' | append: block.settings.color | append: '-drink.webp' -%}
+        {%- assign fallback_elements = 'moove-' | append: block.settings.color | append: '-elements.webp' -%}
+        <a class="flavor-card" href="{{ block.settings.product_link | default: '#' }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.bg_image != blank -%}
+            <img class="bg" src="{{ block.settings.bg_image | image_url: width: 800 }}" alt="">
+          {%- else -%}
+            <img class="bg" src="{{ fallback_bg | asset_url }}" alt="">
+          {%- endif -%}
+          {%- if block.settings.drink_image != blank -%}
+            <img class="drink" src="{{ block.settings.drink_image | image_url: width: 800 }}" alt="">
+          {%- else -%}
+            <img class="drink" src="{{ fallback_drink | asset_url }}" alt="">
+          {%- endif -%}
+          {%- if block.settings.elements_image != blank -%}
+            <img class="elements" src="{{ block.settings.elements_image | image_url: width: 800 }}" alt="">
+          {%- else -%}
+            <img class="elements" src="{{ fallback_elements | asset_url }}" alt="">
+          {%- endif -%}
+          <h1>{{ block.settings.name }}</h1>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Flavors",
+  "settings": [
+    { "type": "text", "id": "title_a", "label": "Title line 1", "default": "We've got 6" },
+    { "type": "text", "id": "highlight", "label": "Highlighted word", "default": "epic" },
+    { "type": "text", "id": "title_b", "label": "Title line 2", "default": "flavor drops" }
+  ],
+  "blocks": [
+    {
+      "type": "flavor",
+      "name": "Flavor",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Flavor name", "default": "Cocoa Rush" },
+        {
+          "type": "select", "id": "color", "label": "Default color set",
+          "options": [
+            { "value": "brown", "label": "Brown" },
+            { "value": "red", "label": "Red" },
+            { "value": "blue", "label": "Blue" },
+            { "value": "orange", "label": "Orange" },
+            { "value": "white", "label": "White" },
+            { "value": "black", "label": "Black" }
+          ],
+          "default": "brown"
+        },
+        { "type": "image_picker", "id": "bg_image", "label": "Background shape (overrides default)" },
+        { "type": "image_picker", "id": "drink_image", "label": "Bottle image (overrides default)" },
+        { "type": "image_picker", "id": "elements_image", "label": "Floating elements (overrides default)" },
+        { "type": "url", "id": "product_link", "label": "Link to product" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flavors",
+      "blocks": [
+        { "type": "flavor", "settings": { "name": "Cocoa Rush", "color": "brown" } },
+        { "type": "flavor", "settings": { "name": "Berry Blush", "color": "red" } },
+        { "type": "flavor", "settings": { "name": "Cookie Swirl", "color": "blue" } },
+        { "type": "flavor", "settings": { "name": "Peanut Pop", "color": "orange" } },
+        { "type": "flavor", "settings": { "name": "Vanilla Shake", "color": "white" } },
+        { "type": "flavor", "settings": { "name": "Midnight Cocoa", "color": "black" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

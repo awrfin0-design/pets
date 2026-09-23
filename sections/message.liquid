@@ -1,0 +1,25 @@
+<section class="message-content">
+  <div style="max-width:80rem;margin:0 auto;padding:7rem 0;position:relative;">
+    <div class="msg-wrapper">
+      <h1 class="split-words" id="firstMsg">{{ section.settings.text_before | default: 'Wake up your restless spirit and' }}</h1>
+      <div class="msg-text-scroll" id="msgScroll"><h2>{{ section.settings.highlight | default: 'Fuel Up' }}</h2></div>
+      <h1 class="split-words" id="secondMsg">{{ section.settings.text_after | default: 'chase tomorrow with every sip of pure protein' }}</h1>
+    </div>
+    <div class="msg-p-wrap flex-center">
+      <p>{{ section.settings.body | default: "Ignite your rebel streak and power the adventure ahead with MOOVE — one bottle away from bold flavor and fearless momentum." }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Message",
+  "settings": [
+    { "type": "text", "id": "text_before", "label": "Text before highlight", "default": "Wake up your restless spirit and" },
+    { "type": "text", "id": "highlight", "label": "Highlighted text", "default": "Fuel Up" },
+    { "type": "text", "id": "text_after", "label": "Text after highlight", "default": "chase tomorrow with every sip of pure protein" },
+    { "type": "textarea", "id": "body", "label": "Body copy" }
+  ],
+  "presets": [{ "name": "Message" }]
+}
+{% endschema %}

@@ -1,0 +1,11 @@
+<div style="max-width:28rem;margin:0 auto;padding:8rem 1.5rem 4rem;">
+  <h1 style="font-size:2.5rem;margin-bottom:1.5rem;">{{ 'general.customer.login' | t }}</h1>
+  {%- form 'customer_login' -%}
+    {{ form.errors | default_errors }}
+    <input type="email" name="customer[email]" placeholder="{{ 'general.customer.email' | t }}" required style="width:100%;padding:.75rem;margin-bottom:1rem;">
+    {%- if form.password_needed -%}
+      <input type="password" name="customer[password]" placeholder="{{ 'general.customer.password' | t }}" required style="width:100%;padding:.75rem;margin-bottom:1rem;">
+    {%- endif -%}
+    <button type="submit" class="hero-button" style="background:var(--coral);color:var(--cream);border:none;">{{ 'general.customer.sign_in' | t }}</button>
+  {%- endform -%}
+</div>

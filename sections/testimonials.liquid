@@ -1,0 +1,53 @@
+<section class="testimonials-section">
+  <div class="test-titles">
+    <h1>{{ section.settings.title_a | default: "What's" }}</h1>
+    <h1 class="accent">{{ section.settings.title_b | default: 'Everyone' }}</h1>
+    <h1>{{ section.settings.title_c | default: 'Talking' }}</h1>
+  </div>
+  <div class="pin-box" id="pinBox">
+    {%- for block in section.blocks -%}
+      <div class="vd-card" {{ block.shopify_attributes }}>
+        {%- if block.settings.video != blank -%}
+          {{ block.settings.video | video_tag: playsinline: true, muted: true, loop: true, controls: false }}
+        {%- elsif block.settings.fallback_number != blank -%}
+          <video src="{{ 'moove-f' | append: block.settings.fallback_number | append: '.mp4' | asset_url }}" playsinline muted loop></video>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "title_a", "label": "Title line 1", "default": "What's" },
+    { "type": "text", "id": "title_b", "label": "Title line 2 (accent)", "default": "Everyone" },
+    { "type": "text", "id": "title_c", "label": "Title line 3", "default": "Talking" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Video testimonial",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Video" },
+        { "type": "text", "id": "fallback_number", "label": "Demo video number (1-7, used if no video uploaded)", "default": "1" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "fallback_number": "1" } },
+        { "type": "testimonial", "settings": { "fallback_number": "2" } },
+        { "type": "testimonial", "settings": { "fallback_number": "3" } },
+        { "type": "testimonial", "settings": { "fallback_number": "4" } },
+        { "type": "testimonial", "settings": { "fallback_number": "5" } },
+        { "type": "testimonial", "settings": { "fallback_number": "6" } },
+        { "type": "testimonial", "settings": { "fallback_number": "7" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

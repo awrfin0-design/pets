@@ -1,0 +1,24 @@
+<div style="max-width:80rem;margin:0 auto;padding:8rem 1.5rem 4rem;color:var(--ink);">
+  <h1 style="font-size:clamp(2.5rem,7vw,4.5rem);margin-bottom:.5rem;text-transform:uppercase;">{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}<div style="max-width:40rem;opacity:.8;margin-bottom:2rem;">{{ collection.description }}</div>{%- endif -%}
+  {%- paginate collection.products by 24 -%}
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:2rem;">
+    {%- for product in collection.products -%}
+      <a href="{{ product.url }}" style="color:var(--ink);text-decoration:none;">
+        {%- if product.featured_image -%}
+          <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title | escape }}" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:1.25rem;">
+        {%- endif -%}
+        <p style="margin-top:.75rem;font-weight:700;text-transform:uppercase;">{{ product.title }}</p>
+        <p style="opacity:.7;">{{ product.price | money }}</p>
+      </a>
+    {%- endfor -%}
+  </div>
+  {%- if paginate.pages > 1 -%}
+    <div style="display:flex;gap:1rem;justify-content:center;margin-top:2.5rem;">
+      {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">{{ 'general.pagination.previous' | t }}</a>{%- endif -%}
+      {%- if paginate.next -%}<a href="{{ paginate.next.url }}">{{ 'general.pagination.next' | t }}</a>{%- endif -%}
+    </div>
+  {%- endif -%}
+  {%- endpaginate -%}
+</div>
+{% schema %}{ "name": "Collection" }{% endschema %}

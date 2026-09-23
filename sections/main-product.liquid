@@ -1,0 +1,47 @@
+<div style="max-width:72rem;margin:0 auto;padding:8rem 1.5rem 4rem;display:grid;grid-template-columns:1fr;gap:2.5rem;color:var(--ink);">
+  <style>
+    @media(min-width:900px){ .product-grid{grid-template-columns:1.1fr 1fr;align-items:start;} }
+  </style>
+  <div class="product-grid" style="display:grid;gap:2.5rem;">
+    <div>
+      {%- if product.featured_image -%}
+        <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.featured_image.alt | escape }}" style="width:100%;border-radius:1.5rem;">
+      {%- endif -%}
+      {%- if product.images.size > 1 -%}
+        <div style="display:flex;gap:.75rem;margin-top:1rem;overflow-x:auto;">
+          {%- for image in product.images -%}
+            <img src="{{ image | image_url: width: 200 }}" alt="" style="width:5rem;height:5rem;object-fit:cover;border-radius:.75rem;">
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+    <div>
+      <h1 style="font-size:clamp(2.5rem,6vw,4rem);">{{ product.title }}</h1>
+      <p style="font-size:1.4rem;margin:1rem 0;">{{ product.price | money }}</p>
+      <div style="line-height:1.7;margin-bottom:1.5rem;">{{ product.description }}</div>
+      {%- form 'product', product -%}
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;font-weight:700;margin-bottom:.4rem;">{{ option.name }}</label>
+              <select name="options[{{ option.name | escape }}]" style="padding:.5rem;border-radius:.5rem;border:1px solid #ccc;">
+                {%- for value in option.values -%}
+                  <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="hero-button" style="background:var(--coral);color:var(--cream);border:none;" {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+          {%- if product.selected_or_first_available_variant.available -%}
+            {{ 'general.product.add_to_cart' | t }}
+          {%- else -%}
+            {{ 'general.product.sold_out' | t }}
+          {%- endif -%}
+        </button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+{% schema %}{ "name": "Product" }{% endschema %}

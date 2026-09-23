@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction | default: 'ltr' }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page_title }}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+{% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+<link rel="canonical" href="{{ canonical_url }}">
+{% if settings.favicon %}
+  <link rel="icon" href="{{ settings.favicon | image_url: width: 64 }}" type="image/png">
+{% else %}
+  <link rel="icon" href="{{ 'moove-nav-logo.svg' | asset_url }}">
+{% endif %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+{{ content_for_header }}
+<link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+</head>
+<body>
+
+<div class="moove-loader" aria-hidden="true">
+  <img src="{{ 'moove-nav-logo.svg' | asset_url }}" alt="">
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<nav class="site-nav">
+  <a href="{{ routes.root_url }}"><img src="{{ 'moove-nav-logo.svg' | asset_url }}" alt="{{ shop.name }}"></a>
+  {%- if linklists.main-menu.links.size > 0 -%}
+  <ul class="nav-links">
+    {%- for link in linklists.main-menu.links -%}
+      <li><a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+  <div style="display:flex;align-items:center;gap:1.25rem;">
+    {%- if localization.available_languages.size > 1 -%}
+    <div class="lang-switcher">
+      {%- form 'localization', id: 'lang-form' -%}
+        <select name="locale_code" data-lang-switcher onchange="this.form.submit()">
+          {%- for language in localization.available_languages -%}
+            <option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym_name | capitalize }}</option>
+          {%- endfor -%}
+        </select>
+        <noscript><button type="submit">{{ 'general.language.go' | t }}</button></noscript>
+      {%- endform -%}
+    </div>
+    {%- endif -%}
+    <a class="nav-cart" href="{{ routes.cart_url }}">{{ 'general.cart.title' | t }} ({{ cart.item_count }})</a>
+  </div>
+</nav>
+
+<main id="MainContent">
+  {{ content_for_layout }}
+</main>
+
+{% section 'site-footer' %}
+
+<script src="{{ 'theme.js' | asset_url }}" defer></script>
+</body>
+</html>

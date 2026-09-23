@@ -1,0 +1,37 @@
+<section class="hero-container">
+  {%- if section.settings.hero_video != blank -%}
+    {{ section.settings.hero_video | video_tag: autoplay: true, muted: true, loop: true, controls: false }}
+  {%- elsif section.settings.hero_image != blank -%}
+    <img class="hero-fallback" src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="">
+  {%- else -%}
+    <video src="{{ 'moove-hero-bg.mp4' | asset_url }}" autoplay muted playsinline loop></video>
+  {%- endif -%}
+  <div class="hero-content">
+    <div class="hero-title"><h1 id="heroTitle">{{ section.settings.title | default: 'MOOVE Drinks' }}</h1></div>
+    <div class="hero-text-scroll" id="heroScroll">
+      <div class="hero-subtitle"><h1>{{ section.settings.subtitle | default: 'Protein + Caffeine' }}</h1></div>
+    </div>
+    <h2>{{ section.settings.text | default: "Make every day move faster with MOOVE — shake off boredom and chase your next adventure, one smooth sip at a time." }}</h2>
+    {%- if section.settings.button_label != blank -%}
+      <a class="hero-button" href="{{ section.settings.button_link | default: '#' }}"><p>{{ section.settings.button_label }}</p></a>
+    {%- else -%}
+      <div class="hero-button"><p>{{ 'sections.hero.scroll' | t }}</p></div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "MOOVE Drinks" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Protein + Caffeine" },
+    { "type": "textarea", "id": "text", "label": "Description" },
+    { "type": "video", "id": "hero_video", "label": "Background video" },
+    { "type": "image_picker", "id": "hero_image", "label": "Fallback image" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Scroll for More" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "message": { "type": "message" },
+    "flavors": {
+      "type": "flavors",
+      "blocks": {
+        "b1": { "type": "flavor", "settings": { "name": "Cocoa Rush", "color": "brown" } },
+        "b2": { "type": "flavor", "settings": { "name": "Berry Blush", "color": "red" } },
+        "b3": { "type": "flavor", "settings": { "name": "Cookie Swirl", "color": "blue" } },
+        "b4": { "type": "flavor", "settings": { "name": "Peanut Pop", "color": "orange" } },
+        "b5": { "type": "flavor", "settings": { "name": "Vanilla Shake", "color": "white" } },
+        "b6": { "type": "flavor", "settings": { "name": "Midnight Cocoa", "color": "black" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"]
+    },
+    "nutrition": {
+      "type": "nutrition",
+      "blocks": {
+        "n1": { "type": "nutrient", "settings": { "label": "Potassium", "amount": "245mg" } },
+        "n2": { "type": "nutrient", "settings": { "label": "Calcium", "amount": "500mg" } },
+        "n3": { "type": "nutrient", "settings": { "label": "Vitamin A", "amount": "176mcg" } },
+        "n4": { "type": "nutrient", "settings": { "label": "Vitamin D", "amount": "5mcg" } },
+        "n5": { "type": "nutrient", "settings": { "label": "Iron", "amount": "1mg" } }
+      },
+      "block_order": ["n1", "n2", "n3", "n4", "n5"]
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "c1": { "type": "benefit", "settings": { "label": "Shelf stable", "bg_color": "#c88e64", "text_color": "#f3ecdf" } },
+        "c2": { "type": "benefit", "settings": { "label": "Protein + caffeine", "bg_color": "#f3ecdf", "text_color": "#1a1d1f" } },
+        "c3": { "type": "benefit", "settings": { "label": "Infinitely recyclable", "bg_color": "#c8462c", "text_color": "#f3ecdf" } },
+        "c4": { "type": "benefit", "settings": { "label": "Lactose free", "bg_color": "#ffcf6b", "text_color": "#2e2d2f" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "fallback_number": "1" } },
+        "t2": { "type": "testimonial", "settings": { "fallback_number": "2" } },
+        "t3": { "type": "testimonial", "settings": { "fallback_number": "3" } },
+        "t4": { "type": "testimonial", "settings": { "fallback_number": "4" } },
+        "t5": { "type": "testimonial", "settings": { "fallback_number": "5" } },
+        "t6": { "type": "testimonial", "settings": { "fallback_number": "6" } },
+        "t7": { "type": "testimonial", "settings": { "fallback_number": "7" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6", "t7"]
+    }
+  },
+  "order": ["hero", "message", "flavors", "nutrition", "benefits", "testimonials"]
+}

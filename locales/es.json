@@ -1,0 +1,67 @@
+{
+  "general": {
+    "cart": {
+      "title": "Carrito",
+      "empty": "Tu carrito está vacío.",
+      "continue": "Seguir comprando",
+      "product": "Producto",
+      "quantity": "Cantidad",
+      "total": "Total",
+      "checkout": "Pagar"
+    },
+    "language": { "go": "Ir" },
+    "newsletter": {
+      "email_placeholder": "Ingresa tu correo",
+      "subscribe": "Suscribirse",
+      "success": "¡Gracias por suscribirte!"
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados",
+      "privacy": "Política de privacidad",
+      "terms": "Términos de servicio"
+    },
+    "404": {
+      "text": "La página que buscas no existe.",
+      "link": "Volver al inicio"
+    },
+    "search": {
+      "placeholder": "Buscar",
+      "results_count": "{{ count }} resultados encontrados"
+    },
+    "collections": { "title": "Colecciones" },
+    "product": {
+      "add_to_cart": "Añadir al carrito",
+      "sold_out": "Agotado"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "customer": {
+      "login": "Iniciar sesión",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "password_confirm": "Confirmar contraseña",
+      "sign_in": "Iniciar sesión",
+      "create_account": "Crear cuenta",
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "account": "Mi cuenta",
+      "log_out": "Cerrar sesión",
+      "order_history": "Historial de pedidos",
+      "no_orders": "Aún no has realizado ningún pedido.",
+      "order": "Pedido",
+      "reset_password": "Restablecer contraseña",
+      "activate_account": "Activar cuenta"
+    },
+    "gift_card": {
+      "title": "Tarjeta de regalo",
+      "code": "Código"
+    }
+  },
+  "sections": {
+    "hero": { "scroll": "Desliza para más" },
+    "nutrition": { "up_to": "hasta" },
+    "benefits": { "play": "Reproducir video" }
+  }
+}

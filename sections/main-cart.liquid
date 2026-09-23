@@ -1,0 +1,25 @@
+<div style="max-width:56rem;margin:0 auto;padding:8rem 1.5rem 4rem;color:var(--ink);">
+  <h1 style="font-size:clamp(2.5rem,7vw,4.5rem);margin-bottom:1.5rem;">{{ 'general.cart.title' | t }}</h1>
+  {%- if cart.item_count == 0 -%}
+    <p>{{ 'general.cart.empty' | t }}</p>
+    <a class="hero-button" style="background:var(--coral);color:var(--cream);" href="{{ routes.all_products_collection_url }}">{{ 'general.cart.continue' | t }}</a>
+  {%- else -%}
+    {%- form 'cart', cart -%}
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr><th align="left">{{ 'general.cart.product' | t }}</th><th>{{ 'general.cart.quantity' | t }}</th><th align="right">{{ 'general.cart.total' | t }}</th></tr></thead>
+        <tbody>
+        {%- for item in cart.items -%}
+          <tr style="border-top:1px solid #ddd;">
+            <td style="padding:.75rem 0;">{{ item.product.title }}</td>
+            <td align="center"><input type="number" name="updates[]" value="{{ item.quantity }}" min="0" style="width:4rem;"></td>
+            <td align="right">{{ item.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+        </tbody>
+      </table>
+      <p style="text-align:right;font-size:1.3rem;margin-top:1.5rem;">{{ 'general.cart.total' | t }}: {{ cart.total_price | money }}</p>
+      <button type="submit" name="checkout" class="hero-button" style="background:var(--coral);color:var(--cream);border:none;">{{ 'general.cart.checkout' | t }}</button>
+    {%- endform -%}
+  {%- endif -%}
+</div>
+{% schema %}{ "name": "Cart" }{% endschema %}
