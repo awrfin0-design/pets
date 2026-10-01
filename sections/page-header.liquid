@@ -1,0 +1,20 @@
+<section class="page-header" style="--hero-bg:{{ section.settings.bg_color }};--hero-ink:{{ section.settings.text_color }}">
+  <div class="hero__bg" aria-hidden="true" style="background-image:url({{ 'pattern-shards.svg' | asset_url }})"></div>
+  <div class="page-header__inner">
+    <h1 class="display">{{ section.settings.title | default: page.title }}</h1>
+    {%- if section.settings.text != blank -%}<p class="hero__text">{{ section.settings.text }}</p>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page header",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title (blank = page title)" },
+    { "type": "textarea", "id": "text", "label": "Intro text" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#137563" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#fdfbb8" }
+  ],
+  "presets": [{ "name": "Page header" }]
+}
+{% endschema %}

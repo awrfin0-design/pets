@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "header": { "type": "page-header", "settings": { "text": "A good fit means a happy pet. Measure twice, order once." } },
+    "guide": {
+      "type": "size-guide",
+      "blocks": {
+        "xs": { "type": "size", "settings": { "size": "XS", "neck": "20–26", "chest": "30–40", "back": "20–25", "weight": "1–4" } },
+        "s": { "type": "size", "settings": { "size": "S", "neck": "26–32", "chest": "38–48", "back": "28–32", "weight": "4–8" } },
+        "m": { "type": "size", "settings": { "size": "M", "neck": "30–38", "chest": "46–58", "back": "34–40", "weight": "8–14" } },
+        "l": { "type": "size", "settings": { "size": "L", "neck": "36–46", "chest": "56–70", "back": "42–50", "weight": "14–25" } },
+        "xl": { "type": "size", "settings": { "size": "XL", "neck": "44–54", "chest": "68–82", "back": "50–60", "weight": "25–35" } },
+        "xxl": { "type": "size", "settings": { "size": "XXL", "neck": "52–62", "chest": "80–96", "back": "58–70", "weight": "35+" } }
+      },
+      "block_order": ["xs", "s", "m", "l", "xl", "xxl"]
+    }
+  },
+  "order": ["header", "guide"]
+}

@@ -1,1 +1,7 @@
-{ "sections": { "main": { "type": "main-page" } }, "order": ["main"] }
+{
+  "sections": {
+    "header": { "type": "page-header" },
+    "main": { "type": "rich-text" }
+  },
+  "order": ["header", "main"]
+}

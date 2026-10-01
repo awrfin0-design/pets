@@ -1,0 +1,51 @@
+{%- assign col = section.settings.collection -%}
+<section class="range" id="range" style="--range-bg:{{ section.settings.bg_color }};--tint:{{ section.settings.tile_color }}">
+  <div class="range__head">
+    <h2 class="heading">{{ section.settings.title }}</h2>
+    <span class="range__hint">{{ 'sections.range.drag' | t }} {% render 'icon', name: 'arrow' %}</span>
+  </div>
+
+  <div class="range__track" data-drag-scroll tabindex="0">
+    {%- if col != blank and col.products.size > 0 -%}
+      {%- for product in col.products limit: section.settings.limit -%}
+        <a class="range__card" href="{{ product.url }}">
+          <span class="range__tile">
+            {%- if product.featured_image -%}
+              <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="500" height="500" draggable="false">
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+            {%- endif -%}
+          </span>
+          <b>{{ product.title }}</b>
+          <small>
+            {%- if product.metafields.custom.tagline != blank -%}{{ product.metafields.custom.tagline }}
+            {%- elsif product.type != blank -%}{{ product.type }}
+            {%- else -%}{{ product.price | money }}{%- endif -%}
+          </small>
+        </a>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..5) -%}
+        <div class="range__card">
+          <span class="range__tile">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</span>
+          <b>Product {{ i }}</b>
+          <small>Choose a collection</small>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Our range",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Our Range" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "limit", "label": "Products to show", "min": 3, "max": 16, "step": 1, "default": 8 },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#137563" },
+    { "type": "color", "id": "tile_color", "label": "Tile color", "default": "#0d5a4b" }
+  ],
+  "presets": [{ "name": "Our range" }]
+}
+{% endschema %}

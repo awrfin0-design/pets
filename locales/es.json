@@ -1,37 +1,57 @@
 {
   "general": {
+    "skip": "Saltar al contenido",
+    "menu": "Menú",
     "cart": {
       "title": "Carrito",
+      "link": "Carrito ({{ count }})",
       "empty": "Tu carrito está vacío.",
       "continue": "Seguir comprando",
       "product": "Producto",
       "quantity": "Cantidad",
       "total": "Total",
-      "checkout": "Pagar"
+      "subtotal": "Subtotal",
+      "taxes_note": "Impuestos y envío calculados al finalizar la compra.",
+      "remove": "Eliminar",
+      "checkout": "Finalizar compra"
     },
     "language": { "go": "Ir" },
     "newsletter": {
-      "email_placeholder": "Ingresa tu correo",
-      "subscribe": "Suscribirse",
+      "email_placeholder": "Correo electrónico",
+      "subscribe": "Suscribirme",
       "success": "¡Gracias por suscribirte!"
     },
     "footer": {
       "rights": "Todos los derechos reservados",
-      "privacy": "Política de privacidad",
-      "terms": "Términos de servicio"
+      "social": "Síguenos en redes:"
     },
     "404": {
       "text": "La página que buscas no existe.",
       "link": "Volver al inicio"
     },
     "search": {
+      "title": "Buscar",
       "placeholder": "Buscar",
-      "results_count": "{{ count }} resultados encontrados"
+      "results_count": "{{ count }} resultados"
     },
     "collections": { "title": "Colecciones" },
     "product": {
       "add_to_cart": "Añadir al carrito",
-      "sold_out": "Agotado"
+      "sold_out": "Agotado",
+      "sale": "Oferta",
+      "unavailable": "No disponible",
+      "size_guide": "Guía de tallas",
+      "quantity": "Cantidad",
+      "you_may_like": "Combina con esto",
+      "view": "Ver"
+    },
+    "collection": {
+      "filter": "Filtrar",
+      "sort_by": "Ordenar por",
+      "apply": "Aplicar",
+      "clear": "Borrar todo",
+      "empty": "No se encontraron productos.",
+      "products": "{{ count }} productos"
     },
     "pagination": {
       "previous": "Anterior",
@@ -42,26 +62,31 @@
       "email": "Correo electrónico",
       "password": "Contraseña",
       "password_confirm": "Confirmar contraseña",
-      "sign_in": "Iniciar sesión",
+      "sign_in": "Entrar",
       "create_account": "Crear cuenta",
       "first_name": "Nombre",
-      "last_name": "Apellido",
+      "last_name": "Apellidos",
       "account": "Mi cuenta",
       "log_out": "Cerrar sesión",
       "order_history": "Historial de pedidos",
-      "no_orders": "Aún no has realizado ningún pedido.",
+      "no_orders": "Todavía no has hecho ningún pedido.",
       "order": "Pedido",
       "reset_password": "Restablecer contraseña",
       "activate_account": "Activar cuenta"
     },
+    "contact": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "message": "Mensaje",
+      "send": "Enviar mensaje",
+      "success": "¡Gracias por escribirnos! Te responderemos pronto."
+    },
     "gift_card": {
-      "title": "Tarjeta de regalo",
+      "title": "Tarjeta regalo",
       "code": "Código"
     }
   },
   "sections": {
-    "hero": { "scroll": "Desliza para más" },
-    "nutrition": { "up_to": "hasta" },
-    "benefits": { "play": "Reproducir video" }
+    "range": { "drag": "Arrastra para ver" }
   }
 }

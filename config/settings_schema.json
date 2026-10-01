@@ -1,16 +1,28 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Moove Pets",
-    "theme_version": "1.0.0",
-    "theme_author": "Converted from static build",
-    "theme_documentation_url": "",
-    "theme_support_url": ""
+    "theme_name": "Pet Apparel",
+    "theme_version": "2.0.0",
+    "theme_author": "Pets"
   },
   {
-    "name": "Logo & favicon",
+    "name": "Brand",
     "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo (optional, replaces the text logo)" },
       { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_teal", "label": "Primary (teal)", "default": "#137563" },
+      { "type": "color", "id": "color_teal_deep", "label": "Primary, darker", "default": "#0d5a4b" },
+      { "type": "color", "id": "color_cream", "label": "Headline cream", "default": "#fdfbb8" },
+      { "type": "color", "id": "color_paper", "label": "Light page background", "default": "#fffde6" },
+      { "type": "color", "id": "color_pink", "label": "Button pink", "default": "#ee0a8f" },
+      { "type": "color", "id": "color_cyan", "label": "Marquee cyan", "default": "#0ff5f5" },
+      { "type": "color", "id": "color_red", "label": "Accent red", "default": "#d9201f" },
+      { "type": "color", "id": "color_green", "label": "Accent green", "default": "#2f9a1b" }
     ]
   },
   {
@@ -26,6 +38,14 @@
         ],
         "default": "ltr"
       }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" }
     ]
   }
 ]

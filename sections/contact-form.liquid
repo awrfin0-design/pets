@@ -1,0 +1,23 @@
+<section class="prose-wrap">
+  <h2 class="heading">{{ section.settings.title }}</h2>
+  {%- if section.settings.text != blank -%}<p class="prose">{{ section.settings.text }}</p>{%- endif -%}
+  {%- form 'contact', class: 'stack-form' -%}
+    {%- if form.posted_successfully? -%}<p class="form-ok">{{ 'general.contact.success' | t }}</p>{%- endif -%}
+    {{ form.errors | default_errors }}
+    <label>{{ 'general.contact.name' | t }}<input type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}"></label>
+    <label>{{ 'general.contact.email' | t }}<input type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}"></label>
+    <label>{{ 'general.contact.message' | t }}<textarea name="contact[body]" rows="6" required>{{ form.body }}</textarea></label>
+    <button type="submit" class="btn">{{ 'general.contact.send' | t }}</button>
+  {%- endform -%}
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Say hello" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Questions about sizing, an order, or wholesale? Send us a note and we'll get back to you within a day." }
+  ],
+  "presets": [{ "name": "Contact form" }]
+}
+{% endschema %}

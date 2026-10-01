@@ -1,0 +1,40 @@
+<header class="site-header" data-header>
+  <a class="site-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+    {%- if settings.logo != blank -%}
+      <img src="{{ settings.logo | image_url: width: 400 }}" alt="{{ shop.name }}" width="160" height="{{ 160 | divided_by: settings.logo.aspect_ratio | round }}">
+    {%- else -%}
+      <span class="site-logo__mark">{% render 'icon', name: 'paw' %}</span>
+      <span class="site-logo__text">{{ shop.name }}</span>
+    {%- endif -%}
+  </a>
+
+  <nav class="site-nav" id="SiteNav" aria-label="Main" data-nav>
+    {%- for link in linklists[section.settings.menu].links -%}
+      <a class="pill" href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+    {%- endfor -%}
+  </nav>
+
+  <div class="site-header__end">
+    {%- if localization.available_languages.size > 1 -%}
+      {%- form 'localization', id: 'lang-form' -%}
+        <select class="pill pill--select" name="locale_code" aria-label="Language" onchange="this.form.submit()">
+          {%- for language in localization.available_languages -%}
+            <option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym_name | capitalize }}</option>
+          {%- endfor -%}
+        </select>
+        <noscript><button type="submit" class="pill">{{ 'general.language.go' | t }}</button></noscript>
+      {%- endform -%}
+    {%- endif -%}
+    <a class="pill" href="{{ routes.cart_url }}">{{ 'general.cart.link' | t: count: cart.item_count }}</a>
+    <button class="pill nav-toggle" type="button" aria-expanded="false" aria-controls="SiteNav" data-nav-toggle>{{ 'general.menu' | t }}</button>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

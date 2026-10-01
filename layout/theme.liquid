@@ -1,65 +1,46 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction | default: 'ltr' }}">
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction | default: 'ltr' }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="{{ settings.color_teal }}">
 <title>{{ page_title }}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
 {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
 <link rel="canonical" href="{{ canonical_url }}">
-{% if settings.favicon %}
-  <link rel="icon" href="{{ settings.favicon | image_url: width: 64 }}" type="image/png">
-{% else %}
-  <link rel="icon" href="{{ 'moove-nav-logo.svg' | asset_url }}">
-{% endif %}
+{% if settings.favicon %}<link rel="icon" href="{{ settings.favicon | image_url: width: 64 }}" type="image/png">{% endif %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 {{ content_for_header }}
+
+<style>
+  :root {
+    --teal: {{ settings.color_teal }};
+    --teal-deep: {{ settings.color_teal_deep }};
+    --cream: {{ settings.color_cream }};
+    --paper: {{ settings.color_paper }};
+    --pink: {{ settings.color_pink }};
+    --cyan: {{ settings.color_cyan }};
+    --red: {{ settings.color_red }};
+    --green: {{ settings.color_green }};
+  }
+</style>
 <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+<script>window.themeRoutes ={ cart: {{ routes.cart_url | json }}, recs: {{ routes.product_recommendations_url | json }} };</script>
+<script src="{{ 'theme.js' | asset_url }}" defer></script>
 </head>
-<body>
+<body class="template-{{ template.name }}">
+<a class="skip-link" href="#MainContent">{{ 'general.skip' | t }}</a>
 
-<div class="moove-loader" aria-hidden="true">
-  <img src="{{ 'moove-nav-logo.svg' | asset_url }}" alt="">
-  <div class="loader-bar"><span></span></div>
-</div>
-
-<nav class="site-nav">
-  <a href="{{ routes.root_url }}"><img src="{{ 'moove-nav-logo.svg' | asset_url }}" alt="{{ shop.name }}"></a>
-  {%- if linklists.main-menu.links.size > 0 -%}
-  <ul class="nav-links">
-    {%- for link in linklists.main-menu.links -%}
-      <li><a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
-    {%- endfor -%}
-  </ul>
-  {%- endif -%}
-  <div style="display:flex;align-items:center;gap:1.25rem;">
-    {%- if localization.available_languages.size > 1 -%}
-    <div class="lang-switcher">
-      {%- form 'localization', id: 'lang-form' -%}
-        <select name="locale_code" data-lang-switcher onchange="this.form.submit()">
-          {%- for language in localization.available_languages -%}
-            <option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym_name | capitalize }}</option>
-          {%- endfor -%}
-        </select>
-        <noscript><button type="submit">{{ 'general.language.go' | t }}</button></noscript>
-      {%- endform -%}
-    </div>
-    {%- endif -%}
-    <a class="nav-cart" href="{{ routes.cart_url }}">{{ 'general.cart.title' | t }} ({{ cart.item_count }})</a>
-  </div>
-</nav>
+{% section 'site-header' %}
 
 <main id="MainContent">
   {{ content_for_layout }}
 </main>
 
 {% section 'site-footer' %}
-
-<script src="{{ 'theme.js' | asset_url }}" defer></script>
 </body>
 </html>

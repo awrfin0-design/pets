@@ -1,0 +1,14 @@
+<section class="prose-wrap">
+  {%- if section.settings.title != blank -%}<h2 class="heading">{{ section.settings.title }}</h2>{%- endif -%}
+  <div class="prose">{{ page.content | default: section.settings.text }}</div>
+</section>
+{% schema %}
+{
+  "name": "Page content",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Fallback text (used when the page body is empty)" }
+  ],
+  "presets": [{ "name": "Page content" }]
+}
+{% endschema %}

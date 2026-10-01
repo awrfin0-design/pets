@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "header": { "type": "page-header", "settings": { "text": "We love hearing from fellow pet people." } },
+    "form": { "type": "contact-form" }
+  },
+  "order": ["header", "form"]
+}

@@ -1,11 +1,12 @@
-<div style="max-width:48rem;margin:0 auto;padding:8rem 1.5rem 4rem;">
-  <h1 style="font-size:2.5rem;margin-bottom:1.5rem;">{{ 'general.customer.account' | t }}</h1>
-  <p>{{ customer.name }} &mdash; {{ customer.email }}</p>
-  <a href="{{ routes.account_logout_url }}">{{ 'general.customer.log_out' | t }}</a>
-  <h2 style="margin-top:2rem;font-size:1.6rem;">{{ 'general.customer.order_history' | t }}</h2>
-  {%- for order in customer.orders -%}
-    <p><a href="{{ order.customer_url }}">{{ order.name }}</a> &mdash; {{ order.created_at | date: '%B %d, %Y' }} &mdash; {{ order.total_price | money }}</p>
-  {%- else -%}
-    <p>{{ 'general.customer.no_orders' | t }}</p>
-  {%- endfor -%}
-</div>
+<section class="prose-wrap">
+  <h1 class="heading">{{ 'general.customer.account' | t }}</h1>
+  <p>{{ customer.name }} &mdash; {{ customer.email }} &middot; <a class="link" href="{{ routes.account_logout_url }}">{{ 'general.customer.log_out' | t }}</a></p>
+  <h2 class="heading heading--sm">{{ 'general.customer.order_history' | t }}</h2>
+  {%- paginate customer.orders by 20 -%}
+    {%- for order in customer.orders -%}
+      <p><a class="link" href="{{ order.customer_url }}">{{ order.name }}</a> &mdash; {{ order.created_at | date: '%B %d, %Y' }} &mdash; {{ order.total_price | money }}</p>
+    {%- else -%}
+      <p>{{ 'general.customer.no_orders' | t }}</p>
+    {%- endfor -%}
+  {%- endpaginate -%}
+</section>

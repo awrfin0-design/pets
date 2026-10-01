@@ -1,37 +1,57 @@
 {
   "general": {
+    "skip": "Skip to content",
+    "menu": "Menu",
     "cart": {
       "title": "Cart",
+      "link": "Cart ({{ count }})",
       "empty": "Your cart is empty.",
       "continue": "Continue shopping",
       "product": "Product",
       "quantity": "Quantity",
       "total": "Total",
+      "subtotal": "Subtotal",
+      "taxes_note": "Taxes and shipping calculated at checkout.",
+      "remove": "Remove",
       "checkout": "Checkout"
     },
     "language": { "go": "Go" },
     "newsletter": {
-      "email_placeholder": "Enter your email",
-      "subscribe": "Subscribe",
+      "email_placeholder": "Email address",
+      "subscribe": "Sign up",
       "success": "Thanks for subscribing!"
     },
     "footer": {
-      "rights": "All Rights Reserved",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service"
+      "rights": "All rights reserved",
+      "social": "Join us on socials:"
     },
     "404": {
       "text": "The page you're looking for doesn't exist.",
       "link": "Back to home"
     },
     "search": {
+      "title": "Search",
       "placeholder": "Search",
       "results_count": "{{ count }} results found"
     },
     "collections": { "title": "Collections" },
     "product": {
       "add_to_cart": "Add to cart",
-      "sold_out": "Sold out"
+      "sold_out": "Sold out",
+      "sale": "Sale",
+      "unavailable": "Unavailable",
+      "size_guide": "Size guide",
+      "quantity": "Quantity",
+      "you_may_like": "Good with this",
+      "view": "View"
+    },
+    "collection": {
+      "filter": "Filter",
+      "sort_by": "Sort by",
+      "apply": "Apply",
+      "clear": "Clear all",
+      "empty": "No products found.",
+      "products": "{{ count }} products"
     },
     "pagination": {
       "previous": "Previous",
@@ -54,14 +74,19 @@
       "reset_password": "Reset password",
       "activate_account": "Activate account"
     },
+    "contact": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send message",
+      "success": "Thanks for getting in touch! We'll reply soon."
+    },
     "gift_card": {
       "title": "Gift card",
       "code": "Code"
     }
   },
   "sections": {
-    "hero": { "scroll": "Scroll for More" },
-    "nutrition": { "up_to": "up to" },
-    "benefits": { "play": "Play video" }
+    "range": { "drag": "Drag to view" }
   }
 }

@@ -1,0 +1,41 @@
+<section class="prose-wrap">
+  <h2 class="heading">{{ section.settings.title }}</h2>
+  {%- if section.settings.intro != blank -%}<p class="prose">{{ section.settings.intro }}</p>{%- endif -%}
+  <div class="stockists">
+    {%- for block in section.blocks -%}
+      <article class="stockist" {{ block.shopify_attributes }}>
+        <h3>{{ block.settings.name }}</h3>
+        <p>{{ block.settings.address }}</p>
+        {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener">{{ block.settings.link_label | default: 'Visit' }}</a>{%- endif -%}
+      </article>
+    {%- endfor -%}
+  </div>
+  {%- if section.settings.cta != blank -%}<p class="prose">{{ section.settings.cta }}{% if section.settings.email != blank %} <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{% endif %}</p>{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Stockists",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Find us in store" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Try it on your pup in person at these lovely pet boutiques." },
+    { "type": "text", "id": "cta", "label": "Wholesale note", "default": "Want to stock our range? Email us at" },
+    { "type": "text", "id": "email", "label": "Wholesale email" }
+  ],
+  "blocks": [
+    {
+      "type": "stockist",
+      "name": "Stockist",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Store name", "default": "The Pet Boutique" },
+        { "type": "textarea", "id": "address", "label": "Address", "default": "12 Example Street, City" },
+        { "type": "url", "id": "link", "label": "Website" },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Visit website" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Stockists", "blocks": [ { "type": "stockist" }, { "type": "stockist" } ] }
+  ]
+}
+{% endschema %}

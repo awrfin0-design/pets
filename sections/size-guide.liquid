@@ -1,0 +1,65 @@
+<section class="prose-wrap size-guide">
+  <h2 class="heading">{{ section.settings.title }}</h2>
+  <p class="prose">{{ section.settings.intro }}</p>
+
+  <div class="table-scroll">
+    <table class="size-table">
+      <thead>
+        <tr>
+          <th>{{ section.settings.col_size }}</th>
+          <th>{{ section.settings.col_neck }}</th>
+          <th>{{ section.settings.col_chest }}</th>
+          <th>{{ section.settings.col_back }}</th>
+          <th>{{ section.settings.col_weight }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for block in section.blocks -%}
+          <tr {{ block.shopify_attributes }}>
+            <th scope="row">{{ block.settings.size }}</th>
+            <td>{{ block.settings.neck }}</td>
+            <td>{{ block.settings.chest }}</td>
+            <td>{{ block.settings.back }}</td>
+            <td>{{ block.settings.weight }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </div>
+
+  {%- if section.settings.how_to != blank -%}
+    <div class="prose size-guide__how">{{ section.settings.how_to }}</div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Size guide",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Find the right fit" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Measure your pet while they're standing, using a soft tape. If they're between sizes, size up for sweaters and down for harnesses." },
+    { "type": "text", "id": "col_size", "label": "Column: size", "default": "Size" },
+    { "type": "text", "id": "col_neck", "label": "Column: neck", "default": "Neck (cm)" },
+    { "type": "text", "id": "col_chest", "label": "Column: chest", "default": "Chest (cm)" },
+    { "type": "text", "id": "col_back", "label": "Column: back length", "default": "Back length (cm)" },
+    { "type": "text", "id": "col_weight", "label": "Column: weight", "default": "Weight (kg)" },
+    { "type": "richtext", "id": "how_to", "label": "How to measure", "default": "<p><strong>Neck:</strong> around the base of the neck where a collar sits.</p><p><strong>Chest:</strong> around the widest part, behind the front legs.</p><p><strong>Back length:</strong> from the base of the neck to the base of the tail.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "size",
+      "name": "Size row",
+      "settings": [
+        { "type": "text", "id": "size", "label": "Size", "default": "M" },
+        { "type": "text", "id": "neck", "label": "Neck", "default": "30–36" },
+        { "type": "text", "id": "chest", "label": "Chest", "default": "46–56" },
+        { "type": "text", "id": "back", "label": "Back length", "default": "35" },
+        { "type": "text", "id": "weight", "label": "Weight", "default": "8–14" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Size guide", "blocks": [ { "type": "size" } ] }
+  ]
+}
+{% endschema %}

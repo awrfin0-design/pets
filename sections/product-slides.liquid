@@ -1,0 +1,78 @@
+{%- assign slides = section.blocks | where: 'type', 'slide' -%}
+<section class="slides" data-slides>
+  {%- if slides.size > 1 -%}
+    <nav class="slides__dots" aria-label="Slides" data-slide-dots>
+      {%- for block in slides -%}
+        <button type="button" aria-label="{{ forloop.index }}" data-slide-to="{{ forloop.index0 }}"></button>
+      {%- endfor -%}
+    </nav>
+  {%- endif -%}
+
+  {%- for block in slides -%}
+    {%- assign p = block.settings.product -%}
+    {%- assign img = block.settings.image | default: p.featured_image -%}
+    <article class="slide" data-slide id="slide-{{ block.id }}" {{ block.shopify_attributes }}
+      style="--slide-bg:{{ block.settings.bg_color }};--slide-ink:{{ block.settings.text_color }};--slide-accent:{{ block.settings.accent_color }}">
+      <div class="slide__pattern" aria-hidden="true" style="background-image:url({{ block.settings.pattern | append: '.svg' | prepend: 'pattern-' | asset_url }})"></div>
+      <div class="slide__inner">
+        <div class="slide__copy" data-reveal>
+          <h2 class="display">{{ block.settings.title | default: p.title }}</h2>
+          {%- if block.settings.tagline != blank -%}<p class="slide__tagline">{{ block.settings.tagline }}</p>{%- endif -%}
+          {%- if block.settings.badge != blank -%}<p class="slide__badge">{{ block.settings.badge }}</p>{%- endif -%}
+          {%- if block.settings.bullets != blank -%}
+            <ul class="slide__bullets">
+              {%- assign lines = block.settings.bullets | newline_to_br | split: '<br />' -%}
+              {%- for line in lines -%}{%- assign t = line | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}
+            </ul>
+          {%- endif -%}
+          {%- if block.settings.button_label != blank -%}
+            <a class="btn btn--accent" href="{{ p.url | default: block.settings.button_link | default: routes.all_products_collection_url }}">{{ block.settings.button_label }}</a>
+          {%- endif -%}
+        </div>
+        <div class="slide__media" data-reveal>
+          {%- if img != blank -%}
+            <img src="{{ img | image_url: width: 1000 }}" alt="{{ img.alt | default: block.settings.title | escape }}" loading="lazy" width="{{ img.width }}" height="{{ img.height }}">
+          {%- else -%}
+            <div class="slide__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    </article>
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "Product slides",
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product (button + image come from here)" },
+        { "type": "image_picker", "id": "image", "label": "Image override (transparent PNG works best)" },
+        { "type": "text", "id": "title", "label": "Title override" },
+        { "type": "text", "id": "tagline", "label": "Tagline", "default": "Fleece, Cotton, Cosy Hood" },
+        { "type": "text", "id": "badge", "label": "Outlined tag", "default": "Sizes XS – XXL" },
+        { "type": "textarea", "id": "bullets", "label": "Bullet points (one per line)", "default": "Ultra soft fleece lining\nWarm, light and breathable\nReflective trim for night walks" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+        { "type": "url", "id": "button_link", "label": "Button link (used when no product is set)" },
+        { "type": "header", "content": "Look" },
+        { "type": "color", "id": "bg_color", "label": "Background", "default": "#d9201f" },
+        { "type": "color", "id": "text_color", "label": "Text color", "default": "#fdfbb8" },
+        { "type": "color", "id": "accent_color", "label": "Accent (tagline, tag, button)", "default": "#0ff5f5" },
+        { "type": "select", "id": "pattern", "label": "Background pattern", "default": "shards",
+          "options": [
+            { "value": "shards", "label": "Shards" },
+            { "value": "lines", "label": "Cracked lines" },
+            { "value": "blobs", "label": "Blobs" }
+          ] }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Product slides", "blocks": [ { "type": "slide" } ] }
+  ]
+}
+{% endschema %}

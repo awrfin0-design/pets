@@ -1,0 +1,114 @@
+<section class="story">
+  <div class="story__inner">
+    <div class="story__photos">
+      {%- assign photos = section.blocks | where: 'type', 'photo' -%}
+      {%- for col in (1..2) -%}
+        <div class="story__col story__col--{{ col }}">
+          {%- for block in photos -%}
+            {%- assign want = forloop.index | modulo: 2 -%}
+            {%- if col == 2 -%}{%- assign want = 1 | minus: want -%}{%- endif -%}
+            {%- if want == 1 -%}
+              <figure class="story__photo" {{ block.shopify_attributes }} data-reveal>
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+                {%- else -%}
+                  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
+                {%- endif -%}
+              </figure>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="story__copy" data-reveal>
+      <h2 class="heading">{{ section.settings.title }}</h2>
+      <p class="story__text">{{ section.settings.text }}</p>
+
+      {%- assign features = section.blocks | where: 'type', 'feature' -%}
+      {%- if features.size > 0 -%}
+        <ul class="story__features">
+          {%- for block in features -%}
+            <li {{ block.shopify_attributes }}>
+              {% render 'icon', name: block.settings.icon %}
+              <span><b>{{ block.settings.title }}</b>{% if block.settings.text != blank %}<em>{{ block.settings.text }}</em>{% endif %}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- assign badges = section.blocks | where: 'type', 'badge' -%}
+      {%- if badges.size > 0 -%}
+        <ul class="story__badges">
+          {%- for block in badges -%}
+            <li {{ block.shopify_attributes }}>
+              <span class="badge-circle">{% render 'icon', name: block.settings.icon %}</span>
+              <small>{{ block.settings.label }}</small>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a class="btn" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand story",
+  "max_blocks": 20,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Made to be worn. Made to be loved." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Every piece starts with honest materials and a real dog (or cat) test-driver. We design comfy, hard-wearing apparel with a slight twist so your pet is the best-dressed one at the park." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [{ "type": "image_picker", "id": "image", "label": "Image (portrait works best)" }]
+    },
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "leaf",
+          "options": [
+            { "value": "paw", "label": "Paw" }, { "value": "leaf", "label": "Leaf" }, { "value": "ruler", "label": "Ruler" },
+            { "value": "heart", "label": "Heart" }, { "value": "shield", "label": "Shield" }, { "value": "recycle", "label": "Recycle" },
+            { "value": "wash", "label": "Washing machine" }, { "value": "truck", "label": "Truck" }, { "value": "sun", "label": "Sun" }, { "value": "star", "label": "Star" }
+          ] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Pet-safe fabrics" },
+        { "type": "text", "id": "text", "label": "Small text", "default": "Soft, breathable, non-toxic dyes" }
+      ]
+    },
+    {
+      "type": "badge",
+      "name": "Round badge",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "wash",
+          "options": [
+            { "value": "paw", "label": "Paw" }, { "value": "leaf", "label": "Leaf" }, { "value": "ruler", "label": "Ruler" },
+            { "value": "heart", "label": "Heart" }, { "value": "shield", "label": "Shield" }, { "value": "recycle", "label": "Recycle" },
+            { "value": "wash", "label": "Washing machine" }, { "value": "truck", "label": "Truck" }, { "value": "sun", "label": "Sun" }, { "value": "star", "label": "Star" }
+          ] },
+        { "type": "text", "id": "label", "label": "Label", "default": "Machine washable" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand story",
+      "blocks": [
+        { "type": "photo" }, { "type": "photo" }, { "type": "photo" }, { "type": "photo" },
+        { "type": "feature" },
+        { "type": "badge" }
+      ]
+    }
+  ]
+}
+{% endschema %}

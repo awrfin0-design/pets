@@ -1,8 +1,8 @@
-<div style="max-width:48rem;margin:0 auto;padding:8rem 1.5rem 4rem;">
-  <h1 style="font-size:2rem;margin-bottom:1rem;">{{ 'general.customer.order' | t }} {{ order.name }}</h1>
+<section class="prose-wrap">
+  <h1 class="heading">{{ 'general.customer.order' | t }} {{ order.name }}</h1>
   <p>{{ order.created_at | date: '%B %d, %Y' }}</p>
   {%- for line_item in order.line_items -%}
     <p>{{ line_item.title }} &times; {{ line_item.quantity }} &mdash; {{ line_item.final_line_price | money }}</p>
   {%- endfor -%}
-  <p style="font-weight:700;margin-top:1rem;">{{ 'general.cart.total' | t }}: {{ order.total_price | money }}</p>
-</div>
+  <p><b>{{ 'general.cart.total' | t }}: {{ order.total_price | money }}</b></p>
+</section>

@@ -1,11 +1,11 @@
-<div style="max-width:28rem;margin:0 auto;padding:8rem 1.5rem 4rem;">
-  <h1 style="font-size:2.5rem;margin-bottom:1.5rem;">{{ 'general.customer.create_account' | t }}</h1>
-  {%- form 'create_customer' -%}
+<section class="prose-wrap narrow">
+  <h1 class="heading">{{ 'general.customer.create_account' | t }}</h1>
+  {%- form 'create_customer', class: 'stack-form' -%}
     {{ form.errors | default_errors }}
-    <input type="text" name="customer[first_name]" placeholder="{{ 'general.customer.first_name' | t }}" style="width:100%;padding:.75rem;margin-bottom:1rem;">
-    <input type="text" name="customer[last_name]" placeholder="{{ 'general.customer.last_name' | t }}" style="width:100%;padding:.75rem;margin-bottom:1rem;">
-    <input type="email" name="customer[email]" placeholder="{{ 'general.customer.email' | t }}" required style="width:100%;padding:.75rem;margin-bottom:1rem;">
-    <input type="password" name="customer[password]" placeholder="{{ 'general.customer.password' | t }}" required style="width:100%;padding:.75rem;margin-bottom:1rem;">
-    <button type="submit" class="hero-button" style="background:var(--coral);color:var(--cream);border:none;">{{ 'general.customer.create_account' | t }}</button>
+    <label>{{ 'general.customer.first_name' | t }}<input type="text" name="customer[first_name]" autocomplete="given-name"></label>
+    <label>{{ 'general.customer.last_name' | t }}<input type="text" name="customer[last_name]" autocomplete="family-name"></label>
+    <label>{{ 'general.customer.email' | t }}<input type="email" name="customer[email]" autocomplete="email" required></label>
+    <label>{{ 'general.customer.password' | t }}<input type="password" name="customer[password]" autocomplete="new-password" required></label>
+    <button type="submit" class="btn">{{ 'general.customer.create_account' | t }}</button>
   {%- endform -%}
-</div>
+</section>

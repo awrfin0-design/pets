@@ -1,18 +1,35 @@
-<div style="max-width:56rem;margin:0 auto;padding:8rem 1.5rem 4rem;color:var(--ink);">
-  <form action="{{ routes.search_url }}" method="get" role="search">
-    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" style="width:100%;font-size:1.3rem;padding:.75rem 0;border:none;border-bottom:2px solid var(--ink);background:transparent;">
+<section class="prose-wrap catalog">
+  <h1 class="heading">{{ 'general.search.title' | t }}</h1>
+  <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
     <input type="hidden" name="type" value="product,article,page">
+    <button class="btn" type="submit">{{ 'general.search.title' | t }}</button>
   </form>
   {%- if search.performed -%}
-    <p style="margin-top:2rem;">{{ 'general.search.results_count' | t: count: search.results_count }}</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:2rem;margin-top:1.5rem;">
-      {%- for item in search.results -%}
-        <a href="{{ item.url }}" style="color:var(--ink);text-decoration:none;">
-          {%- if item.featured_image -%}<img src="{{ item.featured_image | image_url: width: 400 }}" alt="{{ item.title }}" style="border-radius:1rem;">{%- endif -%}
-          <p style="margin-top:.5rem;font-weight:600;">{{ item.title }}</p>
-        </a>
-      {%- endfor -%}
-    </div>
+    {%- paginate search.results by 24 -%}
+      <p class="catalog__count">{{ 'general.search.results_count' | t: count: search.results_count }}</p>
+      <div class="grid">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {% render 'product-card', product: item %}
+          {%- else -%}
+            <a class="product-card" href="{{ item.url }}">
+              <span class="product-card__media">
+                {%- if item.image -%}<img src="{{ item.image | image_url: width: 600 }}" alt="" loading="lazy" width="600" height="600">{%- else -%}{{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}{%- endif -%}
+              </span>
+              <span class="product-card__title">{{ item.title }}</span>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination">
+          {%- if paginate.previous -%}<a class="pill pill--dark" href="{{ paginate.previous.url }}">{{ 'general.pagination.previous' | t }}</a>{%- endif -%}
+          <span>{{ paginate.current_page }} / {{ paginate.pages }}</span>
+          {%- if paginate.next -%}<a class="pill pill--dark" href="{{ paginate.next.url }}">{{ 'general.pagination.next' | t }}</a>{%- endif -%}
+        </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
   {%- endif -%}
-</div>
+</section>
 {% schema %}{ "name": "Search" }{% endschema %}

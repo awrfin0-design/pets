@@ -1,25 +1,36 @@
-<div style="max-width:56rem;margin:0 auto;padding:8rem 1.5rem 4rem;color:var(--ink);">
-  <h1 style="font-size:clamp(2.5rem,7vw,4.5rem);margin-bottom:1.5rem;">{{ 'general.cart.title' | t }}</h1>
+<section class="prose-wrap cart">
+  <h1 class="heading">{{ 'general.cart.title' | t }}</h1>
   {%- if cart.item_count == 0 -%}
     <p>{{ 'general.cart.empty' | t }}</p>
-    <a class="hero-button" style="background:var(--coral);color:var(--cream);" href="{{ routes.all_products_collection_url }}">{{ 'general.cart.continue' | t }}</a>
+    <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'general.cart.continue' | t }}</a>
   {%- else -%}
-    {%- form 'cart', cart -%}
-      <table style="width:100%;border-collapse:collapse;">
-        <thead><tr><th align="left">{{ 'general.cart.product' | t }}</th><th>{{ 'general.cart.quantity' | t }}</th><th align="right">{{ 'general.cart.total' | t }}</th></tr></thead>
-        <tbody>
+    {%- form 'cart', cart, class: 'cart__form' -%}
+      <ul class="cart__items">
         {%- for item in cart.items -%}
-          <tr style="border-top:1px solid #ddd;">
-            <td style="padding:.75rem 0;">{{ item.product.title }}</td>
-            <td align="center"><input type="number" name="updates[]" value="{{ item.quantity }}" min="0" style="width:4rem;"></td>
-            <td align="right">{{ item.final_line_price | money }}</td>
-          </tr>
+          <li class="cart__item">
+            <a class="cart__img" href="{{ item.url }}">
+              {%- if item.image -%}<img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.image.alt | escape }}" loading="lazy" width="120" height="120">{%- endif -%}
+            </a>
+            <div class="cart__info">
+              <a class="cart__title" href="{{ item.url }}">{{ item.product.title }}</a>
+              {%- unless item.product.has_only_default_variant -%}<small>{{ item.variant.title }}</small>{%- endunless -%}
+              {%- for p in item.properties -%}{%- unless p.last == blank -%}<small>{{ p.first }}: {{ p.last }}</small>{%- endunless -%}{%- endfor -%}
+              <a class="link" href="{{ item.url_to_remove }}">{{ 'general.cart.remove' | t }}</a>
+            </div>
+            <label class="qty qty--small">
+              <span class="sr-only">{{ 'general.cart.quantity' | t }}</span>
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" data-cart-qty>
+            </label>
+            <p class="cart__price">{{ item.final_line_price | money }}</p>
+          </li>
         {%- endfor -%}
-        </tbody>
-      </table>
-      <p style="text-align:right;font-size:1.3rem;margin-top:1.5rem;">{{ 'general.cart.total' | t }}: {{ cart.total_price | money }}</p>
-      <button type="submit" name="checkout" class="hero-button" style="background:var(--coral);color:var(--cream);border:none;">{{ 'general.cart.checkout' | t }}</button>
+      </ul>
+      <div class="cart__foot">
+        <p class="cart__total"><span>{{ 'general.cart.subtotal' | t }}</span> <b>{{ cart.total_price | money }}</b></p>
+        <small>{{ 'general.cart.taxes_note' | t }}</small>
+        <button type="submit" name="checkout" class="btn">{{ 'general.cart.checkout' | t }}</button>
+      </div>
     {%- endform -%}
   {%- endif -%}
-</div>
+</section>
 {% schema %}{ "name": "Cart" }{% endschema %}

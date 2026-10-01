@@ -1,0 +1,29 @@
+{%- comment -%}
+  Usage: {% render 'product-card', product: product %}
+  Optional: tint (css color), compact (true)
+{%- endcomment -%}
+<a class="product-card" href="{{ product.url }}"{% if tint %} style="--tint:{{ tint }}"{% endif %}>
+  <span class="product-card__media">
+    {%- if product.featured_image -%}
+      <img src="{{ product.featured_image | image_url: width: 600 }}"
+           srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 800 }} 800w"
+           sizes="(min-width:1000px) 22vw, 46vw"
+           alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="600" height="600">
+      {%- if product.images.size > 1 -%}
+        <img class="product-card__alt" src="{{ product.images[1] | image_url: width: 600 }}" alt="" loading="lazy" width="600" height="600">
+      {%- endif -%}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+    {%- endif -%}
+    {%- if product.compare_at_price > product.price and product.available -%}
+      <span class="badge">{{ 'general.product.sale' | t }}</span>
+    {%- elsif product.available == false -%}
+      <span class="badge badge--muted">{{ 'general.product.sold_out' | t }}</span>
+    {%- endif -%}
+  </span>
+  <span class="product-card__title">{{ product.title }}</span>
+  <span class="product-card__price">
+    {%- if product.compare_at_price > product.price -%}<s>{{ product.compare_at_price | money }}</s> {% endif -%}
+    {%- if product.price_varies -%}{{ product.price_min | money }}+{%- else -%}{{ product.price | money }}{%- endif -%}
+  </span>
+</a>

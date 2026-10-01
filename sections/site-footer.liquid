@@ -1,55 +1,52 @@
-<footer class="footer-section">
-  <img class="dip" src="{{ 'moove-footer-dip.png' | asset_url }}" alt="">
-  <div class="footer-inner">
-    <div class="footer-title"><h1>{{ section.settings.title | default: '#SIPRESPONSIBLY' }}</h1></div>
-    <div class="footer-media">
-      {%- if section.settings.video != blank -%}
-        {{ section.settings.video | video_tag: autoplay: true, playsinline: true, muted: true, controls: false }}
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__badge" aria-hidden="true">
+      {%- if settings.logo != blank -%}
+        <img src="{{ settings.logo | image_url: width: 500 }}" alt="" width="250" height="{{ 250 | divided_by: settings.logo.aspect_ratio | round }}">
       {%- else -%}
-        <video src="{{ 'moove-splash.mp4' | asset_url }}" autoplay playsinline muted></video>
+        {% render 'icon', name: 'paw' %}
+        <span>{{ shop.name }}</span>
       {%- endif -%}
     </div>
-    <div class="social-row">
-      {%- if section.settings.youtube_url != blank -%}
-      <a class="social-btn" href="{{ section.settings.youtube_url }}" aria-label="YouTube"><img src="{{ 'moove-yt.svg' | asset_url }}" alt=""></a>
-      {%- endif -%}
-      {%- if section.settings.instagram_url != blank -%}
-      <a class="social-btn" href="{{ section.settings.instagram_url }}" aria-label="Instagram"><img src="{{ 'moove-insta.svg' | asset_url }}" alt=""></a>
-      {%- endif -%}
-      {%- if section.settings.tiktok_url != blank -%}
-      <a class="social-btn" href="{{ section.settings.tiktok_url }}" aria-label="TikTok"><img src="{{ 'moove-tiktok.svg' | asset_url }}" alt=""></a>
+
+    <div class="footer__links">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+      {%- assign has_social = false -%}
+      {%- if settings.social_instagram != blank or settings.social_facebook != blank or settings.social_tiktok != blank -%}{%- assign has_social = true -%}{%- endif -%}
+      {%- if has_social -%}
+        <p class="footer__social-title">{{ 'general.footer.social' | t }}</p>
+        <div class="footer__social">
+          {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
+          {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="Facebook">{% render 'icon', name: 'facebook' %}</a>{%- endif -%}
+          {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>{%- endif -%}
+        </div>
       {%- endif -%}
     </div>
-    <div class="footer-columns">
-      <div class="links-group">
-        {%- if linklists.footer.links.size > 0 -%}
-          <div class="links">
-            {%- for link in linklists.footer.links -%}
-              <p><a href="{{ link.url }}">{{ link.title }}</a></p>
-            {%- endfor -%}
-          </div>
-        {%- else -%}
-          <div class="links"><p>Moove Crew</p><p>Campus Marketing</p><p>Dairy Partners</p></div>
-          <div class="links"><p>Company</p><p>Contact</p><p>The Sip Blog</p></div>
-        {%- endif -%}
-      </div>
-      <div class="newsletter">
-        <p>{{ section.settings.newsletter_text | default: 'Get exclusive early access and stay in the loop on new flavors, drops, and events.' }}</p>
-        {%- form 'customer', id: 'footer-newsletter' -%}
-          <input type="hidden" name="contact[tags]" value="newsletter">
-          <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.email_placeholder' | t }}" aria-label="{{ 'general.newsletter.email_placeholder' | t }}" required>
-          <button type="submit" aria-label="{{ 'general.newsletter.subscribe' | t }}"><img src="{{ 'moove-arrow.svg' | asset_url }}" alt=""></button>
-          {%- if form.posted_successfully? -%}<p>{{ 'general.newsletter.success' | t }}</p>{%- endif -%}
-        {%- endform -%}
-      </div>
+
+    <div class="footer__news">
+      <h2>{{ section.settings.newsletter_title }}</h2>
+      <p>{{ section.settings.newsletter_text }}</p>
+      {%- form 'customer', id: 'footer-newsletter', class: 'footer__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.email_placeholder' | t }}" aria-label="{{ 'general.newsletter.email_placeholder' | t }}" required>
+        <button type="submit" class="btn btn--dark">{{ 'general.newsletter.subscribe' | t }}</button>
+        {%- if form.posted_successfully? -%}<p class="form-ok">{{ 'general.newsletter.success' | t }}</p>{%- endif -%}
+      {%- endform -%}
+      {%- if section.settings.contact_note != blank -%}
+        <p class="footer__note">{{ section.settings.contact_note }}{% if section.settings.contact_email != blank %} <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a>{% endif %}</p>
+      {%- endif -%}
     </div>
-    <div class="copyright-box">
-      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }} &mdash; {{ 'general.footer.rights' | t }}</p>
-      <div class="legal">
-        <a href="{{ pages.privacy-policy.url | default: '#' }}">{{ 'general.footer.privacy' | t }}</a>
-        <a href="{{ pages.terms-of-service.url | default: '#' }}">{{ 'general.footer.terms' | t }}</a>
-      </div>
-    </div>
+  </div>
+
+  <div class="footer__legal">
+    <nav>
+      {%- for link in linklists[section.settings.legal_menu].links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }} · {{ 'general.footer.rights' | t }}</p>
   </div>
 </footer>
 
@@ -57,12 +54,12 @@
 {
   "name": "Footer",
   "settings": [
-    { "type": "text", "id": "title", "label": "Title", "default": "#SIPRESPONSIBLY" },
-    { "type": "video", "id": "video", "label": "Footer video" },
-    { "type": "textarea", "id": "newsletter_text", "label": "Newsletter text" },
-    { "type": "url", "id": "youtube_url", "label": "YouTube URL" },
-    { "type": "url", "id": "instagram_url", "label": "Instagram URL" },
-    { "type": "url", "id": "tiktok_url", "label": "TikTok URL" }
+    { "type": "link_list", "id": "menu", "label": "Main links", "default": "footer" },
+    { "type": "link_list", "id": "legal_menu", "label": "Legal links (privacy, refunds, shipping, terms)", "default": "legal" },
+    { "type": "text", "id": "newsletter_title", "label": "Newsletter title", "default": "Tails are wagging" },
+    { "type": "textarea", "id": "newsletter_text", "label": "Newsletter text", "default": "Sign up for the latest drops and news and we'll send you 10% off your first order as a thank you." },
+    { "type": "text", "id": "contact_note", "label": "Contact note", "default": "For wholesale and stockist enquiries please email us at" },
+    { "type": "text", "id": "contact_email", "label": "Contact email" }
   ]
 }
 {% endschema %}

@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "header": { "type": "page-header", "settings": { "text": "Try it on your pup in person at these lovely pet boutiques." } },
+    "list": {
+      "type": "stockists",
+      "blocks": {
+        "s1": { "type": "stockist" },
+        "s2": { "type": "stockist" },
+        "s3": { "type": "stockist" }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    }
+  },
+  "order": ["header", "list"]
+}

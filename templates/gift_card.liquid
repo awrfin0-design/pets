@@ -1,5 +1,5 @@
-<div style="max-width:32rem;margin:0 auto;padding:8rem 1.5rem 4rem;text-align:center;">
-  <h1 style="font-size:2.5rem;">{{ 'general.gift_card.title' | t }}</h1>
-  <p style="font-size:1.5rem;margin:1rem 0;">{{ gift_card.initial_value | money }}</p>
-  <p>{{ 'general.gift_card.code' | t }}: {{ gift_card.code }}</p>
-</div>
+<section class="prose-wrap narrow" style="text-align:center">
+  <h1 class="heading">{{ 'general.gift_card.title' | t }}</h1>
+  <p class="display" style="color:var(--teal)">{{ gift_card.initial_value | money }}</p>
+  <p>{{ 'general.gift_card.code' | t }}: <b>{{ gift_card.code | format_code }}</b></p>
+</section>

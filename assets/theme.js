@@ -1,168 +1,211 @@
-document.addEventListener("DOMContentLoaded", function () {
-  /* ---------- LOADER ---------- */
-  var loader = document.querySelector(".moove-loader");
-  var loaderBar = loader ? loader.querySelector(".loader-bar span") : null;
-  var progress = 0;
-  var loaderInterval = setInterval(function () {
-    progress = Math.min(progress + Math.random() * 18, 92);
-    if (loaderBar) loaderBar.style.width = progress + "%";
-  }, 150);
+(function () {
+  "use strict";
 
-  function hideLoader() {
-    clearInterval(loaderInterval);
-    if (loaderBar) loaderBar.style.width = "100%";
-    setTimeout(function () {
-      if (loader) loader.classList.add("is-hidden");
-      document.body.style.overflow = "";
-    }, 250);
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------- Mobile menu ---------- */
+  function initNav() {
+    var toggle = $("[data-nav-toggle]");
+    var nav = $("[data-nav]");
+    if (!toggle || !nav) return;
+    toggle.addEventListener("click", function () {
+      var open = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
   }
 
-  if (loader) {
-    document.body.style.overflow = "hidden";
-    if (document.readyState === "complete") {
-      hideLoader();
-    } else {
-      window.addEventListener("load", hideLoader);
-      setTimeout(hideLoader, 4000);
+  /* ---------- Reveal on scroll ---------- */
+  function initReveal() {
+    var items = $$("[data-reveal]");
+    if (!items.length) return;
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("is-visible"); });
+      return;
     }
-  }
-
-  function splitChars(el) {
-    var text = el.textContent;
-    el.textContent = "";
-    return text.split("").map(function (ch) {
-      var span = document.createElement("span");
-      span.className = "char";
-      span.textContent = ch === " " ? " " : ch;
-      el.appendChild(span);
-      return span;
-    });
-  }
-  function splitWords(el) {
-    var text = el.textContent;
-    el.textContent = "";
-    return text.split(" ").map(function (w, i, arr) {
-      var span = document.createElement("span");
-      span.className = "word";
-      span.textContent = w + (i < arr.length - 1 ? " " : "");
-      el.appendChild(span);
-      return span;
-    });
-  }
-
-  var pinBox = document.getElementById("pinBox");
-  if (pinBox) {
-    pinBox.querySelectorAll(".vd-card").forEach(function (card) {
-      var video = card.querySelector("video");
-      if (!video) return;
-      card.addEventListener("mouseenter", function () { video.play(); });
-      card.addEventListener("mouseleave", function () { video.pause(); });
-    });
-  }
-
-  if (typeof gsap === "undefined") return;
-  gsap.registerPlugin(ScrollTrigger);
-
-  window.addEventListener("load", function () {
-    var heroTitle = document.getElementById("heroTitle");
-    if (heroTitle) {
-      var chars = splitChars(heroTitle);
-      var tl = gsap.timeline({ delay: 0.5 });
-      tl.to(".hero-content", { opacity: 1, y: 0, duration: 0.8, ease: "power1.inOut" })
-        .to("#heroScroll", { duration: 1, clipPath: "polygon(0% 0%,100% 0%,100% 100%,0% 100%)", ease: "circ.out" }, "-=0.4")
-        .from(chars, { yPercent: 200, stagger: 0.02, ease: "power2.out" }, "-=0.5");
-    }
-
-    gsap.to(".hero-container", {
-      rotate: 5, scale: 0.92, yPercent: 20, ease: "power1.inOut",
-      scrollTrigger: { trigger: ".hero-container", start: "top top", end: "bottom top", scrub: true }
-    });
-
-    var firstMsg = document.getElementById("firstMsg");
-    var secondMsg = document.getElementById("secondMsg");
-    if (firstMsg && secondMsg) {
-      var firstWords = splitWords(firstMsg);
-      var secondWords = splitWords(secondMsg);
-      gsap.to(firstWords, {
-        color: "#f3ecdf", stagger: 0.5, ease: "power1.in",
-        scrollTrigger: { trigger: ".message-content", start: "top center", end: "30% center", scrub: true }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
       });
-      gsap.to(secondWords, {
-        color: "#f3ecdf", stagger: 0.5, ease: "power1.in",
-        scrollTrigger: { trigger: "#secondMsg", start: "top center", end: "bottom center", scrub: true }
-      });
-    }
-    if (document.getElementById("msgScroll")) {
-      gsap.to("#msgScroll", {
-        duration: 1, clipPath: "polygon(0% 0%,100% 0%,100% 100%,0% 100%)", ease: "circ.inOut",
-        scrollTrigger: { trigger: "#msgScroll", start: "top 70%" }
-      });
-    }
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  }
 
-    var flavA = document.getElementById("flavA");
-    var flavB = document.getElementById("flavB");
-    if (flavA && flavB) {
-      gsap.from(splitChars(flavA), { yPercent: 200, stagger: 0.02, ease: "power1.inOut", scrollTrigger: { trigger: ".flavor-section", start: "top 60%" } });
-      gsap.from(splitChars(flavB), { yPercent: 200, stagger: 0.02, ease: "power1.inOut", scrollTrigger: { trigger: ".flavor-section", start: "top 40%" } });
-    }
-    if (document.getElementById("flavScroll")) {
-      gsap.to("#flavScroll", { duration: 1, clipPath: "polygon(0% 0%,100% 0%,100% 100%,0% 100%)", scrollTrigger: { trigger: ".flavor-section", start: "top 50%" } });
-    }
+  /* ---------- Drag-to-scroll carousel ---------- */
+  function initDragScroll() {
+    $$("[data-drag-scroll]").forEach(function (track) {
+      var down = false, startX = 0, startLeft = 0, moved = false;
+      track.addEventListener("pointerdown", function (e) {
+        if (e.pointerType === "touch") return; // native touch scrolling
+        down = true; moved = false; startX = e.clientX; startLeft = track.scrollLeft;
+      });
+      window.addEventListener("pointermove", function (e) {
+        if (!down) return;
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) { moved = true; track.classList.add("is-dragging"); }
+        track.scrollLeft = startLeft - dx;
+      });
+      window.addEventListener("pointerup", function () {
+        if (!down) return;
+        down = false;
+        setTimeout(function () { track.classList.remove("is-dragging"); }, 0);
+      });
+      track.addEventListener("click", function (e) {
+        if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+      }, true);
+      track.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") track.scrollBy({ left: 300, behavior: "smooth" });
+        if (e.key === "ArrowLeft") track.scrollBy({ left: -300, behavior: "smooth" });
+      });
+    });
+  }
 
-    if (window.innerWidth >= 1024) {
-      var flavors = document.getElementById("flavors");
-      if (flavors) {
-        var scrollAmount = function () { return flavors.scrollWidth - window.innerWidth; };
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: ".flavor-section", start: "2% top",
-            end: function () { return "+=" + (scrollAmount() + 1200) + "px"; }, scrub: true, pin: true
-          }
-        }).to(".flavor-section", { x: function () { return -(scrollAmount() + 1200); }, ease: "power1.inOut" });
+  /* ---------- Product slides + dots ---------- */
+  function initSlides() {
+    $$("[data-slides]").forEach(function (wrap) {
+      var slides = $$("[data-slide]", wrap);
+      var dots = $$("[data-slide-to]", wrap);
+      if (!slides.length || !("IntersectionObserver" in window)) return;
+
+      function setActive(i) {
+        dots.forEach(function (d, n) { d.classList.toggle("is-active", n === i); });
       }
-    }
+      setActive(0);
 
-    var nutA = document.getElementById("nutA");
-    if (nutA) {
-      gsap.from(splitChars(nutA), { yPercent: 100, stagger: 0.02, ease: "power2.out", scrollTrigger: { trigger: ".nutrition-section", start: "top center" } });
-    }
-    if (document.getElementById("nutScroll")) {
-      gsap.to("#nutScroll", { duration: 1, opacity: 1, clipPath: "polygon(100% 0,0 0,0 100%,100% 100%)", ease: "power1.inOut", scrollTrigger: { trigger: ".nutrition-section", start: "top 80%" } });
-    }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) setActive(slides.indexOf(e.target));
+        });
+      }, { threshold: 0.55 });
+      slides.forEach(function (s) { io.observe(s); });
 
-    if (document.querySelector(".benefit-section")) {
-      gsap.timeline({
-        scrollTrigger: { trigger: ".benefit-section", start: "top 60%", end: "top top", scrub: 1.5 }
-      }).to(".clip-title:nth-child(1) .clip-inner", { opacity: 1, clipPath: "polygon(0% 0%,100% 0,100% 100%,0% 100%)", ease: "circ.out" })
-        .to(".clip-title:nth-child(2) .clip-inner", { opacity: 1, clipPath: "polygon(0% 0%,100% 0,100% 100%,0% 100%)", ease: "circ.out" })
-        .to(".clip-title:nth-child(3) .clip-inner", { opacity: 1, clipPath: "polygon(0% 0%,100% 0,100% 100%,0% 100%)", ease: "circ.out" })
-        .to(".clip-title:nth-child(4) .clip-inner", { opacity: 1, clipPath: "polygon(0% 0%,100% 0,100% 100%,0% 100%)", ease: "circ.out" });
-    }
-    document.querySelectorAll(".clip-inner").forEach(function (el) { el.style.borderColor = el.dataset.border; });
+      var wio = new IntersectionObserver(function (entries) {
+        wrap.classList.toggle("is-active", entries[0].isIntersecting);
+      }, { threshold: 0.2 });
+      wio.observe(wrap);
 
-    if (window.innerWidth >= 768) {
-      if (document.getElementById("videoBox")) {
-        gsap.timeline({
-          scrollTrigger: { trigger: ".vd-pin-section", start: "-15% top", end: "200% top", scrub: 1.5, pin: true }
-        }).to("#videoBox", { clipPath: "circle(100% at 50% 50%)", ease: "power1.inOut" });
-      }
-    } else if (document.getElementById("videoBox")) {
-      document.getElementById("videoBox").style.clipPath = "circle(100% at 50% 50%)";
-    }
+      dots.forEach(function (d) {
+        d.addEventListener("click", function () {
+          slides[+d.dataset.slideTo].scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    });
+  }
 
-    if (document.querySelector(".vd-card")) {
-      gsap.from(".vd-card", {
-        yPercent: 40, opacity: 0, stagger: 0.15, ease: "power1.inOut",
-        scrollTrigger: { trigger: ".testimonials-section", start: "top 70%" }
+  /* ---------- Product page ---------- */
+  function initProduct() {
+    var root = $("[data-product]");
+    if (!root) return;
+
+    // gallery
+    var mains = $$("[data-main-image]", root);
+    var thumbs = $$("[data-thumb]", root);
+    function showMedia(id) {
+      mains.forEach(function (img) { img.hidden = String(img.dataset.mediaId) !== String(id); });
+      thumbs.forEach(function (t) { t.classList.toggle("is-active", String(t.dataset.thumb) === String(id)); });
+    }
+    thumbs.forEach(function (t) { t.addEventListener("click", function () { showMedia(t.dataset.thumb); }); });
+
+    // variants
+    var form = $("#product-form", root);
+    var json = $("[data-variants]", root);
+    if (!form || !json) return;
+    var variants = JSON.parse(json.textContent);
+    var idInput = $("[data-variant-id]", form);
+    var addBtn = $("[data-add]", form);
+    var priceEl = $("[data-price]", root);
+    var fieldsets = $$("[data-option-index]", form);
+    var money = function (cents) {
+      var fmt = (window.Shopify && Shopify.formatMoney) ? Shopify.formatMoney(cents, window.theme_money_format || "${{amount}}") : null;
+      if (fmt) return fmt;
+      return new Intl.NumberFormat(document.documentElement.lang || "en", { style: "currency", currency: (window.Shopify && Shopify.currency && Shopify.currency.active) || "USD" }).format(cents / 100);
+    };
+
+    function selected() {
+      return fieldsets.map(function (fs) {
+        var c = $("input:checked", fs);
+        return c ? c.value : null;
       });
     }
+    function match(opts) {
+      return variants.find(function (v) {
+        return v.options.every(function (o, i) { return opts[i] === o; });
+      });
+    }
+    function markAvailability() {
+      var opts = selected();
+      fieldsets.forEach(function (fs, i) {
+        $$("input", fs).forEach(function (inp) {
+          var test = opts.slice(); test[i] = inp.value;
+          var v = variants.find(function (x) {
+            return x.options.every(function (o, n) { return test[n] === o; });
+          });
+          inp.closest(".opt__pill").classList.toggle("is-unavailable", !v || !v.available);
+        });
+      });
+    }
+    function update() {
+      var v = match(selected());
+      if (!v) { if (addBtn) addBtn.disabled = true; return; }
+      idInput.value = v.id;
+      if (priceEl) {
+        priceEl.innerHTML = (v.compare_at_price && v.compare_at_price > v.price ? "<s>" + money(v.compare_at_price) + "</s> " : "") + money(v.price);
+      }
+      if (addBtn) addBtn.disabled = !v.available;
+      if (v.featured_media && v.featured_media.id) showMedia(v.featured_media.id);
+      markAvailability();
+      var url = new URL(window.location.href);
+      url.searchParams.set("variant", v.id);
+      window.history.replaceState({}, "", url.toString());
+    }
+    form.addEventListener("change", function (e) {
+      if (e.target.matches(".opt input")) update();
+    });
+    markAvailability();
 
-    ScrollTrigger.refresh();
+    // quantity
+    var qty = $("[data-qty]", form);
+    var minus = $("[data-qty-minus]", form);
+    var plus = $("[data-qty-plus]", form);
+    if (qty && minus && plus) {
+      minus.addEventListener("click", function () { qty.value = Math.max(1, (+qty.value || 1) - 1); });
+      plus.addEventListener("click", function () { qty.value = (+qty.value || 1) + 1; });
+    }
+  }
+
+  /* ---------- Product recommendations ---------- */
+  function initRecs() {
+    var el = $("[data-recs]");
+    if (!el || !window.themeRoutes || !window.themeRoutes.recs) return;
+    var url = window.themeRoutes.recs + "?section_id=" + el.dataset.sectionId + "&product_id=" + el.dataset.productId + "&limit=" + (el.dataset.limit || 4);
+    fetch(url).then(function (r) { return r.text(); }).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      var fresh = $("[data-recs]", doc);
+      if (fresh && fresh.innerHTML.trim()) el.innerHTML = fresh.innerHTML;
+    }).catch(function () {});
+  }
+
+  /* ---------- Cart quantity: auto-update ---------- */
+  function initCart() {
+    $$("[data-cart-qty]").forEach(function (input) {
+      input.addEventListener("change", function () {
+        var form = input.closest("form");
+        if (!form) return;
+        var hidden = document.createElement("input");
+        hidden.type = "hidden"; hidden.name = "update"; hidden.value = "1";
+        form.appendChild(hidden);
+        form.submit();
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initNav();
+    initReveal();
+    initDragScroll();
+    initSlides();
+    initProduct();
+    initRecs();
+    initCart();
   });
-});
-
-document.addEventListener("change", function (e) {
-  if (e.target && e.target.matches("[data-lang-switcher]")) {
-    window.location.href = e.target.value;
-  }
-});
+})();

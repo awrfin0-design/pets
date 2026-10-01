@@ -1,0 +1,20 @@
+{%- comment -%} Rendered either inline or via the Section Rendering API (see theme.js) {%- endcomment -%}
+<section class="recs" data-recs data-product-id="{{ product.id }}" data-section-id="{{ section.id }}" data-limit="{{ section.settings.limit }}">
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <h2 class="heading">{{ 'general.product.you_may_like' | t }}</h2>
+    <div class="grid">
+      {%- for item in recommendations.products -%}
+        {% render 'product-card', product: item %}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "settings": [
+    { "type": "range", "id": "limit", "label": "Products", "min": 2, "max": 8, "step": 1, "default": 4 }
+  ]
+}
+{% endschema %}

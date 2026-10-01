@@ -1,1 +1,15 @@
-{ "sections": { "main": { "type": "main-product" } }, "order": ["main"] }
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "a1": { "type": "accordion", "settings": { "title": "Fit & sizing", "content": "<p>Cut true-to-size. Measure your pet's chest and back length and check our size guide. Between sizes? Size up for sweaters and down for harnesses.</p>" } },
+        "a2": { "type": "accordion", "settings": { "title": "Fabric & care", "content": "<p>Soft, pet-safe fabrics and non-toxic dyes. Machine wash cold, line dry.</p>" } },
+        "a3": { "type": "accordion", "settings": { "title": "Shipping & returns", "content": "<p>Free returns within 30 days if it doesn't fit. Ships in 1–2 business days.</p>" } }
+      },
+      "block_order": ["a1", "a2", "a3"]
+    },
+    "recs": { "type": "product-recommendations" }
+  },
+  "order": ["main", "recs"]
+}

@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": { "text": "Comfy for them, show-stopping for you. Here's what goes into every piece." }
+    },
+    "story": {
+      "type": "brand-story",
+      "settings": { "title": "Stitched to be better. Naturally." },
+      "blocks": {
+        "p1": { "type": "photo" },
+        "p2": { "type": "photo" },
+        "p3": { "type": "photo" },
+        "p4": { "type": "photo" },
+        "f1": { "type": "feature", "settings": { "icon": "leaf", "title": "Pet-safe fabrics", "text": "Soft, breathable, non-toxic dyes" } },
+        "f2": { "type": "feature", "settings": { "icon": "ruler", "title": "True-to-size fit", "text": "Tested on real dogs, every breed" } },
+        "f3": { "type": "feature", "settings": { "icon": "shield", "title": "Built to last", "text": "Reinforced seams, no itchy tags" } },
+        "b1": { "type": "badge", "settings": { "icon": "wash", "label": "Machine washable" } },
+        "b2": { "type": "badge", "settings": { "icon": "sun", "label": "Reflective trim" } },
+        "b3": { "type": "badge", "settings": { "icon": "heart", "label": "Vet approved fit" } },
+        "b4": { "type": "badge", "settings": { "icon": "recycle", "label": "Recycled packaging" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "f1", "f2", "f3", "b1", "b2", "b3", "b4"]
+    },
+    "marquee": { "type": "marquee" }
+  },
+  "order": ["header", "story", "marquee"]
+}

@@ -1,0 +1,23 @@
+{%- assign text = section.settings.text | default: 'Join the pack' -%}
+<section class="marquee" style="--marquee-bg:{{ section.settings.bg_color }};--marquee-ink:{{ section.settings.text_color }};--marquee-speed:{{ section.settings.speed }}s" aria-label="{{ text | escape }}">
+  <div class="marquee__track" aria-hidden="true">
+    {%- for i in (1..2) -%}
+      <div class="marquee__group">
+        {%- for j in (1..6) -%}<span>{{ text }}</span><i>·</i>{%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "Join the pack, it's adorable" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#0ff5f5" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#0d5a4b" },
+    { "type": "range", "id": "speed", "label": "Loop duration (seconds)", "min": 10, "max": 80, "step": 5, "default": 35 }
+  ],
+  "presets": [{ "name": "Marquee" }]
+}
+{% endschema %}
