@@ -25,10 +25,12 @@
         </a>
       {%- endfor -%}
     {%- else -%}
-      {%- for i in (1..5) -%}
+      {%- assign names = 'Cosy Hoodie,Storm Raincoat,Garden Bandana,Party Bow Tie,Knit Sweater,Reflective Vest' | split: ',' -%}
+      {%- assign files = 'hoodie-frenchie,raincoat-beagle,bandana-flat,bowtie-pug,sweater-dachshund,vest-husky' | split: ',' -%}
+      {%- for name in names -%}
         <div class="range__card">
-          <span class="range__tile">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</span>
-          <b>Product {{ i }}</b>
+          <span class="range__tile"><img src="{{ files[forloop.index0] | prepend: 'photo-' | append: '.jpg' | asset_url }}" alt="" loading="lazy" width="500" height="500" draggable="false"></span>
+          <b>{{ name }}</b>
           <small>Choose a collection</small>
         </div>
       {%- endfor -%}

@@ -1,35 +1,185 @@
 {
   "sections": {
-    "hero": { "type": "hero" },
+    "hero": {
+      "type": "hero"
+    },
     "story": {
       "type": "brand-story",
       "blocks": {
-        "p1": { "type": "photo" },
-        "p2": { "type": "photo" },
-        "p3": { "type": "photo" },
-        "p4": { "type": "photo" },
-        "f1": { "type": "feature", "settings": { "icon": "leaf", "title": "Pet-safe fabrics", "text": "Soft, breathable, non-toxic dyes" } },
-        "f2": { "type": "feature", "settings": { "icon": "ruler", "title": "True-to-size fit", "text": "Tested on real dogs, every breed" } },
-        "f3": { "type": "feature", "settings": { "icon": "recycle", "title": "Made to last", "text": "Reinforced seams, no itchy tags" } },
-        "b1": { "type": "badge", "settings": { "icon": "wash", "label": "Machine washable" } },
-        "b2": { "type": "badge", "settings": { "icon": "sun", "label": "Reflective trim" } },
-        "b3": { "type": "badge", "settings": { "icon": "heart", "label": "Vet approved fit" } },
-        "b4": { "type": "badge", "settings": { "icon": "truck", "label": "Free returns" } }
+        "p1": {
+          "type": "photo",
+          "settings": {
+            "sample": "puddle",
+            "focus": "30%"
+          }
+        },
+        "p2": {
+          "type": "photo",
+          "settings": {
+            "sample": "terrier",
+            "focus": "60%"
+          }
+        },
+        "p3": {
+          "type": "photo",
+          "settings": {
+            "sample": "collie",
+            "focus": "50%"
+          }
+        },
+        "p4": {
+          "type": "photo",
+          "settings": {
+            "sample": "flatlay",
+            "focus": "50%"
+          }
+        },
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "Pet-safe fabrics",
+            "text": "Soft, breathable, non-toxic dyes"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "ruler",
+            "title": "True-to-size fit",
+            "text": "Tested on real dogs, every breed"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "recycle",
+            "title": "Made to last",
+            "text": "Reinforced seams, no itchy tags"
+          }
+        },
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "icon": "wash",
+            "label": "Machine washable"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "icon": "sun",
+            "label": "Reflective trim"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "icon": "heart",
+            "label": "Vet approved fit"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "label": "Free returns"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "f1", "f2", "f3", "b1", "b2", "b3", "b4"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "f1",
+        "f2",
+        "f3",
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
     },
-    "marquee": { "type": "marquee" },
-    "range": { "type": "range" },
+    "marquee": {
+      "type": "marquee"
+    },
+    "range": {
+      "type": "range"
+    },
     "slides": {
       "type": "product-slides",
       "blocks": {
-        "s1": { "type": "slide", "settings": { "title": "Cosy Hoodie", "tagline": "Fleece, cotton, cosy hood", "badge": "Sizes XS – XXL", "bullets": "Ultra soft fleece lining\nWarm, light and breathable\nReflective trim for night walks", "bg_color": "#c4002f", "text_color": "#fdfbb8", "accent_color": "#ffd0e8", "pattern": "blobs" } },
-        "s2": { "type": "slide", "settings": { "title": "Storm Raincoat", "tagline": "Waterproof, windproof, packable", "badge": "Sizes XS – XXL", "bullets": "Taped seams keep them dry\nAdjustable belly strap\nPacks into its own pocket", "bg_color": "#137563", "text_color": "#fdfbb8", "accent_color": "#0ff5f5", "pattern": "shards" } },
-        "s3": { "type": "slide", "settings": { "title": "Garden Bandana", "tagline": "Organic cotton, slip-on, adjustable", "badge": "Sizes S – L", "bullets": "Soft organic cotton\nNo ties, no tugging\nFun prints to match yours", "bg_color": "#2f9a1b", "text_color": "#fdfbb8", "accent_color": "#fdfbb8", "pattern": "shards" } },
-        "s4": { "type": "slide", "settings": { "title": "Party Bow Tie", "tagline": "Velvet, clip-on, instant glam", "badge": "One size", "bullets": "Velvet finish\nSecure clip, comfy fit\nBirthdays, weddings, selfies", "bg_color": "#d9201f", "text_color": "#fdfbb8", "accent_color": "#0ff5f5", "pattern": "lines" } }
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "title": "Cosy Hoodie",
+            "tagline": "Fleece, cotton, cosy hood",
+            "badge": "Sizes XS \u2013 XXL",
+            "bullets": "Ultra soft fleece lining\nWarm, light and breathable\nReflective trim for night walks",
+            "bg_color": "#c4002f",
+            "text_color": "#fdfbb8",
+            "accent_color": "#ffd0e8",
+            "pattern": "blobs",
+            "sample": "hoodie-bulldog"
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "title": "Storm Raincoat",
+            "tagline": "Waterproof, windproof, packable",
+            "badge": "Sizes XS \u2013 XXL",
+            "bullets": "Taped seams keep them dry\nAdjustable belly strap\nPacks into its own pocket",
+            "bg_color": "#137563",
+            "text_color": "#fdfbb8",
+            "accent_color": "#0ff5f5",
+            "pattern": "shards",
+            "sample": "raincoat-lab"
+          }
+        },
+        "s3": {
+          "type": "slide",
+          "settings": {
+            "title": "Garden Bandana",
+            "tagline": "Organic cotton, slip-on, adjustable",
+            "badge": "Sizes S \u2013 L",
+            "bullets": "Soft organic cotton\nNo ties, no tugging\nFun prints to match yours",
+            "bg_color": "#2f9a1b",
+            "text_color": "#fdfbb8",
+            "accent_color": "#fdfbb8",
+            "pattern": "shards",
+            "sample": "bandana-spaniel"
+          }
+        },
+        "s4": {
+          "type": "slide",
+          "settings": {
+            "title": "Party Bow Tie",
+            "tagline": "Velvet, clip-on, instant glam",
+            "badge": "One size",
+            "bullets": "Velvet finish\nSecure clip, comfy fit\nBirthdays, weddings, selfies",
+            "bg_color": "#d9201f",
+            "text_color": "#fdfbb8",
+            "accent_color": "#0ff5f5",
+            "pattern": "lines",
+            "sample": "bowtie-poodle"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4"]
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
     }
   },
-  "order": ["hero", "story", "marquee", "range", "slides"]
+  "order": [
+    "hero",
+    "story",
+    "marquee",
+    "range",
+    "slides"
+  ]
 }

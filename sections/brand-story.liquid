@@ -9,8 +9,11 @@
             {%- if col == 2 -%}{%- assign want = 1 | minus: want -%}{%- endif -%}
             {%- if want == 1 -%}
               <figure class="story__photo" {{ block.shopify_attributes }} data-reveal>
+                {%- assign focus = block.settings.focus | default: '50%' -%}
                 {%- if block.settings.image != blank -%}
-                  <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+                  <img src="{{ block.settings.image | image_url: width: 900 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="900" height="900" style="object-position:{{ focus }} 50%">
+                {%- elsif block.settings.sample != 'none' and block.settings.sample != blank -%}
+                  <img src="{{ block.settings.sample | prepend: 'photo-story-' | append: '.jpg' | asset_url }}" alt="" loading="lazy" width="900" height="900" style="object-position:{{ focus }} 50%">
                 {%- else -%}
                   {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
                 {%- endif -%}
@@ -70,7 +73,13 @@
     {
       "type": "photo",
       "name": "Photo",
-      "settings": [{ "type": "image_picker", "id": "image", "label": "Image (portrait works best)" }]
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image (landscape is fine, it is cropped to a square)" },
+        { "type": "select", "id": "focus", "label": "Crop focus", "default": "50%",
+          "options": [ { "value": "20%", "label": "Left" }, { "value": "50%", "label": "Center" }, { "value": "80%", "label": "Right" } ] },
+        { "type": "select", "id": "sample", "label": "Sample photo (used when no image is set)", "default": "none",
+          "options": [ { "value": "none", "label": "None" }, { "value": "puddle", "label": "Frenchie in puddle" }, { "value": "terrier", "label": "Terrier fleece" }, { "value": "collie", "label": "Collie running" }, { "value": "flatlay", "label": "Terrazzo flat-lay" }, { "value": "flatlay-teal", "label": "Teal flat-lay" } ] }
+      ]
     },
     {
       "type": "feature",

@@ -18,7 +18,7 @@
         {%- for media in product.media -%}
           {%- if media.media_type == 'image' -%}
             <button type="button" class="{% if forloop.first %}is-active{% endif %}" data-thumb="{{ media.id }}" aria-label="{{ forloop.index }}">
-              <img src="{{ media | image_url: width: 160 }}" alt="" loading="lazy" width="80" height="80">
+              <img src="{{ media | image_url: width: 160 }}" alt="" loading="lazy" width="96" height="72">
             </button>
           {%- endif -%}
         {%- endfor -%}

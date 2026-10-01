@@ -9,11 +9,13 @@
       {%- endif -%}
     </div>
     <div class="hero__media" data-reveal>
-      {%- if section.settings.image != blank -%}
-        <img class="hero__img" src="{{ section.settings.image | image_url: width: 1100 }}" alt="{{ section.settings.image.alt | escape }}" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}" fetchpriority="high">
-      {%- else -%}
-        <div class="hero__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
-      {%- endif -%}
+      <figure class="hero__photo">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1400 }}" alt="{{ section.settings.image.alt | escape }}" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}" fetchpriority="high">
+        {%- else -%}
+          <img src="{{ 'photo-hero.jpg' | asset_url }}" alt="" width="1400" height="764" fetchpriority="high">
+        {%- endif -%}
+      </figure>
     </div>
   </div>
   {%- if section.settings.usp_line_1 != blank or section.settings.usp_line_2 != blank -%}
@@ -32,7 +34,7 @@
     { "type": "textarea", "id": "text", "label": "Text", "default": "Cosy knits, rain-proof jackets and bandanas made with a slight twist, so they look amazing and feel even better." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
     { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "image_picker", "id": "image", "label": "Hero image (transparent PNG works best)" },
+    { "type": "image_picker", "id": "image", "label": "Hero photo (landscape works best)" },
     { "type": "color", "id": "bg_color", "label": "Background", "default": "#137563" },
     { "type": "color", "id": "text_color", "label": "Text color", "default": "#fdfbb8" },
     { "type": "header", "content": "Benefits bar" },

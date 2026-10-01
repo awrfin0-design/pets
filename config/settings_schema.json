@@ -3,7 +3,9 @@
     "name": "theme_info",
     "theme_name": "Pet Apparel",
     "theme_version": "2.0.0",
-    "theme_author": "Pets"
+    "theme_author": "Pets",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_email": "hello@example.com"
   },
   {
     "name": "Brand",
