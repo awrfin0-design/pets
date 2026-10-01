@@ -42,7 +42,8 @@
 
   <div class="footer__legal">
     <nav>
-      {%- for link in linklists[section.settings.legal_menu].links -%}
+      {%- assign legal_handle = section.settings.legal_menu | default: 'legal' -%}
+      {%- for link in linklists[legal_handle].links -%}
         <a href="{{ link.url }}">{{ link.title }}</a>
       {%- endfor -%}
     </nav>
@@ -55,7 +56,7 @@
   "name": "Footer",
   "settings": [
     { "type": "link_list", "id": "menu", "label": "Main links", "default": "footer" },
-    { "type": "link_list", "id": "legal_menu", "label": "Legal links (privacy, refunds, shipping, terms)", "default": "legal" },
+    { "type": "link_list", "id": "legal_menu", "label": "Legal links (privacy, refunds, shipping, terms)" },
     { "type": "text", "id": "newsletter_title", "label": "Newsletter title", "default": "Tails are wagging" },
     { "type": "textarea", "id": "newsletter_text", "label": "Newsletter text", "default": "Sign up for the latest drops and news and we'll send you 10% off your first order as a thank you." },
     { "type": "text", "id": "contact_note", "label": "Contact note", "default": "For wholesale and stockist enquiries please email us at" },
