@@ -1,0 +1,535 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wag &amp; Wear – Pet apparel (static preview)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--teal:#137563;--teal-deep:#0d5a4b;--cream:#fdfbb8;--paper:#fffde6;--pink:#ee0a8f;--cyan:#0ff5f5;--red:#d9201f;--green:#2f9a1b}
+/* ============ TOKENS ============ */
+:root{
+  --font-head:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --font-body:"Figtree",system-ui,sans-serif;
+  --radius:2rem;
+  --gutter:clamp(1.25rem,5vw,4.5rem);
+  --max:78rem;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--teal);font-family:var(--font-body);font-size:1.0625rem;line-height:1.5;overflow-x:hidden;}
+img,video,svg{max-width:100%;display:block;}
+a{color:inherit;}
+h1,h2,h3{margin:0;font-family:var(--font-head);font-weight:800;letter-spacing:-.02em;line-height:1;}
+p{margin:0 0 1rem;}
+button,input,select,textarea{font:inherit;color:inherit;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--pink);color:#fff;padding:.5rem 1rem;z-index:100;}
+.skip-link:focus{left:0;}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;}
+.placeholder{width:100%;height:100%;fill:currentColor;background:#00000014;opacity:.5;}
+
+.display{font-size:clamp(2.75rem,7.2vw,6.25rem);color:var(--hero-ink,var(--cream));}
+.heading{font-size:clamp(2rem,4.4vw,3.5rem);}
+.heading--sm{font-size:1.6rem;margin:2rem 0 1rem;}
+.eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;opacity:.8;}
+.link{font-weight:600;text-decoration:underline;text-underline-offset:3px;font-size:.9rem;}
+
+/* ============ BUTTONS & PILLS ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--pink);color:#fff;border:0;border-radius:.9rem;padding:.9rem 1.5rem;font-family:var(--font-head);font-weight:800;font-size:1.25rem;line-height:1;text-decoration:none;cursor:pointer;transition:transform .2s,filter .2s;}
+.btn:hover{transform:translateY(-2px) rotate(-1deg);filter:brightness(1.07);}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none;}
+.btn--dark{background:var(--teal-deep);color:var(--cream);}
+.btn--small{font-size:1rem;padding:.65rem 1.1rem;}
+.btn--accent{background:var(--slide-accent,var(--pink));color:var(--slide-bg,#fff);}
+.btn--grow{flex:1;}
+.pill{display:inline-flex;align-items:center;background:rgba(6,50,42,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--cream);border:0;border-radius:999px;padding:.55rem 1.15rem;font-weight:600;font-size:.85rem;letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:background .2s;}
+.pill:hover,.pill[aria-current]{background:rgba(6,50,42,.85);}
+.pill--dark{background:var(--teal-deep);}
+.pill--select{appearance:none;padding-right:1rem;}
+
+/* ============ HEADER ============ */
+.site-header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:1rem;padding:1rem var(--gutter);pointer-events:none;}
+.site-header>*{pointer-events:auto;}
+.site-logo{display:inline-flex;align-items:center;gap:.5rem;color:var(--cream);text-decoration:none;font-family:var(--font-head);font-weight:800;font-size:1.35rem;line-height:.95;background:rgba(6,50,42,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:1.2rem;padding:.55rem .95rem;max-width:12rem;}
+.site-logo img{width:7rem;height:auto;}
+.site-logo__mark{width:1.7rem;color:var(--pink);flex:none;}
+.site-logo__mark svg{width:100%;height:auto;}
+.site-nav{display:none;gap:.5rem;}
+.site-header__end{margin-left:auto;display:flex;gap:.5rem;align-items:center;}
+.nav-toggle{display:inline-flex;}
+@media(min-width:800px){
+  .site-nav{display:flex;margin-left:.5rem;}
+  .site-header__end{margin-left:auto;}
+  .nav-toggle{display:none;}
+}
+@media(max-width:799px){
+  .site-nav.is-open{display:flex;flex-direction:column;position:absolute;top:100%;left:var(--gutter);right:var(--gutter);padding:.75rem;background:var(--teal-deep);border-radius:1.25rem;gap:.35rem;pointer-events:auto;}
+  .site-nav.is-open .pill{background:transparent;font-size:1.1rem;padding:.7rem 1rem;}
+}
+
+/* ============ HERO ============ */
+.hero,.page-header{position:relative;background:var(--hero-bg,var(--teal));color:var(--hero-ink,var(--cream));overflow:hidden;}
+.hero__bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:1;}
+.hero__inner{position:relative;display:grid;gap:2rem;align-items:center;max-width:var(--max);margin:0 auto;padding:8rem var(--gutter) 5rem;min-height:min(46rem,92svh);}
+@media(min-width:900px){.hero__inner{grid-template-columns:1.15fr .85fr;}}
+.hero__copy{max-width:40rem;}
+.hero__copy .display{margin-bottom:1.75rem;}
+.hero__text{max-width:28rem;font-size:1.1rem;margin-bottom:2rem;color:var(--hero-ink,var(--cream));}
+.hero__media{display:flex;justify-content:center;}
+.hero__img{width:min(34rem,100%);height:auto;max-height:36rem;object-fit:contain;transform:rotate(12deg);filter:drop-shadow(0 30px 40px rgba(0,0,0,.3));animation:float 6s ease-in-out infinite;}
+.hero__placeholder{width:min(24rem,70%);aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;transform:rotate(10deg);}
+@keyframes float{50%{transform:rotate(9deg) translateY(-12px);}}
+.usp-bar{position:relative;background:var(--teal-deep);text-align:center;padding:1rem var(--gutter);font-family:var(--font-head);font-weight:800;font-size:clamp(.8rem,1.5vw,1.05rem);letter-spacing:.04em;text-transform:uppercase;line-height:1.5;}
+.usp-bar strong{display:block;color:#fff;}
+.usp-bar span{display:block;color:var(--cream);}
+
+.page-header__inner{position:relative;max-width:var(--max);margin:0 auto;padding:9rem var(--gutter) 4rem;}
+.page-header--compact .page-header__inner{padding-bottom:3rem;}
+
+/* ============ STORY ============ */
+.story{background:var(--paper);padding:5rem var(--gutter);}
+.story__inner{max-width:var(--max);margin:0 auto;display:grid;gap:3rem;align-items:center;}
+@media(min-width:900px){.story__inner{grid-template-columns:1fr 1fr;gap:5rem;}}
+.story__photos{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.story__col{display:flex;flex-direction:column;gap:1.1rem;}
+.story__col--2{padding-top:3.5rem;}
+.story__photo{margin:0;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:#00000010;}
+.story__col--1 .story__photo:nth-child(even),.story__col--2 .story__photo:nth-child(odd){aspect-ratio:1/1;}
+.story__photo img,.story__photo svg{width:100%;height:100%;object-fit:cover;}
+.story__copy .heading{margin-bottom:1.5rem;max-width:22ch;}
+.story__text{max-width:32rem;}
+.story__features{list-style:none;margin:2rem 0 1.5rem;padding:0;display:grid;gap:1.1rem;}
+.story__features li{display:flex;gap:1rem;align-items:center;}
+.story__features .icon{width:3.25rem;height:3.25rem;flex:none;}
+.story__features b{display:block;font-family:var(--font-head);font-size:1.15rem;line-height:1.1;}
+.story__features em{display:block;font-style:normal;font-size:.95rem;opacity:.85;}
+.story__badges{list-style:none;margin:0 0 2.25rem;padding:0;display:flex;flex-wrap:wrap;gap:1.25rem;}
+.story__badges li{width:4.75rem;text-align:center;}
+.badge-circle{display:grid;place-items:center;width:3.4rem;height:3.4rem;margin:0 auto .35rem;border:2.5px solid var(--teal);border-radius:50%;}
+.badge-circle .icon{width:1.7rem;height:1.7rem;}
+.story__badges small{display:block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;line-height:1.15;}
+
+/* ============ MARQUEE ============ */
+.marquee{background:var(--marquee-bg,var(--cyan));color:var(--marquee-ink,var(--teal-deep));overflow:hidden;padding:.9rem 0;white-space:nowrap;}
+.marquee__track{display:flex;width:max-content;animation:marquee var(--marquee-speed,35s) linear infinite;}
+.marquee__group{display:flex;flex:none;gap:1.5rem;padding-right:1.5rem;font-family:var(--font-head);font-weight:800;font-size:clamp(1.75rem,4vw,3rem);line-height:1.2;}
+.marquee__group i{font-style:normal;}
+@keyframes marquee{to{transform:translateX(-50%);}}
+
+/* ============ RANGE ============ */
+.range{background:var(--range-bg,var(--teal));color:var(--cream);padding:5rem 0 6rem;overflow:hidden;}
+.range__head{max-width:var(--max);margin:0 auto 2.5rem;padding:0 var(--gutter);display:flex;justify-content:space-between;align-items:baseline;gap:1rem;}
+.range__head .heading{color:var(--cream);}
+.range__hint{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;}
+.range__hint .icon{width:2rem;height:1rem;}
+.range__track{display:flex;gap:1.75rem;overflow-x:auto;padding:0 var(--gutter) 1rem;scroll-snap-type:x proximity;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch;}
+.range__track::-webkit-scrollbar{display:none;}
+.range__track.is-dragging{cursor:grabbing;scroll-snap-type:none;user-select:none;}
+.range__card{flex:none;width:min(17rem,68vw);text-align:center;text-decoration:none;color:var(--cream);scroll-snap-align:start;}
+.range__card b{display:block;font-family:var(--font-head);font-size:1.1rem;line-height:1.1;margin-top:1rem;}
+.range__card small{display:block;margin-top:.5rem;font-size:.95rem;color:#fdb6dc;}
+.range__tile{display:block;aspect-ratio:4/5;background:var(--tint,var(--teal-deep));border-radius:2.25rem;overflow:hidden;position:relative;}
+.range__tile img,.range__tile svg{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.range__card:hover .range__tile img{transform:scale(1.06) rotate(1.5deg);}
+
+/* ============ PRODUCT SLIDES ============ */
+.slides{position:relative;}
+.slides__dots{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.7rem;z-index:40;opacity:0;pointer-events:none;transition:opacity .3s;}
+.slides.is-active .slides__dots{opacity:1;pointer-events:auto;}
+.slides__dots button{width:1.1rem;height:1.1rem;padding:0;border-radius:50%;border:2px solid var(--cream);background:transparent;cursor:pointer;transition:background .2s;}
+.slides__dots button.is-active{background:var(--cream);}
+.slide{position:relative;background:var(--slide-bg,var(--red));color:var(--slide-ink,var(--cream));min-height:100svh;display:flex;align-items:center;overflow:hidden;}
+.slide__pattern{position:absolute;inset:0;background-size:cover;background-position:center;}
+.slide__inner{position:relative;width:100%;max-width:var(--max);margin:0 auto;padding:6rem var(--gutter);display:grid;gap:2rem;align-items:center;}
+@media(min-width:900px){.slide__inner{grid-template-columns:1fr 1fr;}}
+.slide .display{color:var(--slide-ink);font-size:clamp(2.75rem,6.5vw,5.5rem);margin-bottom:.9rem;}
+.slide__tagline{color:var(--slide-accent);font-weight:600;margin-bottom:1.1rem;}
+.slide__badge{display:inline-block;color:var(--slide-accent);border:1.5px solid var(--slide-accent);padding:.15rem .6rem;font-size:1.35rem;margin-bottom:1.4rem;}
+.slide__bullets{list-style:none;padding:0;margin:0 0 2rem;font-size:1.1rem;line-height:1.7;}
+.slide__media{display:flex;justify-content:center;}
+.slide__media img{max-height:34rem;width:auto;object-fit:contain;transform:rotate(10deg);filter:drop-shadow(0 30px 40px rgba(0,0,0,.35));}
+.slide__placeholder{width:min(20rem,70%);aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;transform:rotate(8deg);}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--teal);color:var(--cream);}
+.footer__inner{max-width:var(--max);margin:0 auto;padding:5rem var(--gutter) 3rem;display:grid;gap:2.5rem;align-items:start;}
+@media(min-width:900px){.footer__inner{grid-template-columns:auto 12rem 1fr;gap:4rem;}}
+.footer__badge{width:min(16rem,60vw);aspect-ratio:1;border-radius:50%;background:var(--pink);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;font-family:var(--font-head);font-weight:800;font-size:2.1rem;line-height:.95;padding:2rem;}
+.footer__badge .icon{width:3rem;height:3rem;}
+.footer__badge img{width:70%;}
+.footer__links{display:flex;flex-direction:column;gap:.4rem;font-weight:600;font-size:.95rem;}
+.footer__links a{text-decoration:none;}
+.footer__links a:hover{text-decoration:underline;}
+.footer__social-title{margin:1.5rem 0 .25rem;font-size:1.05rem;}
+.footer__social{display:flex;gap:.75rem;}
+.footer__social .icon{width:1.7rem;height:1.7rem;}
+.footer__news h2{font-size:clamp(1.75rem,3.2vw,2.5rem);color:var(--cream);margin-bottom:.9rem;}
+.footer__news>p{max-width:26rem;font-size:1.05rem;}
+.footer__form{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.5rem 0;max-width:30rem;}
+.footer__form input{flex:1 1 14rem;border:0;border-radius:999px;background:var(--cream);color:var(--teal);padding:.85rem 1.25rem;}
+.footer__form .btn{border-radius:999px;font-size:1.05rem;}
+.footer__note{font-size:.9rem;}
+.footer__legal{max-width:var(--max);margin:0 auto;padding:1.5rem var(--gutter) 2.5rem;text-align:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;}
+.footer__legal nav{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;margin-bottom:.4rem;}
+.footer__legal a{text-decoration:none;}
+.footer__legal p{margin:0;opacity:.9;}
+.form-ok{color:var(--cream);font-weight:700;margin:0;flex-basis:100%;}
+
+/* ============ INNER PAGES ============ */
+#MainContent{min-height:60vh;}
+.prose-wrap{max-width:52rem;margin:0 auto;padding:7.5rem var(--gutter) 4rem;}
+.page-header + .prose-wrap,.page-header + section.prose-wrap,.template-page .prose-wrap{padding-top:4rem;}
+.prose-wrap.narrow{max-width:30rem;}
+.prose{line-height:1.7;}
+.prose h2,.prose h3{margin:2rem 0 .75rem;}
+.prose img{border-radius:1rem;}
+.prose a{text-decoration:underline;}
+.stack-form{display:grid;gap:1.1rem;margin-top:1.5rem;}
+.stack-form label{display:grid;gap:.35rem;font-weight:600;font-size:.9rem;}
+input[type=text],input[type=email],input[type=password],input[type=search],input[type=number],textarea,select{background:#fff;border:2px solid var(--teal);border-radius:.8rem;padding:.8rem 1rem;width:100%;}
+.stack-form .btn{justify-self:start;}
+.article__img{border-radius:1.5rem;margin-bottom:2rem;}
+.notfound{text-align:center;padding-top:9rem;}
+.notfound .display{color:var(--teal);margin-bottom:1rem;}
+
+.size-table{width:100%;border-collapse:collapse;margin:1.5rem 0;text-align:left;font-weight:500;}
+.size-table th,.size-table td{padding:.9rem 1rem;border-bottom:2px solid #13756322;}
+.size-table thead th{background:var(--teal);color:var(--cream);font-family:var(--font-head);}
+.size-table thead th:first-child{border-radius:1rem 0 0 0;}
+.size-table thead th:last-child{border-radius:0 1rem 0 0;}
+.size-table tbody th{font-family:var(--font-head);font-size:1.2rem;}
+.table-scroll{overflow-x:auto;}
+.stockists{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));margin:2rem 0;}
+.stockist{background:#fff;border-radius:1.5rem;padding:1.5rem;}
+.stockist h3{font-size:1.3rem;margin-bottom:.5rem;}
+.stockist a{font-weight:700;}
+
+/* ============ CATALOG ============ */
+.catalog{max-width:var(--max);margin:0 auto;padding:3rem var(--gutter) 5rem;}
+.template-search .catalog,.template-list-collections .catalog,.template-blog .catalog{padding-top:7.5rem;}
+.catalog__bar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;position:relative;}
+.catalog__count{margin:0 auto 0 0;font-weight:600;}
+.sort{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.9rem;}
+.sort select{width:auto;padding:.5rem .8rem;}
+.filters summary{list-style:none;}
+.filters summary::-webkit-details-marker{display:none;}
+.filters__panel{position:absolute;z-index:5;top:3rem;left:0;background:#fff;border-radius:1.5rem;box-shadow:0 20px 50px rgba(0,0,0,.2);padding:1.5rem;width:min(22rem,100%);max-height:70vh;overflow:auto;display:grid;gap:1.25rem;}
+.filters fieldset{border:0;padding:0;margin:0;display:grid;gap:.4rem;}
+.filters legend{font-family:var(--font-head);font-weight:800;font-size:1.1rem;margin-bottom:.4rem;}
+.check{display:flex;gap:.6rem;align-items:center;font-size:.95rem;}
+.check input{width:1.1rem;height:1.1rem;accent-color:var(--teal);}
+.price-range{display:flex;gap:.5rem;align-items:center;}
+.filters__actions{display:flex;align-items:center;gap:1rem;}
+.grid{display:grid;gap:2rem 1.5rem;grid-template-columns:repeat(2,1fr);}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr);}}
+.empty{text-align:center;padding:3rem 0;}
+.pagination{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:3rem;font-weight:600;}
+
+.product-card{display:block;text-decoration:none;color:var(--teal);}
+.product-card__media{display:block;position:relative;aspect-ratio:4/5;background:var(--tint,#13756315);border-radius:1.75rem;overflow:hidden;}
+.product-card__media img,.product-card__media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s,transform .5s;}
+.product-card__alt{opacity:0;}
+.product-card:hover .product-card__alt{opacity:1;}
+.product-card:hover .product-card__media img:first-child{transform:scale(1.04);}
+.product-card__title{display:block;font-family:var(--font-head);font-weight:800;font-size:1.1rem;line-height:1.15;margin-top:.8rem;}
+.product-card__price{display:block;font-weight:600;margin-top:.25rem;opacity:.9;}
+.product-card__price s{opacity:.6;margin-right:.35rem;}
+.badge{position:absolute;top:.8rem;left:.8rem;z-index:2;background:var(--pink);color:#fff;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;padding:.3rem .7rem;border-radius:999px;}
+.badge--muted{background:var(--teal-deep);}
+
+/* ============ PRODUCT PAGE ============ */
+.pdp{max-width:var(--max);margin:0 auto;padding:7.5rem var(--gutter) 4rem;display:grid;gap:2.5rem;}
+@media(min-width:900px){.pdp{grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start;}.pdp__gallery{position:sticky;top:6rem;}}
+.pdp__main{aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;background:#13756315;}
+.pdp__main img,.pdp__main svg{width:100%;height:100%;object-fit:cover;}
+.pdp__thumbs{display:flex;gap:.6rem;margin-top:.8rem;overflow-x:auto;}
+.pdp__thumbs button{padding:0;border:2px solid transparent;border-radius:1rem;overflow:hidden;width:4.5rem;height:4.5rem;flex:none;background:none;cursor:pointer;}
+.pdp__thumbs button.is-active{border-color:var(--pink);}
+.pdp__thumbs img{width:100%;height:100%;object-fit:cover;}
+.pdp__info .heading{margin:.4rem 0 .75rem;}
+.pdp__price{font-family:var(--font-head);font-weight:800;font-size:1.6rem;margin-bottom:1.5rem;}
+.pdp__price s{opacity:.5;font-size:1.1rem;}
+.pdp__form{display:grid;gap:1.4rem;margin-bottom:2rem;}
+.opt{border:0;margin:0;padding:0;}
+.opt legend{display:flex;justify-content:space-between;width:100%;padding:0;font-weight:700;margin-bottom:.6rem;}
+.opt__values{display:flex;flex-wrap:wrap;gap:.5rem;}
+.opt__pill input{position:absolute;opacity:0;pointer-events:none;}
+.opt__pill span{display:inline-flex;min-width:3.25rem;justify-content:center;padding:.6rem 1rem;border:2px solid var(--teal);border-radius:999px;font-weight:700;cursor:pointer;transition:background .15s,color .15s;}
+.opt__pill input:checked+span{background:var(--teal);color:var(--cream);}
+.opt__pill input:focus-visible+span{outline:3px solid var(--pink);outline-offset:2px;}
+.opt__pill.is-unavailable span{opacity:.35;text-decoration:line-through;}
+.pdp__buy{display:flex;gap:.75rem;}
+.qty{display:inline-flex;align-items:center;border:2px solid var(--teal);border-radius:.9rem;overflow:hidden;background:#fff;}
+.qty button{width:2.6rem;border:0;background:none;font-size:1.3rem;cursor:pointer;align-self:stretch;}
+.qty input{width:3rem;border:0;border-radius:0;text-align:center;padding:.6rem 0;-moz-appearance:textfield;}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.qty--small input{width:4rem;border:2px solid var(--teal);border-radius:.7rem;}
+.qty--small{border:0;}
+.pdp__desc{margin-bottom:1.5rem;}
+.acc{border-top:2px solid #13756325;padding:1rem 0;}
+.acc:last-of-type{border-bottom:2px solid #13756325;}
+.acc summary{font-family:var(--font-head);font-weight:800;font-size:1.15rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;}
+.acc summary::-webkit-details-marker{display:none;}
+.acc summary::after{content:"+";font-size:1.5rem;line-height:1;}
+.acc[open] summary::after{content:"–";}
+.acc .prose{padding-top:.75rem;}
+.recs{max-width:var(--max);margin:0 auto;padding:1rem var(--gutter) 5rem;}
+.recs:empty{display:none;}
+.recs .heading{margin-bottom:2rem;}
+.shopify-payment-button__button{border-radius:.9rem !important;}
+
+/* ============ CART ============ */
+.cart__items{list-style:none;margin:2rem 0;padding:0;display:grid;gap:1.25rem;}
+.cart__item{display:grid;grid-template-columns:5rem 1fr auto;gap:.5rem 1rem;align-items:center;background:#fff;border-radius:1.5rem;padding:1rem;}
+@media(min-width:640px){.cart__item{grid-template-columns:6.5rem 1fr auto 6rem;}}
+.cart__img img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:1rem;}
+.cart__info{display:grid;gap:.15rem;}
+.cart__title{font-family:var(--font-head);font-weight:800;font-size:1.1rem;text-decoration:none;}
+.cart__price{font-weight:700;margin:0;text-align:right;grid-column:3;}
+@media(min-width:640px){.cart__price{grid-column:auto;}}
+.cart__foot{display:grid;gap:.75rem;justify-items:end;}
+.cart__total{font-size:1.4rem;margin:0;display:flex;gap:1rem;}
+
+/* ============ MOTION ============ */
+[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+[data-reveal].is-visible{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1;transform:none;transition:none;}
+  .marquee__track,.hero__img{animation:none;}
+  html{scroll-behavior:auto;}
+}
+.no-js [data-reveal]{opacity:1;transform:none;}
+
+.ph{position:relative;width:100%;height:100%;display:grid;place-items:center;text-align:center;background:#0000001a;color:inherit;font-weight:700;font-size:.9rem;min-height:8rem}
+.ph small{font-weight:400;opacity:.6;font-size:.7rem}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__ph,.slide__ph{width:min(22rem,70%);aspect-ratio:3/4;border-radius:2rem;overflow:hidden;transform:rotate(10deg)}
+.hero__ph img,.slide__ph img{object-fit:contain}
+.slide__ph{background:#0000001a}
+.range__tile .ph{position:absolute;inset:0}
+</style></head><body class="js">
+<header class="site-header"><a class="site-logo" href="#"><span class="site-logo__mark"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg></span><span class="site-logo__text">Wag &amp; Wear</span></a>
+<nav class="site-nav" id="SiteNav" data-nav><a class="pill" href="#range">Shop now</a><a class="pill" href="#why">Why us</a><a class="pill" href="#footer">Stockists</a></nav>
+<div class="site-header__end"><a class="pill" href="#">Cart (0)</a><button class="pill nav-toggle" data-nav-toggle>Menu</button></div></header>
+<section class="hero"><div class="hero__bg" style="background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjEwIj48cGF0aCBkPSJNNzgwIDQwIDEwMjAgMjEwIDg4MCA0MjAgNzAwIDMwMFoiLz48cGF0aCBkPSJNMTAyMCAyMTAgMTIwMCAxMjAgMTIwMCA0ODAgMTA2MCA1MjBaIi8+PHBhdGggZD0iTTg4MCA0MjAgMTA2MCA1MjAgOTQwIDc2MCA3NjAgNjQwWiIvPjxwYXRoIGQ9Ik01MjAgNTQwIDcwMCAzMDAgNzYwIDY0MCA2MDAgODIwWiIvPjxwYXRoIGQ9Ik0xMjAwIDQ4MCAxMjAwIDkwMCA5NDAgNzYwWiIvPjwvZz48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii4wNyI+PHBhdGggZD0iTTcwMCAzMDAgODgwIDQyMCA3NjAgNjQwIDUyMCA1NDBaIi8+PHBhdGggZD0iTTEwNjAgNTIwIDEyMDAgNDgwIDEyMDAgNzYwIDk0MCA3NjBaIi8+PHBhdGggZD0iTTc4MCA0MCAxMDIwIDIxMCAxMTAwIDAgOTAwIDBaIi8+PHBhdGggZD0iTTYwMCA4MjAgNzYwIDY0MCA5NDAgNzYwIDgwMCA5MDAgNjQwIDkwMFoiLz48L2c+PC9zdmc+Cg==)"></div><div class="hero__inner"><div class="hero__copy" data-reveal><h1 class="display">Dress your best friend</h1><p class="hero__text">Cosy knits, rain-proof jackets and bandanas made with a slight twist, so they look amazing and feel even better.</p><a class="btn" href="#range">Shop now</a></div><div class="hero__media" data-reveal><div class="ph hero__ph"><span>Hero – dog in hoodie (transparent PNG)<br><small>images/hero.png</small></span><img src="images/hero.png" alt="" onerror="this.remove()"></div></div></div>
+<div class="usp-bar"><strong>SOFT FABRICS · SAFE DYES · REFLECTIVE DETAILS</strong><span>MACHINE WASHABLE · TRUE-TO-SIZE · FREE RETURNS</span></div></section>
+<section class="story" id="why"><div class="story__inner"><div class="story__photos"><div class="story__col story__col--1"><figure class="story__photo" data-reveal><div class="ph "><span>Lifestyle 1<br><small>images/story-1.jpg</small></span><img src="images/story-1.jpg" alt="" onerror="this.remove()"></div></figure><figure class="story__photo" data-reveal><div class="ph "><span>Lifestyle 3<br><small>images/story-3.jpg</small></span><img src="images/story-3.jpg" alt="" onerror="this.remove()"></div></figure></div><div class="story__col story__col--2"><figure class="story__photo" data-reveal><div class="ph "><span>Lifestyle 2<br><small>images/story-2.jpg</small></span><img src="images/story-2.jpg" alt="" onerror="this.remove()"></div></figure><figure class="story__photo" data-reveal><div class="ph "><span>Lifestyle 4<br><small>images/story-4.jpg</small></span><img src="images/story-4.jpg" alt="" onerror="this.remove()"></div></figure></div></div>
+<div class="story__copy" data-reveal><h2 class="heading">Made to be worn. Made to be loved.</h2><p class="story__text">Every piece starts with honest materials and a real dog (or cat) test-driver. We design comfy, hard-wearing apparel with a slight twist so your pet is the best-dressed one at the park.</p>
+<ul class="story__features"><li><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg><span><b>Pet-safe fabrics</b><em>Soft, breathable, non-toxic dyes</em></span></li><li><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg><span><b>True-to-size fit</b><em>Tested on real dogs, every breed</em></span></li><li><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg><span><b>Made to last</b><em>Reinforced seams, no itchy tags</em></span></li></ul>
+<ul class="story__badges"><li><span class="badge-circle"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg></span><small>Machine washable</small></li><li><span class="badge-circle"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg></span><small>Reflective trim</small></li><li><span class="badge-circle"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg></span><small>Vet approved fit</small></li><li><span class="badge-circle"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg></span><small>Free returns</small></li></ul><a class="btn" href="#range">Shop now</a></div></div></section>
+<section class="marquee"><div class="marquee__track"><div class="marquee__group"><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i></div><div class="marquee__group"><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i><span>Join the pack, it's adorable</span><i>·</i></div></div></section>
+<section class="range" id="range"><div class="range__head"><h2 class="heading">Our Range</h2><span class="range__hint">Drag to view →</span></div><div class="range__track" data-drag-scroll tabindex="0"><a class="range__card" href="#"><span class="range__tile"><div class="ph "><span>Cosy Hoodie<br><small>images/product-hoodie.png</small></span><img src="images/product-hoodie.png" alt="" onerror="this.remove()"></div></span><b>Cosy Hoodie</b><small>Fleece, cotton, cosy hood</small></a><a class="range__card" href="#"><span class="range__tile"><div class="ph "><span>Storm Raincoat<br><small>images/product-raincoat.png</small></span><img src="images/product-raincoat.png" alt="" onerror="this.remove()"></div></span><b>Storm Raincoat</b><small>Waterproof, packable</small></a><a class="range__card" href="#"><span class="range__tile"><div class="ph "><span>Garden Bandana<br><small>images/product-bandana.png</small></span><img src="images/product-bandana.png" alt="" onerror="this.remove()"></div></span><b>Garden Bandana</b><small>Organic cotton, slip-on</small></a><a class="range__card" href="#"><span class="range__tile"><div class="ph "><span>Party Bow Tie<br><small>images/product-bowtie.png</small></span><img src="images/product-bowtie.png" alt="" onerror="this.remove()"></div></span><b>Party Bow Tie</b><small>Velvet, clip-on</small></a><a class="range__card" href="#"><span class="range__tile"><div class="ph "><span>Knit Sweater<br><small>images/product-sweater.png</small></span><img src="images/product-sweater.png" alt="" onerror="this.remove()"></div></span><b>Knit Sweater</b><small>Chunky, cable knit</small></a><a class="range__card" href="#"><span class="range__tile"><div class="ph "><span>Reflective Vest<br><small>images/product-vest.png</small></span><img src="images/product-vest.png" alt="" onerror="this.remove()"></div></span><b>Reflective Vest</b><small>Night-walk safe</small></a></div></section>
+<section class="slides" data-slides><nav class="slides__dots" data-slide-dots><button type="button" aria-label="1" data-slide-to="0"></button><button type="button" aria-label="2" data-slide-to="1"></button><button type="button" aria-label="3" data-slide-to="2"></button><button type="button" aria-label="4" data-slide-to="3"></button></nav><article class="slide" data-slide style="--slide-bg:#c4002f;--slide-ink:#fdfbb8;--slide-accent:#ffd0e8"><div class="slide__pattern" style="background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjA5Ij48Y2lyY2xlIGN4PSI3NjAiIGN5PSIxNTAiIHI9IjEzMCIvPjxjaXJjbGUgY3g9IjEwNjAiIGN5PSI2NjAiIHI9IjE3MCIvPjxjaXJjbGUgY3g9IjU2MCIgY3k9IjcwMCIgcj0iOTAiLz48L2c+PGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIuMTAiPjxjaXJjbGUgY3g9IjEwMDAiIGN5PSIyMDAiIHI9IjkwIi8+PGNpcmNsZSBjeD0iNzAwIiBjeT0iNDgwIiByPSIxNTAiLz48Y2lyY2xlIGN4PSIxMTMwIiBjeT0iNDIwIiByPSI2MCIvPjwvZz48L3N2Zz4K)"></div><div class="slide__inner"><div class="slide__copy" data-reveal><h2 class="display">Cosy Hoodie</h2><p class="slide__tagline">Fleece, cotton, cosy hood</p><p class="slide__badge">Sizes XS – XXL</p><ul class="slide__bullets"><li>Ultra soft fleece lining</li><li>Warm, light and breathable</li><li>Reflective trim for night walks</li></ul><a class="btn btn--accent" href="#">Shop now</a></div><div class="slide__media" data-reveal><div class="ph slide__ph"><span>Cosy Hoodie (transparent PNG)<br><small>images/slide-hoodie.png</small></span><img src="images/slide-hoodie.png" alt="" onerror="this.remove()"></div></div></div></article><article class="slide" data-slide style="--slide-bg:#137563;--slide-ink:#fdfbb8;--slide-accent:#0ff5f5"><div class="slide__pattern" style="background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjEwIj48cGF0aCBkPSJNNzgwIDQwIDEwMjAgMjEwIDg4MCA0MjAgNzAwIDMwMFoiLz48cGF0aCBkPSJNMTAyMCAyMTAgMTIwMCAxMjAgMTIwMCA0ODAgMTA2MCA1MjBaIi8+PHBhdGggZD0iTTg4MCA0MjAgMTA2MCA1MjAgOTQwIDc2MCA3NjAgNjQwWiIvPjxwYXRoIGQ9Ik01MjAgNTQwIDcwMCAzMDAgNzYwIDY0MCA2MDAgODIwWiIvPjxwYXRoIGQ9Ik0xMjAwIDQ4MCAxMjAwIDkwMCA5NDAgNzYwWiIvPjwvZz48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii4wNyI+PHBhdGggZD0iTTcwMCAzMDAgODgwIDQyMCA3NjAgNjQwIDUyMCA1NDBaIi8+PHBhdGggZD0iTTEwNjAgNTIwIDEyMDAgNDgwIDEyMDAgNzYwIDk0MCA3NjBaIi8+PHBhdGggZD0iTTc4MCA0MCAxMDIwIDIxMCAxMTAwIDAgOTAwIDBaIi8+PHBhdGggZD0iTTYwMCA4MjAgNzYwIDY0MCA5NDAgNzYwIDgwMCA5MDAgNjQwIDkwMFoiLz48L2c+PC9zdmc+Cg==)"></div><div class="slide__inner"><div class="slide__copy" data-reveal><h2 class="display">Storm Raincoat</h2><p class="slide__tagline">Waterproof, windproof, packable</p><p class="slide__badge">Sizes XS – XXL</p><ul class="slide__bullets"><li>Taped seams keep them dry</li><li>Adjustable belly strap</li><li>Packs into its own pocket</li></ul><a class="btn btn--accent" href="#">Shop now</a></div><div class="slide__media" data-reveal><div class="ph slide__ph"><span>Storm Raincoat (transparent PNG)<br><small>images/slide-raincoat.png</small></span><img src="images/slide-raincoat.png" alt="" onerror="this.remove()"></div></div></div></article><article class="slide" data-slide style="--slide-bg:#2f9a1b;--slide-ink:#fdfbb8;--slide-accent:#fdfbb8"><div class="slide__pattern" style="background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjEwIj48cGF0aCBkPSJNNzgwIDQwIDEwMjAgMjEwIDg4MCA0MjAgNzAwIDMwMFoiLz48cGF0aCBkPSJNMTAyMCAyMTAgMTIwMCAxMjAgMTIwMCA0ODAgMTA2MCA1MjBaIi8+PHBhdGggZD0iTTg4MCA0MjAgMTA2MCA1MjAgOTQwIDc2MCA3NjAgNjQwWiIvPjxwYXRoIGQ9Ik01MjAgNTQwIDcwMCAzMDAgNzYwIDY0MCA2MDAgODIwWiIvPjxwYXRoIGQ9Ik0xMjAwIDQ4MCAxMjAwIDkwMCA5NDAgNzYwWiIvPjwvZz48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii4wNyI+PHBhdGggZD0iTTcwMCAzMDAgODgwIDQyMCA3NjAgNjQwIDUyMCA1NDBaIi8+PHBhdGggZD0iTTEwNjAgNTIwIDEyMDAgNDgwIDEyMDAgNzYwIDk0MCA3NjBaIi8+PHBhdGggZD0iTTc4MCA0MCAxMDIwIDIxMCAxMTAwIDAgOTAwIDBaIi8+PHBhdGggZD0iTTYwMCA4MjAgNzYwIDY0MCA5NDAgNzYwIDgwMCA5MDAgNjQwIDkwMFoiLz48L2c+PC9zdmc+Cg==)"></div><div class="slide__inner"><div class="slide__copy" data-reveal><h2 class="display">Garden Bandana</h2><p class="slide__tagline">Organic cotton, slip-on, adjustable</p><p class="slide__badge">Sizes S – L</p><ul class="slide__bullets"><li>Soft organic cotton</li><li>No ties, no tugging</li><li>Fun prints to match yours</li></ul><a class="btn btn--accent" href="#">Shop now</a></div><div class="slide__media" data-reveal><div class="ph slide__ph"><span>Garden Bandana (transparent PNG)<br><small>images/slide-bandana.png</small></span><img src="images/slide-bandana.png" alt="" onerror="this.remove()"></div></div></div></article><article class="slide" data-slide style="--slide-bg:#d9201f;--slide-ink:#fdfbb8;--slide-accent:#0ff5f5"><div class="slide__pattern" style="background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9Ii4xMyIgc3Ryb2tlLXdpZHRoPSIyMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNNTYwIC0xMCA3MDAgMjIwIDUyMCA0MjAgNjQwIDY0MCA0ODAgOTMwIi8+PHBhdGggZD0iTTcwMCAyMjAgOTYwIDE0MCAxMjEwIDMzMCIvPjxwYXRoIGQ9Ik01MjAgNDIwIDgwMCA0NzAgMTAxMCAzMDAgMTIxMCA1NjAiLz48cGF0aCBkPSJNNjQwIDY0MCA5MDAgNzAwIDEyMTAgNzYwIi8+PHBhdGggZD0iTTgwMCA0NzAgODgwIDkxMCIvPjxwYXRoIGQ9Ik05NjAgMTQwIDEwMTAgLTEwIi8+PHBhdGggZD0iTTEwMTAgMzAwIDEwODAgNDgwIDEyMTAgNTYwIi8+PC9nPjwvc3ZnPgo=)"></div><div class="slide__inner"><div class="slide__copy" data-reveal><h2 class="display">Party Bow Tie</h2><p class="slide__tagline">Velvet, clip-on, instant glam</p><p class="slide__badge">One size</p><ul class="slide__bullets"><li>Velvet finish</li><li>Secure clip, comfy fit</li><li>Birthdays, weddings, selfies</li></ul><a class="btn btn--accent" href="#">Shop now</a></div><div class="slide__media" data-reveal><div class="ph slide__ph"><span>Party Bow Tie (transparent PNG)<br><small>images/slide-bowtie.png</small></span><img src="images/slide-bowtie.png" alt="" onerror="this.remove()"></div></div></div></article></section>
+<footer class="footer" id="footer"><div class="footer__inner"><div class="footer__badge"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><ellipse cx="24" cy="32" rx="9" ry="7.5"/><ellipse cx="11" cy="22" rx="3.6" ry="4.8"/><ellipse cx="19" cy="13" rx="3.6" ry="4.8"/><ellipse cx="29" cy="13" rx="3.6" ry="4.8"/><ellipse cx="37" cy="22" rx="3.6" ry="4.8"/></svg><span>Wag &amp; Wear</span></div><div class="footer__links"><a href="#range">Shop now</a><a href="#why">Why us</a><a href="#">Stockists</a><a href="#">Contact us</a><p class="footer__social-title">Join us on socials:</p></div>
+<div class="footer__news"><h2>Tails are wagging</h2><p>Sign up for the latest drops and news and we'll send you 10% off your first order as a thank you.</p><form class="footer__form" onsubmit="return false"><input type="email" placeholder="Email address" aria-label="Email"><button class="btn btn--dark">Sign up</button></form></div></div>
+<div class="footer__legal"><nav><a href="#">Privacy policy</a><a href="#">Refund policy</a><a href="#">Shipping policy</a><a href="#">Terms of service</a></nav><p>© 2026 Wag &amp; Wear</p></div></footer>
+<script>
+(function () {
+  "use strict";
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------- Mobile menu ---------- */
+  function initNav() {
+    var toggle = $("[data-nav-toggle]");
+    var nav = $("[data-nav]");
+    if (!toggle || !nav) return;
+    toggle.addEventListener("click", function () {
+      var open = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  function initReveal() {
+    var items = $$("[data-reveal]");
+    if (!items.length) return;
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("is-visible"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Drag-to-scroll carousel ---------- */
+  function initDragScroll() {
+    $$("[data-drag-scroll]").forEach(function (track) {
+      var down = false, startX = 0, startLeft = 0, moved = false;
+      track.addEventListener("pointerdown", function (e) {
+        if (e.pointerType === "touch") return; // native touch scrolling
+        down = true; moved = false; startX = e.clientX; startLeft = track.scrollLeft;
+      });
+      window.addEventListener("pointermove", function (e) {
+        if (!down) return;
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) { moved = true; track.classList.add("is-dragging"); }
+        track.scrollLeft = startLeft - dx;
+      });
+      window.addEventListener("pointerup", function () {
+        if (!down) return;
+        down = false;
+        setTimeout(function () { track.classList.remove("is-dragging"); }, 0);
+      });
+      track.addEventListener("click", function (e) {
+        if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+      }, true);
+      track.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") track.scrollBy({ left: 300, behavior: "smooth" });
+        if (e.key === "ArrowLeft") track.scrollBy({ left: -300, behavior: "smooth" });
+      });
+    });
+  }
+
+  /* ---------- Product slides + dots ---------- */
+  function initSlides() {
+    $$("[data-slides]").forEach(function (wrap) {
+      var slides = $$("[data-slide]", wrap);
+      var dots = $$("[data-slide-to]", wrap);
+      if (!slides.length || !("IntersectionObserver" in window)) return;
+
+      function setActive(i) {
+        dots.forEach(function (d, n) { d.classList.toggle("is-active", n === i); });
+      }
+      setActive(0);
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) setActive(slides.indexOf(e.target));
+        });
+      }, { threshold: 0.55 });
+      slides.forEach(function (s) { io.observe(s); });
+
+      var wio = new IntersectionObserver(function (entries) {
+        wrap.classList.toggle("is-active", entries[0].isIntersecting);
+      }, { threshold: 0.2 });
+      wio.observe(wrap);
+
+      dots.forEach(function (d) {
+        d.addEventListener("click", function () {
+          slides[+d.dataset.slideTo].scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    });
+  }
+
+  /* ---------- Product page ---------- */
+  function initProduct() {
+    var root = $("[data-product]");
+    if (!root) return;
+
+    // gallery
+    var mains = $$("[data-main-image]", root);
+    var thumbs = $$("[data-thumb]", root);
+    function showMedia(id) {
+      mains.forEach(function (img) { img.hidden = String(img.dataset.mediaId) !== String(id); });
+      thumbs.forEach(function (t) { t.classList.toggle("is-active", String(t.dataset.thumb) === String(id)); });
+    }
+    thumbs.forEach(function (t) { t.addEventListener("click", function () { showMedia(t.dataset.thumb); }); });
+
+    // variants
+    var form = $("#product-form", root);
+    var json = $("[data-variants]", root);
+    if (!form || !json) return;
+    var variants = JSON.parse(json.textContent);
+    var idInput = $("[data-variant-id]", form);
+    var addBtn = $("[data-add]", form);
+    var priceEl = $("[data-price]", root);
+    var fieldsets = $$("[data-option-index]", form);
+    var money = function (cents) {
+      var fmt = (window.Shopify && Shopify.formatMoney) ? Shopify.formatMoney(cents, window.theme_money_format || "${{amount}}") : null;
+      if (fmt) return fmt;
+      return new Intl.NumberFormat(document.documentElement.lang || "en", { style: "currency", currency: (window.Shopify && Shopify.currency && Shopify.currency.active) || "USD" }).format(cents / 100);
+    };
+
+    function selected() {
+      return fieldsets.map(function (fs) {
+        var c = $("input:checked", fs);
+        return c ? c.value : null;
+      });
+    }
+    function match(opts) {
+      return variants.find(function (v) {
+        return v.options.every(function (o, i) { return opts[i] === o; });
+      });
+    }
+    function markAvailability() {
+      var opts = selected();
+      fieldsets.forEach(function (fs, i) {
+        $$("input", fs).forEach(function (inp) {
+          var test = opts.slice(); test[i] = inp.value;
+          var v = variants.find(function (x) {
+            return x.options.every(function (o, n) { return test[n] === o; });
+          });
+          inp.closest(".opt__pill").classList.toggle("is-unavailable", !v || !v.available);
+        });
+      });
+    }
+    function update() {
+      var v = match(selected());
+      if (!v) { if (addBtn) addBtn.disabled = true; return; }
+      idInput.value = v.id;
+      if (priceEl) {
+        priceEl.innerHTML = (v.compare_at_price && v.compare_at_price > v.price ? "<s>" + money(v.compare_at_price) + "</s> " : "") + money(v.price);
+      }
+      if (addBtn) addBtn.disabled = !v.available;
+      if (v.featured_media && v.featured_media.id) showMedia(v.featured_media.id);
+      markAvailability();
+      var url = new URL(window.location.href);
+      url.searchParams.set("variant", v.id);
+      window.history.replaceState({}, "", url.toString());
+    }
+    form.addEventListener("change", function (e) {
+      if (e.target.matches(".opt input")) update();
+    });
+    markAvailability();
+
+    // quantity
+    var qty = $("[data-qty]", form);
+    var minus = $("[data-qty-minus]", form);
+    var plus = $("[data-qty-plus]", form);
+    if (qty && minus && plus) {
+      minus.addEventListener("click", function () { qty.value = Math.max(1, (+qty.value || 1) - 1); });
+      plus.addEventListener("click", function () { qty.value = (+qty.value || 1) + 1; });
+    }
+  }
+
+  /* ---------- Product recommendations ---------- */
+  function initRecs() {
+    var el = $("[data-recs]");
+    if (!el || !window.themeRoutes || !window.themeRoutes.recs) return;
+    var url = window.themeRoutes.recs + "?section_id=" + el.dataset.sectionId + "&product_id=" + el.dataset.productId + "&limit=" + (el.dataset.limit || 4);
+    fetch(url).then(function (r) { return r.text(); }).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      var fresh = $("[data-recs]", doc);
+      if (fresh && fresh.innerHTML.trim()) el.innerHTML = fresh.innerHTML;
+    }).catch(function () {});
+  }
+
+  /* ---------- Cart quantity: auto-update ---------- */
+  function initCart() {
+    $$("[data-cart-qty]").forEach(function (input) {
+      input.addEventListener("change", function () {
+        var form = input.closest("form");
+        if (!form) return;
+        var hidden = document.createElement("input");
+        hidden.type = "hidden"; hidden.name = "update"; hidden.value = "1";
+        form.appendChild(hidden);
+        form.submit();
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initNav();
+    initReveal();
+    initDragScroll();
+    initSlides();
+    initProduct();
+    initRecs();
+    initCart();
+  });
+})();
+
+</script></body></html>
