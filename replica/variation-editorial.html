@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Brand – Websites that bring in clients (editorial variation, placeholder content)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,500&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,600;1,9..144,800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6efe3; --paper2:#efe5d3; --ink:#15110f; --tomato:#ff4d2e; --sun:#ffc933; --mint:#bfe6cf; --pine:#0f3d2e; --pink:#ffb8c9; --sky:#bcd8ff;
+  --serif:"Fraunces","Iowan Old Style","Georgia",serif; --sans:"DM Sans","Helvetica Neue",Arial,sans-serif; --hand:"Caveat","Comic Sans MS",cursive;
+  --r:22px; --bd:2.5px solid var(--ink); --sh:6px 6px 0 var(--ink); --sh-s:4px 4px 0 var(--ink);
+  --w:min(1240px,100% - 48px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+h1,h2,h3,h4,p,ul{margin:0}
+ul{list-style:none;padding:0}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.w{width:var(--w);margin-inline:auto}
+.serif{font-family:var(--serif)}
+.h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.9rem,6.3vw,5.9rem);line-height:.92;letter-spacing:-.035em}
+.h2{font-family:var(--serif);font-weight:800;font-size:clamp(2.2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.03em}
+.h3{font-family:var(--serif);font-weight:800;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.05;letter-spacing:-.02em}
+em.i{font-style:italic;font-weight:600}
+.hl{background:linear-gradient(transparent 58%,var(--sun) 58% 92%,transparent 92%);padding:0 .08em}
+.hl--t{background:linear-gradient(transparent 58%,var(--tomato) 58% 92%,transparent 92%);color:var(--ink)}
+.scribble{position:relative;display:inline-block}
+.scribble svg{position:absolute;left:-2%;bottom:-.16em;width:104%;height:.34em;overflow:visible}
+.scribble path{stroke:var(--tomato);stroke-width:5;fill:none;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.2s .5s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.eyebrow{display:inline-flex;align-items:center;gap:.6em;font:700 .78rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:.6em 1em;border:var(--bd);border-radius:99px;background:#fff}
+.eyebrow i{width:.6em;height:.6em;border-radius:50%;background:var(--tomato);display:block}
+.hand{font-family:var(--hand);font-weight:700;font-size:1.5rem;line-height:1;color:var(--tomato)}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.95em 1.5em;border:var(--bd);border-radius:99px;background:var(--tomato);color:var(--ink);font:700 .95rem/1 var(--sans);text-decoration:none;box-shadow:var(--sh-s);transition:transform .15s,box-shadow .15s;white-space:nowrap}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.btn--sun{background:var(--sun)}.btn--white{background:#fff}.btn--ink{background:var(--ink);color:var(--paper);box-shadow:4px 4px 0 var(--tomato)}
+.btn--ink:hover{box-shadow:2px 2px 0 var(--tomato)}
+.btn .ar{display:inline-grid;place-items:center;width:1.5em;height:1.5em;border-radius:50%;background:var(--ink);color:var(--paper);font-size:.8rem}
+.ph{position:relative;display:grid;place-items:center;text-align:center;border:var(--bd);background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#f9f3e8 14px 28px);font:700 .72rem/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#7b6f60;overflow:hidden}
+.ph small{display:block;font-weight:500;letter-spacing:.04em;text-transform:none;font-size:.78rem;opacity:.85}
+.tape{position:absolute;width:110px;height:30px;background:rgba(255,201,51,.8);border-left:2px dashed rgba(0,0,0,.18);border-right:2px dashed rgba(0,0,0,.18);z-index:3}
+[data-reveal]{opacity:0;transform:translateY(26px) rotate(var(--rot,0deg));transition:opacity .7s,transform .7s}
+[data-reveal].in{opacity:1;transform:rotate(var(--rot,0deg))}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:var(--bd)}
+.hdr__in{width:var(--w);margin-inline:auto;display:flex;align-items:center;gap:28px;height:78px}
+.logo{display:flex;align-items:center;gap:.35em;font:900 1.7rem/1 var(--serif);letter-spacing:-.04em;text-decoration:none}
+.logo b{display:inline-block;color:var(--tomato);font-size:1.25em;animation:spin 9s linear infinite;line-height:.8}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nav{display:flex;gap:6px;margin-left:auto}
+.nav a{padding:.55em .95em;border-radius:99px;font:500 .98rem/1 var(--sans);text-decoration:none;transition:background .15s}
+.nav a:hover,.nav a.on{background:var(--sun)}
+.burger{display:none;margin-left:auto;width:48px;height:48px;border:var(--bd);border-radius:50%;background:#fff;font-size:1.3rem}
+@media(max-width:980px){.nav{display:none;position:absolute;top:78px;left:0;right:0;flex-direction:column;background:var(--paper);padding:14px 24px 22px;border-bottom:var(--bd);margin:0}.nav.open{display:flex}.burger{display:grid;place-items:center}.hdr__cta{display:none}}
+
+/* hero */
+.hero{position:relative;padding:70px 0 90px;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1.3fr .8fr;gap:40px;align-items:center}
+.hero__eyebrow{margin-bottom:26px}
+.hero h1 .l2{display:block}
+.hero__text{max-width:34em;font-size:1.28rem;margin:28px 0 34px}
+.hero__text b{background:var(--sun);padding:0 .25em}
+.hero__btns{display:flex;flex-wrap:wrap;gap:16px}
+.stamps{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.stamp{display:inline-flex;align-items:center;gap:.55em;padding:.55em 1em;border:var(--bd);border-radius:12px;background:#fff;font:700 .9rem/1 var(--sans);transform:rotate(var(--r,0deg))}
+.stamp .st{color:var(--tomato);letter-spacing:.05em}
+.hero__art{position:relative;height:560px}
+.pol{position:absolute;width:62%;background:#fff;border:var(--bd);border-radius:10px;padding:12px 12px 44px;box-shadow:var(--sh);transform:rotate(var(--rot))}
+.pol .ph{aspect-ratio:1/1.05}
+.pol span{position:absolute;left:0;right:0;bottom:10px;text-align:center}
+.pol--1{--rot:-7deg;left:0;top:10px}.pol--2{--rot:5deg;right:0;top:120px;z-index:2}.pol--3{--rot:-2deg;left:16%;bottom:0;width:50%;z-index:3}
+.badge{position:absolute;right:-6px;top:-18px;width:150px;height:150px;z-index:5;animation:spin 18s linear infinite}
+.badge svg{width:100%;height:100%}
+.sparkle{position:absolute;color:var(--tomato);font-size:2.4rem;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.25) rotate(20deg)}}
+@media(max-width:900px){.hero__grid{grid-template-columns:1fr}.hero__art{height:440px}}
+
+/* marquee */
+.strip{background:var(--tomato);border-block:var(--bd);overflow:hidden;white-space:nowrap}
+.strip__t{display:flex;width:max-content;animation:mq 30s linear infinite}
+.strip__t span{padding:14px 28px;font:900 clamp(1.4rem,3vw,2.3rem)/1 var(--serif);letter-spacing:-.02em}
+.strip__t i{font-style:normal;padding:14px 4px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.strip--ink{background:var(--ink);color:var(--paper)}
+.strip--ink .strip__t span{-webkit-text-stroke:1.5px var(--paper);color:transparent}
+.strip--ink .strip__t span:nth-child(3n){-webkit-text-stroke:0;color:var(--sun)}
+
+/* logos */
+.logos{padding:70px 0 20px}
+.logos__lab{text-align:center;margin-bottom:30px}
+.logos__g{display:grid;grid-template-columns:repeat(5,1fr);border:var(--bd);border-radius:var(--r);overflow:hidden;background:#fff}
+.logos__g div{padding:34px 12px;text-align:center;font:800 1.15rem/1 var(--serif);border-right:var(--bd);border-bottom:var(--bd);letter-spacing:-.01em}
+.logos__g div:nth-child(5n){border-right:0}.logos__g div:nth-child(n+6){border-bottom:0}
+.logos__g div:nth-child(odd){font-style:italic;font-weight:600}
+@media(max-width:800px){.logos__g{grid-template-columns:repeat(2,1fr)}.logos__g div{border-right:var(--bd)!important;border-bottom:var(--bd)!important}}
+
+/* about */
+.about{padding:90px 0}
+.about__g{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start}
+.about h2{margin:22px 0 28px}
+.about p{margin-bottom:18px;max-width:34em;font-size:1.12rem}
+.about p:first-of-type::first-letter{font:900 4.2rem/.8 var(--serif);float:left;margin:6px 10px 0 0;color:var(--tomato)}
+.about__btn{margin-top:14px}
+.vid{position:relative;border:var(--bd);border-radius:var(--r);background:#fff;box-shadow:var(--sh);padding:14px;transform:rotate(1.6deg)}
+.vid__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.vid__img{aspect-ratio:4/3;border-radius:12px}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:var(--tomato);border:var(--bd);box-shadow:var(--sh-s);display:grid;place-items:center;transition:transform .15s}
+.play:hover{transform:translate(-50%,-50%) scale(1.08)}
+.play svg{width:30px;height:30px;margin-left:4px}
+.vid__cap{margin-top:14px;font:700 1.05rem/1.3 var(--serif)}
+@media(max-width:900px){.about__g{grid-template-columns:1fr;gap:50px}}
+
+/* stats */
+.stats{background:var(--sun);border-block:var(--bd)}
+.stats__g{display:grid;grid-template-columns:repeat(4,1fr)}
+.stats__g div{padding:46px 20px;text-align:center;border-right:var(--bd)}
+.stats__g div:last-child{border:0}
+.stats b{display:block;font:900 clamp(3rem,6vw,5.4rem)/1 var(--serif);letter-spacing:-.04em}
+.stats span{display:block;margin-top:10px;font:700 .85rem/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:800px){.stats__g{grid-template-columns:1fr 1fr}.stats__g div:nth-child(2){border-right:0}.stats__g div:nth-child(-n+2){border-bottom:var(--bd)}}
+
+/* shift */
+.shift{background:var(--pine);color:var(--paper);padding:100px 0;position:relative;overflow:hidden}
+.shift .eyebrow{background:transparent;color:var(--paper);border-color:var(--paper)}
+.shift h2{margin:26px 0 26px;max-width:14em}
+.shift h2 .hl{background:linear-gradient(transparent 58%,var(--tomato) 58% 92%,transparent 92%);color:#fff}
+.shift__lead{max-width:40em;font-size:1.18rem;opacity:.92}
+.shift__g{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;margin-top:64px;align-items:start}
+.pts li{display:grid;grid-template-columns:76px 1fr;gap:16px;padding:26px 0;border-top:2px dashed rgba(246,239,227,.35)}
+.pts li:last-child{border-bottom:2px dashed rgba(246,239,227,.35)}
+.pts b{font:900 3.4rem/.9 var(--serif);color:var(--sun)}
+.pts h4{font:800 1.4rem/1.15 var(--serif);margin-bottom:6px}
+.pts p{opacity:.85}
+.term{background:var(--paper);color:var(--ink);border:var(--bd);border-radius:var(--r);box-shadow:8px 8px 0 var(--tomato);padding:22px;transform:rotate(1deg)}
+.term__bar{display:flex;gap:7px;align-items:center;margin-bottom:16px;font:700 .72rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.term__bar i{width:13px;height:13px;border-radius:50%;border:2px solid var(--ink);display:block}
+.term__bar i:nth-child(1){background:var(--tomato)}.term__bar i:nth-child(2){background:var(--sun)}.term__bar i:nth-child(3){background:var(--mint)}
+.term__bar span{margin-left:8px}
+.q{display:flex;align-items:center;gap:10px;border:var(--bd);border-radius:99px;padding:14px 20px;background:#fff;font:500 1.05rem/1 var(--sans);margin-bottom:14px}
+.q .c{width:2px;height:1.1em;background:var(--ink);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chips button{padding:.5em .95em;border:2px solid var(--ink);border-radius:99px;background:#fff;font:700 .72rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;transition:background .15s,transform .15s}
+.chips button:hover{transform:translateY(-2px)}
+.chips button.on{background:var(--ink);color:var(--paper)}
+.ans{border:var(--bd);border-radius:14px;background:var(--paper2);padding:18px 20px;min-height:170px}
+.ans__h{font:700 .72rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ans__h i{width:12px;height:12px;background:var(--tomato);border:2px solid var(--ink);display:block;transform:rotate(45deg)}
+.skel i{display:block;height:11px;border-radius:6px;background:#d9ccb6;margin-bottom:11px;animation:sk 1.2s ease-in-out infinite}.skel i:nth-child(2){width:84%}.skel i:nth-child(3){width:60%}
+@keyframes sk{50%{opacity:.4}}
+.ans p{font-size:1rem;margin-bottom:10px}
+.ans mark{background:var(--sun);padding:0 .3em;font-weight:700}
+.srcs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.srcs span{padding:.4em .8em;border:2px solid var(--ink);border-radius:99px;font:700 .72rem/1 var(--sans);background:#fff}
+.srcs .hl2{background:var(--tomato)}
+.term__foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px}
+.term__foot p{font-size:.88rem;max-width:15em;opacity:.8}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:70px}
+.stat{background:var(--paper);color:var(--ink);border:var(--bd);border-radius:var(--r);padding:26px 26px 24px;box-shadow:6px 6px 0 var(--sun);position:relative;min-height:240px}
+.stat:nth-child(2){box-shadow:6px 6px 0 var(--pink)}.stat:nth-child(3){box-shadow:6px 6px 0 var(--mint)}
+.stat b{font:900 4.2rem/1 var(--serif);letter-spacing:-.04em}
+.stat b sup{font-size:1.8rem;color:var(--tomato)}
+.stat p{margin:10px 0 70px;font-size:.98rem;max-width:20em}
+.bars{position:absolute;left:26px;right:26px;bottom:24px;height:48px;display:flex;align-items:flex-end;gap:7px}
+.bars i{flex:1;height:var(--h);background:var(--ink);border-radius:4px 4px 0 0}
+.bars i.t{background:var(--tomato);border:2px solid var(--ink)}
+.shift__close{text-align:center;margin-top:64px;font:700 clamp(1.3rem,2.4vw,1.9rem)/1.3 var(--serif)}
+.shift__close em{color:var(--sun)}
+@media(max-width:900px){.shift__g{grid-template-columns:1fr;gap:50px}.three{grid-template-columns:1fr}}
+
+/* services (stacking cards) */
+.svc{padding:110px 0 60px}
+.svc__head{text-align:center;max-width:46em;margin:0 auto 70px}
+.svc__head h2{margin:22px 0 22px}
+.svc__head p{font-size:1.14rem}
+.stack{position:relative}
+.sc{position:sticky;top:calc(98px + var(--i)*26px);display:grid;grid-template-columns:.95fr 1.05fr;gap:0;border:var(--bd);border-radius:30px;overflow:hidden;box-shadow:var(--sh);margin-bottom:60px;background:var(--bg)}
+.sc__l{padding:44px;display:flex;flex-direction:column;gap:18px}
+.sc__n{font:900 clamp(4.5rem,9vw,8rem)/.8 var(--serif);letter-spacing:-.05em;-webkit-text-stroke:2.5px var(--ink);color:transparent}
+.sc__tag{font:700 .78rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.sc h3{font:900 clamp(2rem,3.4vw,3rem)/1 var(--serif);letter-spacing:-.03em}
+.sc__sub{font:700 1.2rem/1.3 var(--serif)}
+.sc p.d{max-width:30em}
+.sc__btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.sc__r{padding:44px;background:rgba(255,255,255,.55);border-left:var(--bd);display:flex;flex-direction:column;gap:22px}
+.sc__r .ph{aspect-ratio:16/9;border-radius:14px;background:#fff}
+.sc__r h4{font:700 .78rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.sc__r li{display:flex;gap:12px;padding:10px 0;border-bottom:2px dashed rgba(21,17,15,.25);font-weight:500}
+.sc__r li::before{content:"✓";display:grid;place-items:center;flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--sun);font-size:.8rem;font-weight:700;margin-top:1px}
+.sc__r small{font-size:.9rem;opacity:.75}
+@media(max-width:900px){.sc{grid-template-columns:1fr;position:relative;top:0}.sc__r{border-left:0;border-top:var(--bd)}.sc__l,.sc__r{padding:28px}}
+
+/* reviews */
+.rev{padding:70px 0 100px;background:var(--paper2);border-top:var(--bd)}
+.plat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:56px}
+.plat div{text-align:center;padding:22px 10px;border:var(--bd);border-radius:18px;background:#fff;box-shadow:var(--sh-s)}
+.plat b{display:block;font:900 1.7rem/1 var(--serif)}
+.plat .s{color:var(--tomato);letter-spacing:.12em;margin:6px 0 4px;display:block}
+.plat small{font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
+.rev__row{display:flex;gap:22px;overflow-x:auto;padding:16px 4px 40px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.rev__row::-webkit-scrollbar{display:none}
+.note{flex:0 0 300px;scroll-snap-align:start;border:var(--bd);border-radius:6px 6px 26px 6px;padding:22px;background:var(--c);box-shadow:var(--sh-s);transform:rotate(var(--rot));min-height:250px;position:relative}
+.note::before{content:"";position:absolute;left:50%;top:-14px;width:70px;height:26px;margin-left:-35px;background:rgba(255,255,255,.65);border:2px solid rgba(0,0,0,.1);transform:rotate(-3deg)}
+.note header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.av{width:44px;height:44px;border-radius:50%;border:var(--bd);background:#fff;display:grid;place-items:center;font:900 1.1rem/1 var(--serif)}
+.note b{display:block;font:800 1rem/1.1 var(--serif)}.note small{font-size:.78rem;opacity:.7}
+.note .s{color:var(--tomato);letter-spacing:.1em}
+.note p{margin-top:8px;font-size:.98rem}
+.rev__nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;flex-wrap:wrap;gap:16px}
+.arrows{display:flex;gap:10px}
+.arrows button{width:52px;height:52px;border:var(--bd);border-radius:50%;background:#fff;box-shadow:var(--sh-s);font-size:1.3rem;transition:transform .15s,box-shadow .15s}
+.arrows button:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+@media(max-width:800px){.plat{grid-template-columns:1fr 1fr}}
+
+/* try ai chat */
+.try{padding:100px 0}
+.try__g{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.try h2{margin:22px 0 22px}
+.try p{font-size:1.14rem;max-width:30em}
+.chat{border:var(--bd);border-radius:26px;background:#fff;box-shadow:10px 10px 0 var(--ink);overflow:hidden;transform:rotate(-1deg)}
+.chat__h{display:flex;align-items:center;gap:14px;padding:18px 22px;background:var(--sky);border-bottom:var(--bd)}
+.chat__av{width:52px;height:52px;border-radius:50%;border:var(--bd);background:var(--sun);display:grid;place-items:center;font-size:1.5rem}
+.chat__h b{display:block;font:900 1.15rem/1.1 var(--serif)}.chat__h small{display:flex;align-items:center;gap:6px;font-size:.82rem}
+.chat__h small i{width:9px;height:9px;border-radius:50%;background:#2fbf71;border:1.5px solid var(--ink);display:block}
+.chat__m{padding:22px;display:flex;flex-direction:column;gap:12px;min-height:200px;max-height:290px;overflow:auto;background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(21,17,15,.05) 31px 32px)}
+.m{max-width:82%;padding:12px 16px;border:var(--bd);border-radius:18px 18px 18px 4px;background:var(--paper);font-size:.98rem}
+.m.me{align-self:flex-end;background:var(--tomato);border-radius:18px 18px 4px 18px}
+.chat__c{display:flex;flex-wrap:wrap;gap:8px;padding:0 22px 14px}
+.chat__c button{padding:.55em 1em;border:2px solid var(--ink);border-radius:99px;background:#fff;font:700 .72rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.chat__c button:hover{background:var(--sun)}
+.chat__f{display:flex;gap:10px;padding:14px 22px 22px;border-top:var(--bd)}
+.chat__f input{flex:1;border:var(--bd);border-radius:99px;padding:.9em 1.2em;font:500 1rem var(--sans);background:var(--paper);outline:none}
+.chat__f input:focus{background:#fff}
+.chat__f button{width:52px;height:52px;border-radius:50%;border:var(--bd);background:var(--tomato);font-size:1.2rem;box-shadow:var(--sh-s)}
+@media(max-width:900px){.try__g{grid-template-columns:1fr}}
+
+/* how */
+.how{padding:100px 0;background:var(--mint);border-block:var(--bd)}
+.how__head{text-align:center;max-width:46em;margin:0 auto 70px}
+.how__head h2{margin:22px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.step{position:relative;background:#fff;border:var(--bd);border-radius:26px;box-shadow:var(--sh);padding:26px 26px 30px}
+.step:nth-child(2){margin-top:34px}.step:nth-child(3){margin-top:68px}
+.step__n{position:absolute;left:-14px;top:-30px;width:70px;height:70px;border-radius:50%;background:var(--tomato);border:var(--bd);display:grid;place-items:center;font:900 1.8rem/1 var(--serif);box-shadow:var(--sh-s)}
+.step .ph{aspect-ratio:4/3;border-radius:14px;margin-bottom:20px}
+.step .tag{display:inline-block;font:700 .72rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:.5em .9em;border:2px solid var(--ink);border-radius:99px;background:var(--sun);margin-bottom:14px}
+.step h3{margin-bottom:10px}
+.step h4{font:700 1.02rem/1.35 var(--sans);margin-bottom:10px}
+.step p{font-size:.96rem;margin-bottom:16px;opacity:.85}
+.step small{display:block;font:700 .72rem/1 var(--sans);letter-spacing:.14em;margin-bottom:8px}
+.step li{padding:7px 0;border-top:2px dashed rgba(21,17,15,.2);font-weight:500;font-size:.96rem}
+.step li::before{content:"→ ";color:var(--tomato);font-weight:700}
+.cta{margin-top:70px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:var(--ink);color:var(--paper);border-radius:26px;padding:34px 40px;border:var(--bd);box-shadow:8px 8px 0 var(--tomato)}
+.cta p{font:800 clamp(1.3rem,2.4vw,1.9rem)/1.2 var(--serif);max-width:24em}
+.cta em{color:var(--sun)}
+@media(max-width:900px){.steps{grid-template-columns:1fr;gap:50px}.step:nth-child(n){margin-top:0}}
+
+/* results */
+.res{padding:100px 0}
+.res__g{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
+.res h2{margin:22px 0 24px}
+.res p{font-size:1.14rem;max-width:30em}
+.res .vid{transform:rotate(-1.4deg)}
+@media(max-width:900px){.res__g{grid-template-columns:1fr}}
+
+/* pricing */
+.price{padding:100px 0;background:var(--pink);border-block:var(--bd)}
+.price__head{text-align:center;max-width:44em;margin:0 auto 40px}
+.price__head h2{margin:22px 0}
+.tg{display:flex;width:max-content;max-width:100%;margin:0 auto 34px;border:var(--bd);border-radius:99px;background:#fff;box-shadow:var(--sh-s);padding:5px}
+.tg button{padding:.85em 1.6em;border-radius:99px;font:700 .8rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s}
+.tg button.on{background:var(--ink);color:var(--paper)}
+.pc{display:grid;grid-template-columns:1.1fr .9fr;border:var(--bd);border-radius:30px;background:#fff;box-shadow:var(--sh);overflow:hidden}
+.pc__l{padding:44px}
+.pc .tag{display:inline-block;font:700 .72rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:.55em .95em;border:2px solid var(--ink);border-radius:99px;background:var(--sun)}
+.pc h3{font:900 clamp(2.4rem,4vw,3.6rem)/1 var(--serif);letter-spacing:-.04em;margin:18px 0 10px}
+.pc h4{font:700 1.2rem/1.3 var(--serif);margin-bottom:12px}
+.pc__l>p{max-width:28em;margin-bottom:20px}
+.suits{border:2px dashed var(--ink);border-radius:14px;padding:16px 18px;margin-bottom:26px;background:var(--paper)}
+.suits small{display:block;font:700 .72rem/1 var(--sans);letter-spacing:.14em;margin-bottom:6px}
+.pb{display:flex;align-items:flex-end;gap:10px;height:120px;margin-bottom:10px}
+.pb div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;text-align:center}
+.pb i{display:block;height:var(--h);background:var(--tomato);border:var(--bd);border-radius:8px 8px 0 0;transition:height .5s}
+.pb span{font:700 .62rem/1 var(--sans);letter-spacing:.1em;margin-top:6px}
+.pc__r{background:var(--sun);border-left:var(--bd);padding:34px;display:grid;place-items:center}
+.pc__r .ph{width:100%;height:100%;min-height:300px;border-radius:20px;background:rgba(255,255,255,.5)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.tile{background:#fff;border:var(--bd);border-radius:18px;padding:20px;box-shadow:var(--sh-s)}
+.tile i{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;border:var(--bd);background:var(--sun);margin-bottom:12px;font-style:normal;font-weight:900}
+.tile b{display:block;font:800 1.1rem/1.15 var(--serif);margin-bottom:6px}
+.tile p{font-size:.9rem;opacity:.8}
+.ns{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:22px;padding:26px 30px;border:var(--bd);border-radius:20px;background:var(--paper)}
+.ns b{font:800 1.3rem/1.2 var(--serif)}.ns p{opacity:.8;max-width:30em}
+@media(max-width:900px){.pc{grid-template-columns:1fr}.pc__r{border-left:0;border-top:var(--bd)}.tiles{grid-template-columns:1fr 1fr}.pc__l{padding:26px}}
+
+/* people */
+.ppl{padding:100px 0;background:var(--ink);color:var(--paper)}
+.ppl__g{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.ppl .eyebrow{background:transparent;color:var(--paper);border-color:var(--paper)}
+.ppl h2{margin:24px 0 26px}
+.ppl h2 em{color:var(--sun)}
+.ppl p{margin-bottom:16px;font-size:1.1rem;opacity:.9;max-width:32em}
+.ppl p b{color:var(--sun)}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.tags span{padding:.55em 1em;border-radius:99px;border:2px solid var(--paper);font:700 .8rem/1 var(--sans);transform:rotate(var(--rot,0deg))}
+.tags span:nth-child(3n+1){background:var(--sun);color:var(--ink);border-color:var(--sun)}
+.tags span:nth-child(3n+2){background:var(--tomato);color:var(--ink);border-color:var(--tomato)}
+.team{position:relative}
+.team .ph{aspect-ratio:4/5;border-radius:26px;box-shadow:10px 10px 0 var(--tomato);background:repeating-linear-gradient(135deg,#2a2420 0 14px,#211c19 14px 28px);color:#b9ad9c;border-color:var(--paper)}
+.team .tape{left:50%;top:-14px;margin-left:-55px;transform:rotate(-3deg)}
+@media(max-width:900px){.ppl__g{grid-template-columns:1fr}}
+
+/* projects */
+.prj{padding:100px 0}
+.prj h2{margin:22px 0 18px}
+.prj__t{max-width:36em;font-size:1.14rem}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:56px 0 46px}
+.pj{display:block;text-decoration:none;border:var(--bd);border-radius:26px;background:#fff;box-shadow:var(--sh);padding:14px 14px 22px;transition:transform .2s,box-shadow .2s}
+.pj:nth-child(2){transform:translateY(26px)}
+.pj:hover{transform:translate(3px,3px) rotate(-.6deg);box-shadow:3px 3px 0 var(--ink)}
+.pj .ph{aspect-ratio:4/3;border-radius:16px;margin-bottom:18px}
+.pj small{display:block;font:700 .72rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--tomato)}
+.pj b{display:block;font:900 1.7rem/1.1 var(--serif);letter-spacing:-.03em;margin-top:6px}
+.prj__c{text-align:center;margin-top:60px}
+.rt{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:56px}
+@media(max-width:900px){.pg{grid-template-columns:1fr}.pj:nth-child(2){transform:none}}
+
+/* faq */
+.faq{padding:30px 0 110px}
+.faq__g{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
+.faq__c{position:sticky;top:110px;background:var(--sun);border:var(--bd);border-radius:28px;box-shadow:var(--sh);padding:34px;transform:rotate(-1.2deg)}
+.faq__c h3{font:900 clamp(2.4rem,4vw,3.5rem)/.95 var(--serif);letter-spacing:-.04em;margin:18px 0 26px}
+.fq details{border:var(--bd);border-radius:18px;background:#fff;margin-bottom:16px;box-shadow:var(--sh-s);transition:background .2s}
+.fq details[open]{background:var(--mint)}
+.fq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 26px;font:800 1.2rem/1.2 var(--serif);cursor:pointer}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary::after{content:"+";display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;border:var(--bd);background:var(--paper);font:700 1.4rem/1 var(--sans);transition:transform .25s}
+.fq details[open] summary::after{transform:rotate(45deg);background:var(--tomato)}
+.fq p{padding:0 26px 24px;max-width:36em}
+@media(max-width:900px){.faq__g{grid-template-columns:1fr}.faq__c{position:relative;top:0}}
+
+/* audit */
+.audit{background:var(--tomato);border-block:var(--bd);padding:100px 0;position:relative;overflow:hidden}
+.audit__g{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.audit small.k{font:700 .85rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.audit h2{margin:18px 0 28px}
+.audit h2 .hl{background:linear-gradient(transparent 58%,var(--sun) 58% 92%,transparent 92%)}
+.audit__b{display:flex;flex-wrap:wrap;gap:14px}
+.form{background:var(--paper);border:var(--bd);border-radius:28px;box-shadow:10px 10px 0 var(--ink);padding:34px;transform:rotate(1.4deg)}
+.form h3{font:900 1.9rem/1 var(--serif);letter-spacing:-.03em;margin-bottom:22px}
+.form label{display:block;font:700 .85rem/1 var(--sans);margin-bottom:16px}
+.form input[type=email],.form input[type=text],.form input[type=url],.form select{display:block;width:100%;margin-top:8px;padding:.9em 1.1em;border:var(--bd);border-radius:14px;background:#fff;font:500 1rem var(--sans);outline:none}
+.form input:focus,.form select:focus{box-shadow:var(--sh-s)}
+.form .r2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .cons{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:.85rem;line-height:1.4}
+.form .cons input{margin-top:2px;accent-color:var(--ink);flex:none}
+.form .btn{width:100%;justify-content:center;margin-top:6px}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:18px;font:700 .8rem/1 var(--sans)}
+.trust li::before{content:"✱ ";color:var(--tomato)}
+.cap{display:flex;align-items:center;gap:12px;border:var(--bd);border-radius:12px;background:#fff;padding:12px 16px;width:max-content;margin-bottom:16px;font:500 .85rem var(--sans)}
+.cap i{width:24px;height:24px;border:var(--bd);border-radius:6px;background:var(--paper);display:block}
+@media(max-width:900px){.audit__g{grid-template-columns:1fr}}
+
+/* footer */
+.ftr{background:var(--ink);color:var(--paper);padding:80px 0 30px;overflow:hidden}
+.ftr__g{display:grid;grid-template-columns:1.2fr .8fr 1fr;gap:50px}
+.ftr .logo{font-size:2rem;margin-bottom:18px;color:var(--paper)}
+.ftr p{opacity:.8;max-width:26em;font-size:.98rem}
+.ftr li{padding:6px 0}.ftr li a{text-decoration:none;opacity:.85}.ftr li a:hover{opacity:1;color:var(--sun)}
+.ftr h4{font:700 .78rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--sun);margin-bottom:14px}
+.addr{margin-top:20px}.addr b{display:block;font:800 1.15rem/1.2 var(--serif)}
+.ftr form{display:grid;gap:12px}
+.ftr input{padding:.9em 1.2em;border-radius:99px;border:2px solid var(--paper);background:transparent;color:var(--paper);font:500 1rem var(--sans);outline:none}
+.ftr input::placeholder{color:rgba(246,239,227,.55)}
+.ftr input:focus{background:rgba(246,239,227,.08)}
+.ftr .r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.huge{font:900 clamp(3.4rem,17.5vw,19rem)/.85 var(--serif);letter-spacing:-.06em;color:var(--paper);opacity:1;margin:60px 0 0;white-space:nowrap;text-align:center;-webkit-text-stroke:0}
+.huge span{color:var(--tomato)}
+.legal{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:2px dashed rgba(246,239,227,.3);margin-top:26px;padding-top:20px;font-size:.85rem;opacity:.7}
+@media(max-width:900px){.ftr__g{grid-template-columns:1fr}}
+
+/* overlays */
+.ck{position:fixed;left:18px;bottom:18px;z-index:150;width:min(340px,calc(100% - 36px));background:#fff;border:var(--bd);border-radius:18px;box-shadow:var(--sh-s);padding:16px 18px;font-size:.88rem;transform:rotate(-1deg)}
+.ck b{font:800 1rem var(--serif);display:block;margin-bottom:4px}
+.ck div{display:flex;gap:10px;margin-top:12px}
+.ck button{padding:.6em 1.1em;border:var(--bd);border-radius:99px;font:700 .78rem/1 var(--sans);background:var(--sun)}
+.ck button.g{background:#fff}
+.ck.hide{display:none}
+.fab{position:fixed;right:18px;bottom:18px;z-index:150;display:flex;align-items:center;gap:10px;padding:.7em 1.2em .7em .8em;border:var(--bd);border-radius:99px;background:var(--sky);box-shadow:var(--sh-s);font:700 .9rem/1 var(--sans);text-decoration:none}
+.fab i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sun);border:var(--bd);font-style:normal}
+@media(max-width:600px){.fab{font-size:0;gap:0;padding:.45em;bottom:96px;right:14px}.fab i{font-size:1rem}.ck{bottom:14px;left:14px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="top">
+  <div class="hdr__in">
+    <a class="logo" href="#top"><b>✱</b>yourbrand</a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a class="on" href="#top">Home</a><a href="#services">Services</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#projects">Projects</a><a href="#pricing">Pricing</a><a href="#faq">Blog</a><a href="#audit">Contact</a>
+    </nav>
+    <a class="btn hdr__cta" href="#audit">Book a call <span class="ar">↗</span></a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="w hero__grid">
+    <div>
+      <span class="eyebrow hero__eyebrow"><i></i>Your Brand Agency · your growth partner</span>
+      <h1 class="h1">Get more <span class="scribble">clients<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M3 14C60 4 120 18 180 8s90 6 117 2"/></svg></span> <span class="l2">from your <em class="i hl">website.</em></span></h1>
+      <p class="hero__text">We build websites that actually convert, and run the search and ads work that turns visitors into paying clients. City based, <b>0000+ businesses served across 00 countries.</b></p>
+      <div class="hero__btns"><a class="btn" href="#audit">Free consultation <span class="ar">↗</span></a><a class="btn btn--white" href="#projects">Our projects <span class="ar">→</span></a></div>
+      <div class="stamps"><span class="stamp" style="--r:-2deg"><span class="st">★★★★★</span> 4.7 on Platform A</span><span class="stamp" style="--r:1.5deg"><span class="st">★★★★★</span> 4.4 on Platform B</span></div>
+    </div>
+    <div class="hero__art" aria-hidden="true">
+      <div class="badge"><svg viewBox="0 0 150 150"><defs><path id="c" d="M75 75m-54 0a54 54 0 1 1 108 0a54 54 0 1 1-108 0"/></defs><circle cx="75" cy="75" r="72" fill="#ffc933" stroke="#15110f" stroke-width="3"/><text font-family="Fraunces,serif" font-weight="800" font-size="15.500" letter-spacing="2.800" fill="#15110f"><textPath href="#c">· 0000+ HAPPY CLIENTS · SINCE 20XX ·</textPath></text><text x="75" y="88" text-anchor="middle" font-family="Fraunces,serif" font-weight="900" font-size="44" fill="#ff4d2e" stroke="#15110f" stroke-width="1.500">✱</text></svg></div>
+      <div class="pol pol--1"><div class="ph">Character 1<small>placeholder</small></div><span class="hand">hello!</span></div>
+      <div class="pol pol--2"><div class="ph">Character 2<small>placeholder</small></div><span class="hand">we build</span></div>
+      <div class="pol pol--3"><div class="ph">Character 3<small>placeholder</small></div><span class="hand">& we grow</span></div>
+      <span class="sparkle" style="left:48%;top:4%">✦</span><span class="sparkle" style="right:2%;bottom:14%;animation-delay:.8s">✦</span>
+    </div>
+  </div>
+</section>
+
+<div class="strip"><div class="strip__t" id="mq1"></div></div>
+
+<section class="logos"><div class="w">
+  <p class="logos__lab hand">people who trusted us ↓</p>
+  <div class="logos__g"><div>Logo One</div><div>Logo Two</div><div>Logo Three</div><div>LOGO FOUR</div><div>Logo Five</div><div>Logo Six</div><div>LOGO SEVEN</div><div>Logo Eight</div><div>Logo Nine</div><div>LOGO TEN</div></div>
+</div></section>
+
+<section class="about" id="about"><div class="w about__g">
+  <div data-reveal>
+    <span class="eyebrow"><i></i>About your brand agency</span>
+    <h2 class="h2">We are your growth partner, <em class="i hl--t hl">not a vendor.</em></h2>
+    <p>Your Brand is a digital growth agency based in your city, working remotely with clients in more than <b>00 countries</b>. We have delivered over <b>0,000 websites in 2025</b>, and every recommendation we make comes from what those projects taught us.</p>
+    <p>Design, search and paid sit in one team. The people who plan your website are the people who report on its results, so nothing gets handed off and quietly dropped.</p>
+    <p>We tell you what we would do if it were our own business, including the times when the honest answer is to spend less.</p>
+    <a class="btn btn--sun about__btn" href="#people">Meet the team <span class="ar">→</span></a>
+  </div>
+  <div class="vid" data-reveal style="--rot:1.6deg">
+    <span class="tape" style="left:20px;top:-14px;transform:rotate(-6deg)"></span>
+    <div class="vid__top"><span class="eyebrow"><i></i>Straight from us</span><span class="hand" style="font-size:1.25rem">leave a question, we answer on video</span></div>
+    <div class="ph vid__img">Video placeholder<small>4:3</small></div>
+    <button class="play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M6 4v16l14-8z" fill="#15110f"/></svg></button>
+    <p class="vid__cap">“Everyone says they're the best in the world anyway, right?”</p>
+  </div>
+</div></section>
+
+<section class="stats"><div class="w stats__g">
+  <div><b data-count="7" data-s="+">7+</b><span>Years of wizardry</span></div>
+  <div><b data-count="99" data-s="+">99+</b><span>Rockstars</span></div>
+  <div><b data-count="3992" data-s="+">3,992+</b><span>Amazing clients</span></div>
+  <div><b data-count="59" data-s="+">59+</b><span>Countries</span></div>
+</div></section>
+
+<section class="shift" id="ai"><div class="w">
+  <span class="eyebrow"><i></i>How search is changing</span>
+  <h2 class="h2">Search answers now. Being the answer is <em class="i hl">the new first place.</em></h2>
+  <p class="shift__lead">People used to search, scan a list of links and click. Now they ask, read one answer and act on it. Assistants write that answer using sources they trust. When your website is not one of those sources, you are left out of the decision, even while your rankings look fine.</p>
+  <div class="shift__g">
+    <ul class="pts">
+      <li data-reveal><b>01</b><div><h4>Ranking is no longer the finish line</h4><p>A page can sit on the first results page and still be missing from the answer written above it.</p></div></li>
+      <li data-reveal><b>02</b><div><h4>Being quoted is the new click</h4><p>When an assistant names you as the source, you reach someone who has already made up their mind.</p></div></li>
+      <li data-reveal><b>03</b><div><h4>The position is still open</h4><p>Most businesses have not adapted their websites for this yet. The ones that move now hold the answer slot.</p></div></li>
+      <li data-reveal><b>04</b><div><h4>Visibility only pays when the page converts</h4><p>Getting named brings the right person to your site. What happens next is conversion work.</p></div></li>
+    </ul>
+    <div class="term" data-reveal style="--rot:1deg">
+      <div class="term__bar"><i></i><i></i><i></i><span>Try a search</span></div>
+      <div class="q"><span>🔎</span><span id="typed">best seo agency for law firms</span><span class="c"></span></div>
+      <div class="chips" id="chips"><button class="on">Law firms</button><button>Dentists</button><button>Accountants</button><button>Ecommerce</button><button>Restaurants</button><button>SaaS</button><button>Contractors</button><button>Recruitment</button></div>
+      <div class="ans"><div class="ans__h"><i></i>Answer</div>
+        <div class="skel" id="skel" hidden><i></i><i></i><i></i></div>
+        <div id="ans"><p id="ansP">For a law firm, the highest impact work is structural. A clear page for every practice area, visible proof of experience, and markup that lets assistants read the firm correctly.</p><p>Agencies that specialise in this, such as <mark>Your Brand</mark>, treat the website as the source the answer gets written from.</p><div class="srcs"><span>industry-journal.com</span><span class="hl2">Your website</span><span>competitor.com</span></div></div>
+      </div>
+      <div class="term__foot"><p>This is the position we build for.</p><a class="btn btn--sun" href="#audit">Run this on your site <span class="ar">→</span></a></div>
+    </div>
+  </div>
+  <div class="three">
+    <div class="stat" data-reveal><b>34<sup>%</sup></b><p>Yearly growth in demand for answer-engine optimisation, the work that gets a business named.</p><div class="bars"><i style="--h:14%"></i><i style="--h:24%"></i><i style="--h:36%"></i><i style="--h:50%"></i><i style="--h:68%"></i><i class="t" style="--h:100%"></i></div></div>
+    <div class="stat" data-reveal><b>22<sup>%</sup></b><p>Higher conversion rate from visitors who arrive through an answer, compared with a standard click.</p><div class="bars"><i style="--h:20%"></i><i style="--h:28%"></i><i style="--h:40%"></i><i style="--h:52%"></i><i style="--h:72%"></i><i class="t" style="--h:100%"></i></div></div>
+    <div class="stat" data-reveal><b>1 <sup>in 5</sup></b><p>Businesses currently checking how assistants describe them. The rest have no idea what is being said.</p><div class="bars"><i class="t" style="--h:100%"></i><i style="--h:8%"></i><i style="--h:8%"></i><i style="--h:8%"></i><i style="--h:8%"></i><i style="--h:8%"></i></div></div>
+  </div>
+  <p class="shift__close">Every site we build and every search programme we run is written for people first and structured for machines second. <em class="i">One page, two readers.</em></p>
+</div></section>
+
+<section class="svc" id="services"><div class="w">
+  <div class="svc__head" data-reveal><span class="eyebrow"><i></i>Our main services</span><h2 class="h2">Three services. Built to work <em class="i hl">in order.</em></h2><p>Your website carries everything built on top of it. Search brings the right people to it. Ads speed up what is already working. You can start at any stage, and we will tell you which one you actually need.</p></div>
+  <div class="stack">
+    <article class="sc" style="--i:0;--bg:var(--sun)">
+      <div class="sc__l"><span class="sc__n">01</span><p class="sc__tag">Foundation</p><h3>Service one title</h3><p class="sc__sub">Your website is the foundation. We build it to be found and to convert.</p><p class="d">We design and build so search engines and assistants can read your site clearly, and so visitors always know what to do next. When you already have rankings, we carry them across rather than starting over.</p><div class="sc__btns"><a class="btn btn--ink" href="#audit">Book a consultation <span class="ar" style="background:var(--paper);color:var(--ink)">→</span></a><a class="btn btn--white" href="#">Discover the service</a></div></div>
+      <div class="sc__r"><div class="ph">Image placeholder<small>service screenshot</small></div><div><h4>What it includes</h4><ul><li>Design and build, or a rebuild of what you have</li><li>Written and structured for AI answers and search</li><li>Existing rankings and redirects protected</li><li>Pages built to hold traffic and load fast</li><li>Conversion layout, with A/B testing available</li></ul></div><small>We review your current site first and tell you whether a redesign is enough or a rebuild is the better investment.</small></div>
+    </article>
+    <article class="sc" style="--i:1;--bg:var(--sky)">
+      <div class="sc__l"><span class="sc__n">02</span><p class="sc__tag">Visibility</p><h3>Service two title</h3><p class="sc__sub">We help the right people find you, in search and in assistants.</p><p class="d">We start with the searches that lead to paid work, built around what makes your business the better choice. Supporting content follows, so you are treated as a credible source and quoted when someone asks.</p><div class="sc__btns"><a class="btn btn--ink" href="#audit">Book a consultation <span class="ar" style="background:var(--paper);color:var(--ink)">→</span></a><a class="btn btn--white" href="#">Discover the service</a></div></div>
+      <div class="sc__r"><div class="ph">Image placeholder<small>service image</small></div><div><h4>What it includes</h4><ul><li>Technical fixes so your pages can rank</li><li>The commercial searches that lead to paid work</li><li>Content that proves your experience</li><li>Structured data so tools can quote you</li><li>Monthly reporting against agreed targets</li></ul></div><small>We prioritise the services that win you the most, then widen the coverage from there.</small></div>
+    </article>
+    <article class="sc" style="--i:2;--bg:var(--pink)">
+      <div class="sc__l"><span class="sc__n">03</span><p class="sc__tag">Acceleration</p><h3>Service three title</h3><p class="sc__sub">We put your budget where your buyers already are.</p><p class="d">Before we spend anything, we review your channels to find where demand sits and what it costs to reach. From there we work on click-through rate, conversion rate and cost per lead, month after month.</p><div class="sc__btns"><a class="btn btn--ink" href="#audit">Book a consultation <span class="ar" style="background:var(--paper);color:var(--ink)">→</span></a><a class="btn btn--white" href="#">Discover the service</a></div></div>
+      <div class="sc__r"><div class="ph">Image placeholder<small>service image</small></div><div><h4>What it includes</h4><ul><li>A review of every channel before any spend</li><li>Tracking set up properly, so numbers can be trusted</li><li>Landing pages matched to what people searched</li><li>Ongoing work on click-through and conversion</li><li>Cost per lead reported every month</li></ul></div><small>Ads work best on a site that already converts, which is why we look at the whole picture first.</small></div>
+    </article>
+  </div>
+</div></section>
+
+<section class="rev" id="reviews"><div class="w">
+  <div class="plat"><div><b>Platform 1</b><span class="s">★★★★★</span><small>130+ reviews</small></div><div><b>Platform 2</b><span class="s">★★★★★</span><small>200+ reviews</small></div><div><b>Platform 3</b><span class="s">★★★★★</span><small>40+ reviews</small></div><div><b>Platform 4</b><span class="s">★★★★★</span><small>80+ reviews</small></div></div>
+  <div class="rev__row" id="rrow">
+    <article class="note" style="--c:#fff3b8;--rot:-1.5deg"><header><span class="av">A</span><div><b>Reviewer Name</b><small>5 months ago</small></div></header><span class="s">★★★★★</span><p>This user only left a rating.</p></article>
+    <article class="note" style="--c:#ffd9e2;--rot:1.2deg"><header><span class="av">B</span><div><b>Reviewer Name</b><small>6 months ago</small></div></header><span class="s">★★★★★</span><p>This user only left a rating.</p></article>
+    <article class="note" style="--c:#d4f0df;--rot:-.8deg"><header><span class="av">C</span><div><b>Reviewer Name</b><small>6 months ago</small></div></header><span class="s">★★★★★</span><p>Our company used Your Brand to redesign our website and the team was amazing to work with. They did a great job from start to finish.</p></article>
+    <article class="note" style="--c:#d6e6ff;--rot:1.6deg"><header><span class="av">D</span><div><b>Reviewer Name</b><small>7 months ago</small></div></header><span class="s">★★★★★</span><p>I was really happy with the results. The website looks professional and we received positive feedback from our customers.</p></article>
+    <article class="note" style="--c:#fff3b8;--rot:-1.2deg"><header><span class="av">E</span><div><b>Reviewer Name</b><small>8 months ago</small></div></header><span class="s">★★★★★</span><p>Fast, clear communication and a site that finally converts. Highly recommend.</p></article>
+    <article class="note" style="--c:#ffd9e2;--rot:.9deg"><header><span class="av">F</span><div><b>Reviewer Name</b><small>9 months ago</small></div></header><span class="s">★★★★★</span><p>A genuinely helpful team that told us what we needed, not what to buy.</p></article>
+  </div>
+  <div class="rev__nav"><div class="arrows"><button id="rprev" aria-label="Previous">←</button><button id="rnext" aria-label="Next">→</button></div><a class="btn" href="#">Read all client reviews <span class="ar">→</span></a></div>
+</div></section>
+
+<section class="try" id="chat"><div class="w try__g">
+  <div data-reveal><span class="eyebrow"><i></i>Use it for free</span><h2 class="h2">See what our <em class="i hl">assistant</em> already knows about your site</h2><p><b>Trained on years worth of our data.</b> Paste your URL and it reads your site the way search engines do, then tells you what it finds. Takes under a minute.</p></div>
+  <div class="chat" data-reveal style="--rot:-1deg">
+    <div class="chat__h"><span class="chat__av">☺</span><div><b>Assistant Name</b><small><i></i>Online now</small></div></div>
+    <div class="chat__m" id="msgs"><div class="m">Hey, I'm the CEO of Your Brand. Ask me anything about growing your business online, or drop your URL and I'll run a live audit right now.</div></div>
+    <div class="chat__c"><button>Audit my website</button><button>How does SEO work?</button><button>Website redesign cost?</button><button>What is AEO?</button></div>
+    <form class="chat__f" id="chatForm"><input id="chatIn" placeholder="Ask anything or drop your URL…" aria-label="Message"><button aria-label="Send">➤</button></form>
+  </div>
+</div></section>
+
+<div class="strip strip--ink"><div class="strip__t" id="mq2"></div></div>
+
+<section class="how" id="how"><div class="w">
+  <div class="how__head" data-reveal><span class="eyebrow"><i></i>How it works</span><h2 class="h2">Three steps, and you know <em class="i hl">where you stand</em> at every stage.</h2><p>No long onboarding and no black box. You see the plan before we build, you see the build before it goes live, and you see the numbers every month after.</p></div>
+  <div class="steps">
+    <article class="step" data-reveal><span class="step__n">1</span><div class="ph">Image<small>step one</small></div><span class="tag">Before anything is built</span><h3 class="h3">We review and plan</h3><h4>We look at what you have, then tell you what it actually needs.</h4><p>We go through your site, your search data and your closest competitors, then come back with a written plan you approve before a single page is designed.</p><small>YOU GET</small><ul><li>Full site and search review</li><li>Clear scope and priorities</li><li>A written plan you sign off</li></ul></article>
+    <article class="step" data-reveal><span class="step__n">2</span><div class="ph">Image<small>step two</small></div><span class="tag">Typically 30 to 45 days</span><h3 class="h3">We build it properly</h3><h4>One team designs, writes and builds, with tracking in from day one.</h4><p>Copy is written into the design rather than dropped in at the end. Your existing pages are carried across, and we check how it works, not only how it looks.</p><small>YOU GET</small><ul><li>Design, copy and build together</li><li>Rankings and redirects protected</li><li>Analytics and tracking verified</li></ul></article>
+    <article class="step" data-reveal><span class="step__n">3</span><div class="ph">Image<small>step three</small></div><span class="tag">Every month after launch</span><h3 class="h3">We grow it and report</h3><h4>Search, ads and conversion work, measured against targets agreed.</h4><p>Launch is the starting line. From there we work on visibility and conversion, and you get one report each month showing what changed.</p><small>YOU GET</small><ul><li>Targets agreed up front</li><li>Monthly reporting in plain language</li><li>Direct access to the specialists</li></ul></article>
+  </div>
+  <div class="cta" data-reveal><p>Step one starts with a free audit of your website, prepared before we speak. <em class="i">You keep it either way.</em></p><a class="btn btn--sun" href="#audit">Book a consultation <span class="ar">→</span></a></div>
+</div></section>
+
+<section class="res"><div class="w res__g">
+  <div data-reveal><span class="eyebrow"><i></i>Real clients</span><h2 class="h2">The results, described by <em class="i hl">the people who got them.</em></h2><p>We could tell you what we do. It lands better coming from the businesses who have lived it. <b>Watch a few minutes</b> and you will know exactly what working with us is like.</p></div>
+  <div class="vid" data-reveal style="--rot:-1.4deg"><span class="tape" style="right:24px;top:-14px;transform:rotate(5deg)"></span><div class="ph vid__img" style="aspect-ratio:16/10">Testimonial video<small>16:9 placeholder</small></div><button class="play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M6 4v16l14-8z" fill="#15110f"/></svg></button><p class="vid__cap">“…they continually upgrade the site.”</p></div>
+</div></section>
+
+<section class="price" id="pricing"><div class="w">
+  <div class="price__head" data-reveal><span class="eyebrow"><i></i>How you pay</span><h2 class="h2">You pay the way that suits <em class="i hl">your business.</em></h2><p>Three models. Same team, same standards, same reporting on all of them. We would rather match how you buy than push you into a structure that does not fit.</p></div>
+  <div class="tg" role="tablist"><button class="on" data-t="m">Milestones</button><button data-t="s">Subscription</button><button data-t="o">One time</button></div>
+  <div class="pc"><div class="pc__l"><span class="tag" id="pTag">Pay as it is delivered</span><h3 id="pT">Milestones</h3><h4 id="pS">You pay as each stage is completed and approved.</h4><p id="pP">The project is split into stages agreed before work starts. Each stage is delivered, reviewed with you, then invoiced. Payment always follows progress you can see.</p><div class="suits"><small>SUITS</small><span id="pU">Website design and build projects, and anyone who wants payment tied to delivered work.</span></div><small style="font:700 .72rem/1 var(--sans);letter-spacing:.14em;display:block;margin-bottom:10px">PAYMENT RHYTHM</small><div class="pb" id="pB"></div><b id="pC" style="font-size:.95rem">Four stages, four payments, each released after approval.</b></div><div class="pc__r"><div class="ph">Character<small>transparent PNG</small></div></div></div>
+  <div class="tiles"><div class="tile"><i>1</i><b>Scope agreed in writing</b><p>You know what is included before anything is invoiced.</p></div><div class="tile"><i>2</i><b>Targets on every service</b><p>We set clear KPIs and hold ourselves to them.</p></div><div class="tile"><i>3</i><b>Reporting in plain language</b><p>One monthly report, written to be understood.</p></div><div class="tile"><i>4</i><b>Direct access to the team</b><p>You speak with the specialists doing the work.</p></div></div>
+  <div class="ns"><div><b>Not sure which model fits?</b><p>Tell us how your business buys and we will tell you which one makes sense, on the call.</p></div><a class="btn btn--white" href="#audit">See pricing <span class="ar">→</span></a></div>
+</div></section>
+
+<section class="ppl" id="people"><div class="w ppl__g">
+  <div data-reveal><span class="eyebrow"><i></i>The people</span><h2 class="h2">You deal with the people <em class="i">doing the work.</em></h2><p>There is no account manager passing messages to a team you never meet. Ask about your search performance and you are answered by the person who runs it.</p><p>Design, development, content, search and paid sit in <b>one team</b>. Fewer handovers, faster answers, and nobody guessing what somebody else meant.</p><p>We work across time zones, so progress continues while you sleep, and you always have one clear point of contact for anything that needs a decision.</p>
+    <div class="tags"><span style="--rot:-2deg">Amazing SEO specialists</span><span style="--rot:1.5deg">Talented designers</span><span style="--rot:-1deg">Brilliant developers</span><span style="--rot:2deg">Super analysts</span><span style="--rot:-1.5deg">Project managers</span><span style="--rot:1deg">Account executives</span><span style="--rot:-2deg">Dedicated support</span></div></div>
+  <div class="team" data-reveal style="--rot:1.5deg"><span class="tape"></span><div class="ph">Team photo placeholder<small>group shot · 4:5</small></div></div>
+</div></section>
+
+<section class="prj" id="projects"><div class="w">
+  <span class="eyebrow"><i></i>Our clients' projects</span><h2 class="h2">See what <em class="i hl">we build.</em></h2>
+  <p class="prj__t">Across 30 industries and 60 countries, from single-location businesses to international brands. Browse the work and find something that looks like your situation.</p>
+  <div class="pg"><a class="pj" href="#" data-reveal><div class="ph">Project image<small>3 devices mockup</small></div><small>Website redesign</small><b>Project One</b></a><a class="pj" href="#" data-reveal><div class="ph">Project image<small>3 devices mockup</small></div><small>Website redesign</small><b>Project Two</b></a><a class="pj" href="#" data-reveal><div class="ph">Project image<small>3 devices mockup</small></div><small>Website redesign</small><b>Project Three</b></a></div>
+  <div class="prj__c"><a class="btn" href="#">See all projects <span class="ar">→</span></a></div>
+  <div class="rt"><span class="stamp" style="--r:-2deg"><span class="st">★★★★★</span> 4.7 Platform A</span><span class="stamp" style="--r:1deg"><span class="st">★★★★★</span> 4.4 Platform B</span><span class="stamp" style="--r:-1deg"><span class="st">★★★★★</span> 4.9 Platform C</span><span class="stamp" style="--r:2deg"><span class="st">★★★★★</span> 5.0 Platform D</span></div>
+</div></section>
+
+<section class="faq" id="faq"><div class="w faq__g">
+  <aside class="faq__c"><span class="eyebrow"><i></i>Common questions</span><h3>Your Brand answers</h3><a class="btn btn--ink" href="#">Read all FAQs <span class="ar" style="background:var(--paper);color:var(--ink)">→</span></a></aside>
+  <div class="fq">
+    <details open><summary>What does Your Brand Agency do?</summary><p>Placeholder answer. Explain the services, who you work with and how projects typically start.</p></details>
+    <details><summary>What is AEO, and how is it different from SEO?</summary><p>Placeholder answer describing answer-engine optimisation versus classic search optimisation.</p></details>
+    <details><summary>Will a redesign cost me the rankings I already have?</summary><p>Placeholder answer about redirects, migration and protecting existing rankings.</p></details>
+    <details><summary>How long does a website take?</summary><p>Placeholder answer with typical timelines for a design and build project.</p></details>
+    <details><summary>Do I need to be a marketing person to work with you?</summary><p>Placeholder answer. No, we explain everything in plain language.</p></details>
+    <details><summary>Should I rebuild my website or redesign it?</summary><p>Placeholder answer on how the audit decides between a redesign and a rebuild.</p></details>
+    <details><summary>What happens after I book a call?</summary><p>Placeholder answer: we send your audit before the call, then agree next steps.</p></details>
+  </div>
+</div></section>
+
+<section class="audit" id="audit"><div class="w audit__g">
+  <div><small class="k">We are ready when you are</small><h2 class="h1" style="font-size:clamp(2.8rem,6.4vw,5.6rem)">Your audit is ready <em class="i hl">before the call is.</em></h2><div class="audit__b"><a class="btn btn--ink" href="#">Book a call <span class="ar" style="background:var(--paper);color:var(--ink)">↗</span></a><a class="btn btn--white" href="#pricing">Our pricing <span class="ar">↓</span></a></div></div>
+  <form class="form" onsubmit="return false" data-reveal style="--rot:1.4deg"><h3>Get your free business audit</h3>
+    <label>Work email *<input type="email" placeholder="john@example.com"></label>
+    <div class="r2"><label>Full name *<input type="text" placeholder="John Smith"></label><label>Industry<select><option>Law firms</option><option>Dentists</option><option>Accountants</option><option>Ecommerce</option></select></label></div>
+    <label>Website URL<input type="url" placeholder="https://example.com"></label>
+    <div class="cap"><i></i>I'm not a robot (placeholder)</div>
+    <label class="cons"><input type="checkbox" checked>By submitting this form, you agree to be contacted by Your Brand about your project. Your information is never sold or shared.</label>
+    <button class="btn btn--ink" style="margin-top:6px">Get my free audit <span class="ar" style="background:var(--paper);color:var(--ink)">→</span></button>
+    <ul class="trust"><li>Fully confidential</li><li>72-hour turnaround</li><li>Custom audit</li></ul>
+  </form>
+</div></section>
+
+<footer class="ftr"><div class="w">
+  <div class="ftr__g">
+    <div><a class="logo" href="#top"><b>✱</b>yourbrand</a><p>Your Brand was founded by our typical client, ourselves. We want to be the best, fastest, and most professional website redesign agency out there, helping small and mid-sized businesses get beautiful websites that convert visitors into customers.</p></div>
+    <div><h4>Explore</h4><ul><li><a href="#">More about us</a></li><li><a href="#">Contact us today</a></li><li><a href="#faq">FAQ</a></li><li><a href="#reviews">Testimonials</a></li><li><a href="#">Blog</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Disclaimer</a></li></ul><div class="addr"><b>Your Brand Agency</b><p>123 Example Street, 000 00 City, Country</p><a href="#" style="color:var(--sun);font-weight:700">View on maps →</a></div></div>
+    <div><h4>Get a free website redesign today</h4><form onsubmit="return false"><input placeholder="yourwebsite.com"><div class="r2"><input placeholder="Your phone number"><input placeholder="hello@youremail.com"></div><button class="btn">Free website facelift <span class="ar">→</span></button></form></div>
+  </div>
+  <div class="huge" aria-hidden="true">yourbrand<span>.</span></div>
+  <div class="legal"><span>© 2026 Your Brand Agency</span><span>Made with care, coffee and a slight obsession with conversion.</span></div>
+</div></footer>
+
+<div class="ck" id="ck"><b>Cookies, the boring kind</b>We use cookies to give you the best experience on our website. Carry on and we'll assume you're happy with that.<div><button id="ckY">I agree</button><button class="g" id="ckN">No thanks</button></div></div>
+<a class="fab" href="#chat"><i>☺</i>Ask our assistant</a>
+
+<script>
+(function(){
+  var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // marquees
+  function fill(el,words){var h="";for(var k=0;k<2;k++)for(var i=0;i<3;i++)words.forEach(function(w){h+="<span>"+w+"</span><i>✱</i>"});el.innerHTML=h}
+  fill($("#mq1"),["Websites that convert","Search that gets you found","Ads that earn their keep","Reports in plain English"]);
+  fill($("#mq2"),["Brand one","Brand two","Brand three","Brand four","Brand five"]);
+
+  // nav
+  $("#burger").addEventListener("click",function(){$("#nav").classList.toggle("open")});
+  $$("#nav a").forEach(function(a){a.addEventListener("click",function(){$("#nav").classList.remove("open")})});
+
+  // reveal
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+  $$("[data-reveal]").forEach(function(el){io.observe(el)});
+
+  // counters
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);var to=+e.target.dataset.count,s=e.target.dataset.s||"",t0=null;if(reduce){e.target.textContent=to.toLocaleString("en-US")+s;return}(function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1300);e.target.textContent=Math.round(to*(1-Math.pow(1-k,3))).toLocaleString("en-US")+s;if(k<1)requestAnimationFrame(f)})(performance.now())})},{threshold:.6});
+  $$("[data-count]").forEach(function(el){cio.observe(el)});
+
+  // search demo
+  var answers={"Law firms":"For a law firm, the highest impact work is structural. A clear page for every practice area, visible proof of experience, and markup that lets assistants read the firm correctly."};
+  var typed=$("#typed"),skel=$("#skel"),ans=$("#ans"),ansP=$("#ansP");
+  function run(label){
+    $$("#chips button").forEach(function(b){b.classList.toggle("on",b.textContent===label)});
+    var q="best seo agency for "+label.toLowerCase(),i="best seo agency for ".length;
+    skel.hidden=false;ans.hidden=true;typed.textContent=q.slice(0,i);
+    function done(){ansP.textContent=answers[label]||"For this kind of business, the highest impact work is structural. A clear page for every service, visible proof of experience, and markup that lets assistants read the business correctly.";skel.hidden=true;ans.hidden=false}
+    (function t(){if(reduce){typed.textContent=q;return done()}typed.textContent=q.slice(0,++i);if(i<q.length)setTimeout(t,36);else setTimeout(done,450)})();
+  }
+  $$("#chips button").forEach(function(b){b.addEventListener("click",function(){run(b.textContent)})});
+
+  // reviews
+  var row=$("#rrow");$("#rnext").addEventListener("click",function(){row.scrollBy({left:322,behavior:"smooth"})});$("#rprev").addEventListener("click",function(){row.scrollBy({left:-322,behavior:"smooth"})});
+
+  // pricing
+  var P={m:{tag:"Pay as it is delivered",t:"Milestones",s:"You pay as each stage is completed and approved.",p:"The project is split into stages agreed before work starts. Each stage is delivered, reviewed with you, then invoiced. Payment always follows progress you can see.",u:"Website design and build projects, and anyone who wants payment tied to delivered work.",c:"Four stages, four payments, each released after approval.",b:[["Plan",30],["Design",48],["Build",66],["Launch",90]]},
+  s:{tag:"Pay month by month",t:"Subscription",s:"One predictable monthly fee for ongoing work.",p:"A fixed monthly amount covers search, ads and conversion work. Targets and reporting are agreed up front, and you can change the plan with notice.",u:"Ongoing growth work, search and paid programmes, and teams who want a steady budget.",c:"Same fee each month, with a report to show for it.",b:[["Month 1",60],["Month 2",60],["Month 3",60],["Month 4",60]]},
+  o:{tag:"Pay once",t:"One time",s:"A single fixed price for a clearly defined project.",p:"Scope, timeline and price are agreed before we start. You pay once, either up front or on completion. Ideal when you know exactly what you need.",u:"Audits, one-off builds and projects with a clear, finished scope.",c:"One scope, one price, one invoice.",b:[["Scope",80],["Build",80],["Launch",80],["Handover",80]]}};
+  function plan(k){var d=P[k];$("#pTag").textContent=d.tag;$("#pT").textContent=d.t;$("#pS").textContent=d.s;$("#pP").textContent=d.p;$("#pU").textContent=d.u;$("#pC").textContent=d.c;$("#pB").innerHTML=d.b.map(function(x){return'<div><i style="--h:'+x[1]+'%"></i><span>'+x[0].toUpperCase()+"</span></div>"}).join("")}
+  plan("m");$$(".tg button").forEach(function(b){b.addEventListener("click",function(){$$(".tg button").forEach(function(x){x.classList.toggle("on",x===b)});plan(b.dataset.t)})});
+
+  // chat
+  var msgs=$("#msgs");function add(t,me){var d=document.createElement("div");d.className="m"+(me?" me":"");d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+  function send(t){if(!t)return;add(t,true);setTimeout(function(){add("This is a placeholder reply. Connect your own assistant here.")},600)}
+  $("#chatForm").addEventListener("submit",function(e){e.preventDefault();var i=$("#chatIn");send(i.value.trim());i.value=""});
+  $$(".chat__c button").forEach(function(b){b.addEventListener("click",function(){send(b.textContent)})});
+
+  // cookie
+  $("#ckY").addEventListener("click",function(){$("#ck").classList.add("hide")});$("#ckN").addEventListener("click",function(){$("#ck").classList.add("hide")});
+})();
+</script>
+</body>
+</html>
